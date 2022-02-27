@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import LOGO from '../../../assets/img/logo.png'
-import { IconCar, IconKey } from "../../../components/Icons";
+import { IconCar, IconKey } from "../../../Components/Icons";
 import { Field, Form, Formik } from "formik";
-import Titulo from "../../../components/utilidades/Titulo";
-import ButtonAction from "../../../components/utilidades/ButtonAction";
-import Parrafo from "../../../components/utilidades/Parrafo";
+import Titulo from "../../../Components/utilidades/Titulo";
+import ButtonAction from "../../../Components/utilidades/ButtonAction";
+import Parrafo from "../../../Components/utilidades/Parrafo";
 import * as Yup from "yup";
 
 

@@ -1,4 +1,4 @@
-import { IconLink, IconSetting } from "../../components/Icons";
+import { IconSetting } from "../../Components/Icons";
 import './reportes.css'
 
 const ReporteProductos = () => {
@@ -18,7 +18,7 @@ const ReporteProductos = () => {
           <div key={p.id} className="flex  justify-between ">
             <div className="flex items-center gap-x-5">
               <div className="bg-color_green_3 rounded-lg w-20 h-20">
-                <img src={p.img} />
+                <img alt="img reporte" src={p.img} />
               </div>
               <div className="flex flex-col">
 

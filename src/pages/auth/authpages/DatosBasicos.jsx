@@ -1,12 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-// import LOGO from '../../../assets/img/logo.png'
-import { IconCar, IconEmail, IconKey } from "../../../components/Icons";
+import LOGO from '../../../assets/img/logo.png'
+import { IconCar, IconEmail, IconKey } from "../../../Components/Icons";
 import { Field, Form, Formik } from "formik";
-import Titulo from "../../../components/utilidades/Titulo";
-import ButtonAction from "../../../components/utilidades/ButtonAction";
-import Parrafo from "../../../components/utilidades/Parrafo";
-import PuntosNext from "../../../components/utilidades/PuntosNext";
+import Titulo from "../../../Components/utilidades/Titulo";
+import ButtonAction from "../../../Components/utilidades/ButtonAction";
+import Parrafo from "../../../Components/utilidades/Parrafo";
+import PuntosNext from "../../../Components/utilidades/PuntosNext";
 import * as Yup from "yup";
+import { useContext } from "react";
+import { UserContext } from "../../../context/user/UserContext";
 
 const rutas = [
   { id: 1, link: '/auth/registro/datos-basicos' },
@@ -15,6 +17,10 @@ const rutas = [
 ]
 
 const DatosBasicos = () => {
+
+  const { users, setUser } = useContext(UserContext);
+
+  const { newWorker } = users
 
   const navigate = useNavigate();
 
@@ -27,11 +33,21 @@ const DatosBasicos = () => {
   return (
     <Formik
       initialValues={{
-        email: 'yelsino@321.com',
-        password: '321321',
+        email: newWorker.email,
+        password: newWorker.password,
       }}
       validationSchema={validar}
       onSubmit={(values) => {
+        setUser((data) => (
+          {
+            ...data,
+            newWorker: {
+              ...data.newWorker,
+              email: values.email,
+              password: values.password
+            }
+          }
+        ))
         navigate('/auth/registro/datos-personales')
       }}
     >
@@ -39,7 +55,7 @@ const DatosBasicos = () => {
         <Form
           className="w-full md:w-1/2 p-10 flex flex-col items-center gap-5">
           <div className=" w-24 md:w-32 sm:w-32  select-none md:hidden object-contain">
-            {/* <img src={LOGO} alt="logo negocios carlos" /> */}
+            <img src={LOGO} alt="logo negocios carlos" />
           </div>
           <div className="hidden sm:flex absolute top-5  right-5  sm:top-10 sm:right-10 font-extrabold font-poppins text-color_green_4 text-lg  items-center justify-center gap-x-2">
             <span><IconCar /></span>

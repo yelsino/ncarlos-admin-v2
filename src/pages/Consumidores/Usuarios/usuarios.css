@@ -10,17 +10,32 @@
 
 .listas {
   height: calc(100vh - 300px);
-  padding-bottom: 30px;
+  padding-bottom: 100px;
+}
+
+.usuario_lista {
+  height: calc(100vh - 300px);
+  padding-bottom: 100px;
+}
+
+.usuario_compra {
+  height: calc(100vh - 300px);
+  padding-bottom: 100px;
 }
 
 .direcciones {
   height: calc(100vh - 300px);
-  padding-bottom: 30px;
+  padding-bottom: 100px;
+}
+
+.direccion_usuario {
+  height: calc(100vh - 300px);
+  padding-bottom: 100px;
 }
 
 .reclamos {
   height: calc(100vh - 300px);
-  padding-bottom: 30px;
+  padding-bottom: 100px;
 }
 
 .img_perfil {

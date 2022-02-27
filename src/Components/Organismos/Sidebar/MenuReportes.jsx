@@ -1,13 +1,13 @@
-import { NavLink, useLocation } from "react-router-dom";
-import { IconCardBuyInactive, IconProductInactivo, IconUsersInactive, IconWork } from "../../Icons";
+import { NavLink } from "react-router-dom";
+import { IconCardBuyInactive, IconProductInactivo, IconWork } from "../../Icons";
 
 const MenuReportes = () => {
 
-  const location = useLocation()
+  // const location = useLocation()
 
-  const { pathname } = location;
+  // const { pathname } = location;
 
-  const currentPath = pathname.split('/');
+  // const currentPath = pathname.split('/');
 
   return (
     <div className="py-5 font-semibold font-mono text-lg flex flex-col border-b border-color_green_4 gap-y-5">

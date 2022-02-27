@@ -1,6 +1,6 @@
 const PedidoTracking = () => {
   return (
-    <div className="flex  gap-x-5 ">
+    <div className="flex  gap-x-5  overflow-y-auto tracking_pedido">
       <div>
         <div className="rounded-full bg-color_green_7  w-5 h-5"></div>
         <div className=" h-14 w-1 bg-clip-border border-color_green_4 border-dashed border-2 ml-2 my-1 " />

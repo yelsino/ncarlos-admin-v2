@@ -1,3 +1,6 @@
+import perfil from '../assets/img/perfil.jpg';
+
+export const PERFIL = perfil;
 
 
 export const PERFIL2 = 'https://iteragrow.com/wp-content/uploads/2018/04/buyer-persona-e1545248524290.jpg'

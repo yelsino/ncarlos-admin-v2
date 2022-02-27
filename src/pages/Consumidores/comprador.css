@@ -1,6 +1,6 @@
 .items_clientes {
   height: calc(100vh - 150px);
-  padding-bottom: 40px;
+  padding-bottom: 100px;
 }
 .cliente_item_compras {
   height: calc(100vh - 420px);

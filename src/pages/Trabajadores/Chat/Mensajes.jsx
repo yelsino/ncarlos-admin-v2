@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PERFIL12 } from "../../../components/Images";
+import { PERFIL12 } from "../../../Components/Images";
 import { AuthContext } from "../../../context/auth/AuthContext";
 import { ChatContext } from "../../../context/chat/ChatContext";
 
@@ -44,6 +44,7 @@ const Mensajes = () => {
               // style={msg.css}
               className="pb-2 ">
               <img
+                alt="img mensaje"
                 className={`img_perfil_trabajador_inchat w-8 h-8 object-cover `}
                 src={PERFIL12}
               />

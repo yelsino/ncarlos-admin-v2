@@ -37,6 +37,7 @@ const useNotificacion = (initialState = {}) => {
   }
 
   useEffect(() => {
+    // if (width >= 500) {
     if (width >= 500) {
       // Close notification
       handleCloseNotificacion()

@@ -5,7 +5,7 @@ import { IconConfigInactivo, IconEstadisticaInactivo, IconLogOut, IconUserOutlin
 
 const NavbarMenu = () => {
 
-  const { auth, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import { IconBox, IconCard, IconMoney } from "../../../../components/Icons";
+import { IconBox, IconCard, IconMoney } from "../../../../Components/Icons";
 
 const Credito = () => {
 

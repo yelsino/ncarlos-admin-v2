@@ -10,8 +10,6 @@ const initialState = {
   checking: true,
   logged: false,
   user: null,
-  // name: null,
-  // email: null,
 }
 
 export const AuthProvider = ({ children }) => {
@@ -20,34 +18,29 @@ export const AuthProvider = ({ children }) => {
 
 
   const login = async (email, password) => {
-    try {
-      const resp = await fetchSinToken('login/worker', { email, password }, 'POST');
+    const resp = await fetchSinToken('login/worker', { email, password }, 'POST');
 
-      if (resp.ok) {
-        localStorage.setItem('token', resp.token);
-        const { usuario } = resp;
-  
-        setAuth({
-          uid: usuario.uid,
-          checking: false,
-          logged: true,
-          user: usuario
-        })
-      }
-  
-      return resp
-    } catch (error) {
-      console.log(error);
+    if (resp.ok) {
+      localStorage.setItem('token', resp.token);
+      const { usuario } = resp;
+
+      setAuth({
+        uid: usuario.uid,
+        checking: false,
+        logged: true,
+        user: usuario
+      })
     }
-   
+
+    return resp
   }
 
-  const register = (nombre, email, password) => {
-
+  const register = async (nombre, email, password) => {
+    // const resp = await fetchSinToken('api/login/new', { nombre, email, password }, 'POST');
+    // console.log(resp);
   }
 
   const verificarToken = useCallback(async () => {
-
     const token = localStorage.getItem('token') || '';
 
     // si token no existe
@@ -62,7 +55,6 @@ export const AuthProvider = ({ children }) => {
       return false
     }
 
-   try {
     const resp = await fetchConToken('login/renew');
     if (resp.ok) {
       localStorage.setItem('token', resp.token);
@@ -84,9 +76,6 @@ export const AuthProvider = ({ children }) => {
       })
       return false
     }
-   } catch (error) {
-     console.log(error);
-   }
 
   }, []);
 

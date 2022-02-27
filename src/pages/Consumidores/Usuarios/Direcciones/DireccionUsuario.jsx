@@ -1,6 +1,6 @@
 const DireccionUsuario = () => {
   return (
-    <div className="font-poppins flex flex-col gap-y-10 w-full  ">
+    <div className="direccion_usuario overflow-y-auto font-poppins flex flex-col gap-y-10 w-full  ">
       <p className="text-color_green_7 text-lg font-medium text-center tracking-tighter ">Jr agusto B. leguia 556</p>
 
       <div className="flex flex-col items-center">

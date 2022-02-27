@@ -7,7 +7,7 @@ const Notificaciones = () => {
   const notificacionRoot = document.getElementById('notificacion-root');
 
   const notificacionContext = useContext(NotificacionContext);
-  const { notificaciones, removeNotificacion } = notificacionContext;
+  const { notificaciones } = notificacionContext;
 
   return createPortal(
     <div className='fixed bottom-10 left-4  '>

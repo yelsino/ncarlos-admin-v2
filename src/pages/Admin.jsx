@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useLocation, } from "react-router-dom"
-import SidebarMovil from "../components/Organismos/Sidebar/SidebarMovil";
-import Navbar from "../components/Plantillas/Navbar";
-import SidebarWeb from "../components/Plantillas/SidebarWeb";
+import SidebarMovil from "../Components/Organismos/Sidebar/SidebarMovil";
+import Navbar from "../Components/Plantillas/Navbar";
+import SidebarWeb from "../Components/Plantillas/SidebarWeb";
 import moment from "moment";
 import 'moment/locale/es';
 moment.locale('es');
@@ -12,7 +12,7 @@ const Admin = ({ isAutenticated }) => {
   const { pathname } = location;
 
   const currentPath = pathname.split('/');
-  const rutas = ['nuevo-credito', 'search', 'nuevo-abono'];
+  const rutas = ['nuevo-credito', 'search', 'nuevo-abono', 'nuevo-producto'];
 
   var filterRutes = rutas.filter((tag) => (currentPath.includes(tag) && tag));
 
@@ -29,10 +29,10 @@ const Admin = ({ isAutenticated }) => {
                 filterRutes.length !== 1 &&
                 <SidebarMovil />
               }
-              {
-                filterRutes.length !== 1 &&
-                <SidebarWeb />
-              }
+              {/* { */}
+              {/* // filterRutes.length !== 1 && */}
+              <SidebarWeb />
+              {/* // } */}
 
               <div className="md:px-5 w-full ">
 

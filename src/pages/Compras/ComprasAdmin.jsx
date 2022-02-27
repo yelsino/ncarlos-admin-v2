@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet, useLocation, } from "react-router-dom";
-import { IconSearch } from "../../components/Icons";
+import { IconSearch } from "../../Components/Icons";
 import './compras.css'
 
 const ComprasAdmin = () => {

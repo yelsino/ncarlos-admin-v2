@@ -22,8 +22,8 @@ const Colegas = () => {
             onClick={() => abrirChat(usuario.uid)}
             key={usuario.uid} to={`/trabajadores/${usuario.uid}/chat`} className="flex justify-between items-center">
             <div className="flex gap-x-3 items-center ">
-              {console.log(usuario.roles.find(e => e.name === 'ADMIN'))}
-              <img src={usuario.img} className="w-10 rounded-full h-10 object-cover " />
+              {/* {console.log(usuario.roles.find(e => e.name === 'ADMIN'))} */}
+              <img alt="img de colega" src={usuario.img} className="w-10 rounded-full h-10 object-cover " />
               <div>
                 <p className="text-color_gray_1 font-semibold truncate w-32">{usuario.apodo}</p>
                 <p className="text-xs text-color_green_5 font-light">{

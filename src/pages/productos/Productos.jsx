@@ -1,11 +1,10 @@
 // @ts-nocheck
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IconClean, IconSearch } from "../../Components/Icons";
 
 import IconBrocoli from '../../assets/img/icons/brocoli.png';
-import { useContext } from "react/cjs/react.development";
 import { CategoriaContext } from "../../context/categoria/CategoriaContext";
 
 const Productos = () => {
@@ -71,6 +70,7 @@ const Productos = () => {
               ))
             }
           </div>
+
 
 
 

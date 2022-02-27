@@ -1,22 +1,19 @@
 import IMGDEVELOPER from "../../assets/img/developer.svg";
 import LOGO from '../../assets/img/logo.png'
-import { IconCar, IconEmail, IconKey } from "../../components/Icons";
+import { IconCar, IconEmail, IconKey } from "../../Components/Icons";
 import { Field, Form, Formik } from "formik";
 import * as Yup from 'yup'
 import { Link, useNavigate } from 'react-router-dom'
-import Titulo from "../../components/utilidades/Titulo";
-import ButtonAction from "../../components/utilidades/ButtonAction";
+import Titulo from "../../Components/utilidades/Titulo";
+import ButtonAction from "../../Components/utilidades/ButtonAction";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth/AuthContext";
-import NotificacionContext from "../../context/Notificaciones/notificacionContext";
 
 const Login = () => {
 
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-  const notificacionContex = useContext(NotificacionContext);
 
-  const { setNotificacion } = notificacionContex;
 
   const validar = Yup.object().shape({
     email: Yup.string()
@@ -37,12 +34,13 @@ const Login = () => {
           validationSchema={validar}
           onSubmit={async (values) => {
 
-            const resp = await login(values.email, values.password)
-            if (!resp.ok) {
-              setNotificacion({ type: 1, message: resp.msg });
-            } else {
-              navigate('/')
-            }
+            await login(values.email, values.password)
+            navigate('/')
+            // if (!resp.ok) {
+            //   setNotificacion({ type: 1, message: resp.msg });
+            // } else {
+            //   navigate('/')
+            // }
           }}
         >
           {({ errors, touched }) => (

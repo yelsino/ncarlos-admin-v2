@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 import Admin from '../pages/Admin';
 import DatosBasicos from '../pages/auth/authpages/DatosBasicos';
@@ -58,7 +58,6 @@ import Trabajador from '../pages/Trabajadores/Trabajador';
 import Chat from '../pages/Trabajadores/Chat/Chat';
 import TrabajadorCall from '../pages/Trabajadores/TrabajadorCall';
 import TrabajadorInfo from '../pages/Trabajadores/TrabajadorInfo';
-import { useContext } from 'react/cjs/react.development';
 import { AuthContext } from '../context/auth/AuthContext';
 import PublicRoute from './PublicRoute';
 import ProductoCategoria from '../pages/productos/ProductoCategoria';

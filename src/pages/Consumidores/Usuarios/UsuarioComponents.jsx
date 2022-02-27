@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { IconCardBuy, IconDirecciones, IconListas, IconReclamos, IconUser } from "../../../components/Icons";
+import { IconCardBuy, IconDirecciones, IconListas, IconReclamos, IconUser } from "../../../Components/Icons";
 
 
 const UsuarioComponents = () => {

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IconLink } from "../../../components/Icons";
+import { IconLink } from "../../../Components/Icons";
 
 const UsuarioListas = () => {
   return (
@@ -9,7 +9,7 @@ const UsuarioListas = () => {
       <div className="listas overflow-y-auto flex flex-col gap-y-5">
         {listas.map(l => (
           <Link key={l.id} to={`/comprador/usuarios/3/listas/${l.id}`}>
-            <p className="flex justify-between text-color_green_6">{l.nombre}<div className="flex items-center gap-x-3"><span>cantidad {l.cantidad}</span><span className="text-color_green_7"><IconLink /></span></div></p>
+            <p className="flex justify-between text-gray-500 hover:text-color_green_7">{l.nombre}<div className="flex items-center gap-x-3"><span>cantidad {l.cantidad}</span><span className="text-color_green_7"><IconLink /></span></div></p>
           </Link>
         ))}
 

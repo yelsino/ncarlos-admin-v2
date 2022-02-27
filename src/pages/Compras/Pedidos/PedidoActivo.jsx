@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useParams } from "react-router-dom";
-import { IconBox, IconCard, IconUser } from "../../../components/Icons";
+import { IconBox, IconCard, IconUser } from "../../../Components/Icons";
 
 const PedidoActivo = () => {
 
@@ -10,12 +10,10 @@ const PedidoActivo = () => {
 
   return (
     <div className='w-full overflow-auto  max-w-lg mx-auto'>
-      <h2 className=' text-center bg-color_green_3  text-color_green_7 tracking-widest py-4 rounded-lg text-lg font-semibold'>Orden #005</h2>
-
-      <p className="text-center my-5 text-lg text-color_green_7 font-medium">Recibido</p>
 
 
-      <div className='text-color_green_7 flex justify-between my-5 '>
+
+      <div className='text-color_green_7 flex justify-between  mb-6'>
         <NavLink to={`/ventas/pedidos/${pedidoactivoID}/detalles`} className={({ isActive }) => (navstiles(isActive))}>
           <IconBox />
           Detalles
@@ -29,6 +27,7 @@ const PedidoActivo = () => {
           Tracking
         </NavLink>
       </div>
+
 
       <Outlet />
     </div>

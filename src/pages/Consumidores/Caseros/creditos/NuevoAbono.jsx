@@ -1,4 +1,4 @@
-import ButtonAction from "../../../../components/utilidades/ButtonAction";
+import ButtonAction from "../../../../Components/utilidades/ButtonAction";
 
 
 const NuevoAbono = () => {

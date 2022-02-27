@@ -1,16 +1,17 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { IconLink } from "../../components/Icons";
-import { AuthContext } from "../../context/auth/AuthContext";
+import { IconLink } from "../../Components/Icons";
 
 
 const PedidosActivos = () => {
 
-  const { auth } = useContext(AuthContext);
 
 
   return (
-    <div className="">
+    <div className="relative">
+
+      <div className="absolute bottom-32 right-0 z-20 rounded-full bg-black text-white w-12 h-12 flex justify-center items-center shadow-lg text-sm font-bold font-poppins cursor-pointer">
+        ADD
+      </div>
 
       <div className="flex font-bold text-color_gray_1 mb-5 font-poppins sm:text-lg sm:px-5">
         <span className="w-8/12 sm:w-5/12 truncate ">Lista</span>

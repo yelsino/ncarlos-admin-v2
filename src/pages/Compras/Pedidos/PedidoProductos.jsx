@@ -1,11 +1,11 @@
 const PedidoProductos = () => {
   return (
-    <div className="productos overflow-y-auto flex gap-y-5 flex-col overflow-hidden ">
+    <div className="productos_pedido overflow-y-auto flex gap-y-5 flex-col overflow-hidden ">
       {productos.map(p => (
         <div key={p.id} className="flex  justify-between ">
           <div className="flex items-center gap-x-5">
             <div className="bg-color_green_3 rounded-lg w-20 h-20">
-              <img src={p.img} />
+              <img alt="img pedido" src={p.img} />
             </div>
             <div className="flex flex-col">
 

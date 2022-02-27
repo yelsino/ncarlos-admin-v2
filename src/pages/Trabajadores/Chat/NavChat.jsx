@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { useContext, useRef, useState } from "react";
-import { IconArrowRight, IconCameraOutline, IconMicrofono, IconPictureOutline, IconSend } from "../../../components/Icons";
+import { IconArrowRight, IconCameraOutline, IconMicrofono, IconPictureOutline, IconSend } from "../../../Components/Icons";
 import { AuthContext } from "../../../context/auth/AuthContext";
 import { ChatContext } from "../../../context/chat/ChatContext";
 import { SocketContext } from "../../../context/Socket/SocketContext";

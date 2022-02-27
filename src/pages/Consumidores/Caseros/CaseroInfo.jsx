@@ -1,6 +1,6 @@
 const CaseroInfo = () => {
   return (
-    <div className="flex flex-col gap-5 items-center justify-center  mx-auto  mt-5">
+    <div className="flex flex-col gap-5    mx-auto  mt-5 overflow-y-auto datos_casero">
       <p className="text-color_green_6  w-full flex ">
         <span className="w-36">Nombres:</span>
         <span className="text-color_green_7">Yelsin Yelsiño</span>

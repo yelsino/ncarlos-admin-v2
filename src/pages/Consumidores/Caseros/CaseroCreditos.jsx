@@ -1,5 +1,5 @@
 import { Link, Outlet, useParams } from "react-router-dom";
-import { IconCard, IconLink } from "../../../components/Icons";
+import { IconCard, IconLink } from "../../../Components/Icons";
 
 const ClienteCreditos = () => {
   const params = useParams()
@@ -9,7 +9,7 @@ const ClienteCreditos = () => {
       {
         creditoID ? <Outlet />
           :
-          <div className="w-full mx-auto max-w-md">
+          <div className="w-full mx-auto max-w-md compras_creditos overflow-y-auto">
             <div className="flex justify-between text-color_green_5">
               <div className="flex  gap-x-7 w-full justify-center">
                 <span>Deuda</span>
@@ -21,9 +21,9 @@ const ClienteCreditos = () => {
             {/* divider */}
             <div className="border-b border-color_green_4 w-full my-5"></div>
 
-            <div className="cliente_item_creditos text-color_green_6 flex flex-col gap-y-5 overflow-y-auto ">
+            <div className=" text-color_green_6 flex flex-col gap-y-5 ">
               {creditos.map(credito => (
-                <Link key={credito.id} to={`/comprador/clientes/${clienteID}/creditos/${credito.id}/detalles`} className="flex justify-between w-full ">
+                <Link key={credito.id} to={`/comprador/clientes/${clienteID}/creditos/${credito.id}/detalles`} className="flex justify-between w-full text-gray-500 hover:text-color_green_7">
                   <div className="w-8/12">Lunes 18 de nov. 2021</div>
                   <div className="w-4/12 flex items-center gap-x-3 justify-end ">
                     <span>125 soles</span>

@@ -1,7 +1,7 @@
 const CompraDetalle = () => {
   return (
     <>
-      <div className="detalles overflow-y-auto text-color_green_6 mt-10">
+      <div className=" text-color_green_6 mt-10">
         <p className="flex  px-5 justify-between">
           <span className="  ">Cantidad productos</span>
           <span className="text-color_green_7    ">14</span>

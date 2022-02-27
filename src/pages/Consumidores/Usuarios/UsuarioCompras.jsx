@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { IconLink } from "../../../components/Icons";
+import { IconLink } from "../../../Components/Icons";
 
 const UsuarioCompras = () => {
 
@@ -18,10 +18,10 @@ const UsuarioCompras = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-y-5 pr-5">
+      <div className="flex flex-col gap-y-5 pr-5 listas overflow-y-auto">
         {
           users.map(user => (
-            <Link key={user.id} to={`/comprador/usuarios/${userID}/compras/${user.id}/detalle`} className="flex  text-color_green_6 relative">
+            <Link key={user.id} to={`/comprador/usuarios/${userID}/compras/${user.id}/detalle`} className="flex  text-gray-500 hover:text-color_green_7 relative">
 
               <span className="w-6/12 truncate">Lunes 25 de noviembre 2022</span>
               <div className="w-6/12   flex gap-x-3">
@@ -61,6 +61,38 @@ const users = [
   },
   {
     id: 5,
+    name: "Lunes 25 de noviembre 2022",
+  },
+  {
+    id: 6,
+    name: "Lunes 25 de noviembre 2022",
+  },
+  {
+    id: 6,
+    name: "Lunes 25 de noviembre 2022",
+  },
+  {
+    id: 6,
+    name: "Lunes 25 de noviembre 2022",
+  },
+  {
+    id: 6,
+    name: "Lunes 25 de noviembre 2022",
+  },
+  {
+    id: 6,
+    name: "Lunes 25 de noviembre 2022",
+  },
+  {
+    id: 6,
+    name: "Lunes 25 de noviembre 2022",
+  },
+  {
+    id: 6,
+    name: "Lunes 25 de noviembre 2022",
+  },
+  {
+    id: 6,
     name: "Lunes 25 de noviembre 2022",
   },
   {

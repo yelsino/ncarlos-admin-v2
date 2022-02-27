@@ -1,0 +1,14 @@
+.datos_casero {
+  height: calc(100vh - 100px);
+  padding-bottom: 300px;
+}
+
+.compras_casero {
+  height: calc(100vh - 350px);
+  padding-bottom: 50px;
+}
+
+.compras_creditos {
+  height: calc(100vh - 350px);
+  padding-bottom: 50px;
+}

@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
-import { IconBox, IconCard, IconUser } from '../../../components/Icons';
-import { PERFIL10, PERFIL3, PERFIL4, PERFIL5, PERFIL6, PERFIL7, PERFIL8, PERFIL9 } from '../../../components/Images';
+import { IconBox, IconCard, IconUser } from '../../../Components/Icons';
+import { PERFIL3, } from '../../../Components/Images';
+import './casero.css'
 
 const Casero = () => {
 
@@ -19,13 +20,13 @@ const Casero = () => {
   const navstiles = (isActive) => (`flex items-center gap-x-1 p-3 rounded-lg ${isActive ? 'bg-color_green_3' : ''} `);
 
   return (
-    <div className='w-full overflow-auto'>
+    <div className='w-full overflow-auto '>
       {/* <h2 className=' text-center bg-color_green_3 text-sm text-color_green_7 tracking-widest py-4 rounded-lg'>{`SOY EL CLIENTE ${clienteID}`}</h2> */}
       <div className="flex items-center gap-x-5 sm:gap-x-10 border-b pb-7 border-color_green_4">
-        <img className="img_perfil w-20 h-20 sm:w-28 sm:h-28 object-cover  " src={PERFIL3} />
+        <img alt='img usuario' className="img_perfil w-20 h-20 2xl:w-28 2xl:h-28 object-cover  " src={PERFIL3} />
         <div>
-          <p className="text-3xl sm:text-4xl font-poppins font-bold text-color_gray_1">Kimberly</p>
-          <p className="text-lg sm:text-xl text-gray-600 truncate">Kimberly Felipe Castillo Rivero</p>
+          <p className="text-3xl 2xl:text-4xl font-poppins font-bold text-color_gray_1">Kimberly</p>
+          <p className="text-lg 2xl:text-xl text-gray-600 truncate">Kimberly Felipe Castillo Rivero</p>
         </div>
       </div>
       {

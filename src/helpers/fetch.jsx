@@ -2,8 +2,6 @@
 // const baseUrl = process.env.REACT_APP_API_URL;
 const baseUrl = import.meta.env.VITE_SOME_KEY;
 
-console.log('impr url');
-console.log(import.meta.env.VITE_SOME_KEY);
 
 export const fetchSinToken = async (endpoint, data, method = 'GET') => {
   const url = `${baseUrl}/${endpoint}`;
