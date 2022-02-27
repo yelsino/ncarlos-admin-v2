@@ -1,0 +1,7 @@
+input:-webkit-autofill {
+  transition-delay: 3600s;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

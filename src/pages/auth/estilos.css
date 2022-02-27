@@ -1,0 +1,5 @@
+.navitem::after {
+  content: "";
+  display: block;
+  padding: 14px;
+}

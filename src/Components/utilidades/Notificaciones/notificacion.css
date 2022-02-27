@@ -1,0 +1,17 @@
+.error_notificacion {
+  color: #ff181f;
+  border-color: #ff181f;
+  background: #ffe5e8;
+}
+
+.alert_notificacion {
+  color: #ff8400;
+  border-color: #ff8400;
+  background: #ffefde;
+}
+
+.success_notificacion {
+  color: #00c851;
+  border-color: #00c851;
+  background: rgb(234, 255, 234);
+}

@@ -1,0 +1,29 @@
+.productos {
+  height: calc(100vh - 300px);
+  padding-bottom: 60px;
+}
+
+.detalles {
+  height: calc(100vh - 300px);
+  padding-bottom: 60px;
+}
+
+.listas {
+  height: calc(100vh - 300px);
+  padding-bottom: 30px;
+}
+
+.direcciones {
+  height: calc(100vh - 300px);
+  padding-bottom: 30px;
+}
+
+.reclamos {
+  height: calc(100vh - 300px);
+  padding-bottom: 30px;
+}
+
+.img_perfil {
+  border-radius: 50px 0px 50px 0px;
+  box-shadow: 2.8px 5.6px 10px #0ac927;
+}

@@ -1,0 +1,45 @@
+.img_perfil_trabajador {
+  border-radius: 30px 0px 30px 0px;
+  box-shadow: 2.8px 5.6px 10px #0ac927;
+}
+
+.trabajador_chat {
+  height: calc(100vh - 200px);
+}
+.trabajador_chat_mensaje {
+  height: calc(100vh - 250px);
+  background: red;
+  padding-bottom: 80px;
+}
+.img_perfil_trabajador_inchat {
+  border-radius: 10px 0px 10px 0px;
+  box-shadow: 2.8px 5.6px 10px #0ac927;
+}
+
+.msg_history {
+  height: 90%;
+  padding-bottom: 50px;
+  overflow-y: auto;
+}
+
+.input_chat {
+  width: 100%;
+  padding: 15px 25px;
+  outline: none;
+  resize: none;
+  max-height: 100px;
+}
+
+/* .msg_derecha:last-child {
+  background: red !important;
+} */
+
+.msg_visible > span {
+  visibility: visible;
+}
+.msg_invisible > span {
+  visibility: hidden;
+}
+.msg_invisible:last-child > span {
+  visibility: visible;
+}

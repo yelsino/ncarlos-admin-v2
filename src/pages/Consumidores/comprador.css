@@ -1,0 +1,45 @@
+.items_clientes {
+  height: calc(100vh - 150px);
+  padding-bottom: 40px;
+}
+.cliente_item_compras {
+  height: calc(100vh - 420px);
+  padding-bottom: 40px;
+}
+.cliente_item_creditos {
+  height: calc(100vh - 400px);
+  padding-bottom: 50px;
+}
+
+.historial_abonos,
+.datos_compra {
+  height: calc(100vh - 380px);
+  padding-bottom: 60px;
+}
+
+.detalle_credito {
+  height: calc(100vh - 400px);
+  padding-bottom: 60px;
+}
+
+.nuevo_credito {
+  height: calc(100vh - 200px);
+  padding-bottom: 60px;
+}
+
+/* .compras_item {
+  height: calc(100vh - 275px);
+} */
+
+/* screen */
+
+@media screen and (max-width: 350px) {
+  * {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 370px) {
+  * {
+    font-size: 13px;
+  }
+}
