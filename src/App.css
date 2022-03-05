@@ -5,3 +5,10 @@ input:-webkit-autofill {
 ::-webkit-scrollbar {
   display: none;
 }
+
+body {
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior-y: contain;
+}

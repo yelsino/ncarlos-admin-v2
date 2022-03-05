@@ -1,0 +1,16 @@
+{
+  "short_name": "nscarlos",
+  "name": "negocios carlos",
+  "background_color": "#DDFFC8",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait",
+  "theme_color": "#DDFFC8",
+  "icons": [
+    {
+      "src": "src/assets/img/manzana.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ]
+}

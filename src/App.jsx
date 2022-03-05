@@ -26,6 +26,10 @@ function App() {
     // Initialize Firebase
     initializeApp(firebaseConfig);
 
+    if(navigator.serviceWorker){
+      navigator.serviceWorker.register('/sw.js');
+    }
+
   return (
     <div className=' h-screen'>
       <NotificacionState>
