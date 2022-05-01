@@ -43,10 +43,10 @@ const Clientes = () => {
             >
               <div className="w-8/12 sm:w-6/12 flex items-center gap-x-3 ">
                 <img alt="img casero" className="  rounded-full object-cover h-10 w-10" src={v.img} />
-                <p className='truncate'>{` ${v.nombres} ${v.apellidos}`}</p>
+                <p className='truncate capitalize'>{` ${v.names} ${v.surnames}`}</p>
               </div>
 
-              <div className="w-4/12 sm:w-6/12 flex ">
+              <div className="w-4/12 sm:w-6/12 flex text-base">
                 <span className=" text-center   w-full hidden sm:inline ">{` ${200}`}</span>
                 <span className=" md:inline hidden text-center w-full">{`S./ ${258.5}`}</span>
                 <span className=" flex justify-center   w-full">

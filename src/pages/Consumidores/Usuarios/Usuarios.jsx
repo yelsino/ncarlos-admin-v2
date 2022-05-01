@@ -40,7 +40,7 @@ const Usuarios = () => {
             >
               <div className="w-8/12 sm:w-6/12 flex items-center gap-x-3 ">
                 <img alt="img usuario" className="  rounded-full object-cover h-10 w-10" src={v.img} />
-                <p className='truncate'>{` ${v.nombres} ${v.apellidos}`}</p>
+                <p className='truncate capitalize'>{` ${v.names} ${v.surnames}`}</p>
               </div>
 
               <div className="w-4/12 sm:w-6/12 flex ">

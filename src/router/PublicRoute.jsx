@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Navigate, Outlet, Route } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const PublicRoute = ({
   isAutenticated,

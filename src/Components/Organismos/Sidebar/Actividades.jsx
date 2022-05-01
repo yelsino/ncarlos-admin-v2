@@ -4,11 +4,7 @@
 
 const Actividades = () => {
 
-  // const location = useLocation()
 
-  // const { pathname } = location;
-
-  // const currentPath = pathname.split('/');
 
   return (
     <div className=" pb-2 pt-3 font-poppins  flex flex-col text-color_gray_1   ">

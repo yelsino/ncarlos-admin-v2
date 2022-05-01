@@ -1,3 +1,4 @@
+import {useContext } from 'react'
 import IMGDEVELOPER from "../../assets/img/developer.svg";
 import LOGO from '../../assets/img/logo.png'
 import { IconCar, IconEmail, IconKey } from "../../Components/Icons";
@@ -6,13 +7,15 @@ import * as Yup from 'yup'
 import { Link, useNavigate } from 'react-router-dom'
 import Titulo from "../../Components/utilidades/Titulo";
 import ButtonAction from "../../Components/utilidades/ButtonAction";
-import { useContext } from "react";
 import { AuthContext } from "../../context/auth/AuthContext";
+import NotificacionContext from '../../context/Notificaciones/notificacionContext';
 
 const Login = () => {
 
+  const notificacionContex = useContext(NotificacionContext);
+  const { setNotificacion } = notificacionContex;
   const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
   const validar = Yup.object().shape({
@@ -34,13 +37,13 @@ const Login = () => {
           validationSchema={validar}
           onSubmit={async (values) => {
 
-            await login(values.email, values.password)
-            navigate('/')
-            // if (!resp.ok) {
-            //   setNotificacion({ type: 1, message: resp.msg });
-            // } else {
-            //   navigate('/')
-            // }
+            const res = await login(values.email, values.password)
+
+            console.log(res);
+            if(!res.ok) setNotificacion({
+              type: 1, message: res.message
+            })
+           
           }}
         >
           {({ errors, touched }) => (

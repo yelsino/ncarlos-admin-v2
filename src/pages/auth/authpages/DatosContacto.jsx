@@ -9,11 +9,12 @@ import * as Yup from "yup";
 import { useContext } from "react";
 import { UserContext } from "../../../context/user/UserContext";
 import NotificacionContext from "../../../context/Notificaciones/notificacionContext";
+import { v4 as uuidv4 } from 'uuid';
 
 const rutas = [
-  { id: 1, link: '/auth/registro/datos-basicos' },
-  { id: 2, link: '/auth/registro/datos-personales' },
-  { id: 3, link: '/auth/registro/datos-contacto' },
+  { id: uuidv4(), link: '/auth/registro/datos-basicos' },
+  { id: uuidv4(), link: '/auth/registro/datos-personales' },
+  { id: uuidv4(), link: '/auth/registro/datos-contacto' },
 ]
 
 const DatosContacto = () => {

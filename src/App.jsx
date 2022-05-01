@@ -1,37 +1,36 @@
-import './App.css'
+import "./App.css";
 import { initializeApp } from "firebase/app";
-import { BrowserRouter as Router } from 'react-router-dom';
-import { SocketProvider } from './context/Socket/SocketContext';
-import NotificacionState from './context/Notificaciones/notificacionState';
-import { ChatProvider } from './context/chat/ChatContext';
-import { AuthProvider } from './context/auth/AuthContext';
-import Notificaciones from './components/utilidades/Notificaciones/Notificaciones';
-import RouterApp from './router/RouterApp';
-import { UserProvider } from './context/user/UserContext';
-import { CateriaProvider } from './context/categoria/CategoriaContext';
-import { ProductoProvider } from './context/productos/ProductoContex';
-
+import { BrowserRouter as Router } from "react-router-dom";
+import { SocketProvider } from "./context/Socket/SocketContext";
+import NotificacionState from "./context/Notificaciones/notificacionState";
+import { ChatProvider } from "./context/chat/ChatContext";
+import { AuthProvider } from "./context/auth/AuthContext";
+import Notificaciones from "./components/utilidades/Notificaciones/Notificaciones";
+import RouterApp from "./router/RouterApp";
+import { UserProvider } from "./context/user/UserContext";
+import { CateriaProvider } from "./context/categoria/CategoriaContext";
+import { ProductoProvider } from "./context/productos/ProductoContex";
+import { OrderProvider } from "./context/orders/OrderContext";
 
 function App() {
-
   const firebaseConfig = {
     apiKey: "AIzaSyB_EXIwYUNuWOll1ZVbQ9El0cnNhLryXjk",
     authDomain: "admin-ncarlos.firebaseapp.com",
     projectId: "admin-ncarlos",
     storageBucket: "admin-ncarlos.appspot.com",
     messagingSenderId: "143729635451",
-    appId: "1:143729635451:web:869975cdfdead420b8b2de"
+    appId: "1:143729635451:web:869975cdfdead420b8b2de",
   };
 
-    // Initialize Firebase
-    initializeApp(firebaseConfig);
+  // Initialize Firebase
+  initializeApp(firebaseConfig);
 
-    if(navigator.serviceWorker){
-      navigator.serviceWorker.register('/sw.js');
-    }
+  // if(navigator.serviceWorker){
+  //   navigator.serviceWorker.register('/sw.js');
+  // }
 
   return (
-    <div className=' h-screen'>
+    <div className=" h-screen">
       <NotificacionState>
         <ChatProvider>
           <AuthProvider>
@@ -39,9 +38,11 @@ function App() {
               <UserProvider>
                 <CateriaProvider>
                   <ProductoProvider>
-                    <Router>
-                      <RouterApp />
-                    </Router>
+                    <OrderProvider>
+                      <Router>
+                        <RouterApp />
+                      </Router>
+                    </OrderProvider>
                   </ProductoProvider>
                 </CateriaProvider>
               </UserProvider>
@@ -50,9 +51,8 @@ function App() {
           </AuthProvider>
         </ChatProvider>
       </NotificacionState>
-
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

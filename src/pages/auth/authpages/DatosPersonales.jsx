@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import LOGO from '../../../assets/img/logo.png'
 import { IconCar, IconEmail, IconKey } from "../../../Components/Icons";
+import { v4 as uuidv4 } from 'uuid';
 import { Field, Form, Formik } from "formik";
 import Titulo from "../../../Components/utilidades/Titulo";
 import ButtonAction from "../../../Components/utilidades/ButtonAction";
@@ -10,15 +11,20 @@ import { useContext } from "react";
 import { UserContext } from "../../../context/user/UserContext";
 
 const rutas = [
-  { id: 1, link: '/auth/registro/datos-basicos' },
-  { id: 2, link: '/auth/registro/datos-personales' },
-  { id: 3, link: '/auth/registro/datos-contacto' },
+  { id: uuidv4(), link: '/auth/registro/datos-basicos' },
+  { id: uuidv4(), link: '/auth/registro/datos-personales' },
+  { id: uuidv4(), link: '/auth/registro/datos-contacto' },
 ]
+
+
+
 
 const DatosPersonales = () => {
   const { users, setUser } = useContext(UserContext);
   const { newWorker } = users
   const navigate = useNavigate();
+
+  console.log(uuidv4());
 
   const validar = Yup.object().shape({
     apodo: Yup.string()

@@ -4,7 +4,6 @@ import ProductoVegetal from "./ProductoVegetal";
 
 const ProductoCategoria = () => {
   const params = useParams();
-  console.log(params);
   const { categoriaID } = params
   return (
     <>

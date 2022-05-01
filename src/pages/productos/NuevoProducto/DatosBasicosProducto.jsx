@@ -1,65 +1,137 @@
-import mandarina from '../../../assets/img/mandarina.png'
+import {  useContext } from 'react'
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { IconNext } from '../../../Components/Icons';
 import ButtonNext from '../../../Components/utilidades/ButtonNext';
+import { v4 as uuidv4 } from 'uuid';
+import { RadioGroup } from '@headlessui/react';
+import NotificacionContext from '../../../context/Notificaciones/notificacionContext';
 
 const DatosBasicosProducto = () => {
+
+  const navigate = useNavigate();
+  const [product, setProduct] = useOutletContext();
+
+  const alert = useContext(NotificacionContext);
+
+  const handleSubmit = () => {
+    if (
+      !product.category ||
+      !product.wholesale_form ||
+      !product.form_retail
+    ) {
+      alert.setNotificacion({
+        type: 1,
+        message: 'Todos los campos son requeridos'
+      });
+      return;
+    }
+    navigate('/productos/nuevo-producto/precios')
+  }
+
+
   return (
     <div className='flex-col flex items-center'>
-      <p className="text-color_green_7 font-semibold text-2xl font-poppins text-center">Mandarina wando</p>
+      <p className="text-color_green_7 font-semibold text-2xl font-poppins text-center">{product.name}</p>
       <div>
-        <div>
-          <img src={mandarina} />
-        </div>
-        <p className="text-color_green_7 font-light text-lg font-poppins text-center">¿Categoria del producto?</p>
-        <div className='grid grid-cols-2 gap-5 mt-5'>
-          <div className='flex items-center gap-x-2 '>
-            <span className='block border rounded-full w-4 h-4 border-color_green_6' />
-            <label className='text-color_green_6'>Frutas</label>
-          </div>
-          <div className='flex items-center gap-x-2 '>
-            <span className='block border rounded-full w-4 h-4 border-color_green_6' />
-            <label className='text-color_green_6'>Vegetales</label>
-          </div>
-          <div className='flex items-center gap-x-2 '>
-            <span className='block border rounded-full w-4 h-4 border-color_green_6' />
-            <label className='text-color_green_6'>Menestras</label>
-          </div>
+        <div className='w-60'>
+          <img src={product.img_local} />
         </div>
 
-        <p className="text-color_green_7 font-light text-lg font-poppins text-center pt-5">¿Forma de venta en minoreo?</p>
-        <div className='grid grid-cols-2 gap-5 mt-5'>
-          <div className='flex items-center gap-x-2 '>
-            <span className='block border rounded-full w-4 h-4 border-color_green_6' />
-            <label className='text-color_green_6'>Frutas</label>
+        <RadioGroup value={product.category}
+          onChange={(e) => setProduct({ ...product, category: e })}
+        >
+          <RadioGroup.Label className={'text-color_green_7 font-light text-lg font-poppins text-center'}>¿Categoria del producto?</RadioGroup.Label>
+          <div className=' grid grid-cols-2 gap-5 mt-5'>
+            {input_categories.map(v =>
+              <RadioGroup.Option key={v.id} value={v.value}>
+                {({ checked }) => (
+                  <span className={`cursor-pointer text-color_green_6 flex gap-x-2 items-center ${checked ? 'bg-color_green_3 text-black ' : ''}`}>
+                    <input
+                      className='accent-violet-500'
+                      checked={checked}
+                      type='radio'
+                      readOnly
+                    />
+                    <span className='capitalize'>{v.value}</span>
+                  </span>
+                )}
+              </RadioGroup.Option>
+            )}
           </div>
-          <div className='flex items-center gap-x-2 '>
-            <span className='block border rounded-full w-4 h-4 border-color_green_6' />
-            <label className='text-color_green_6'>Vegetales</label>
-          </div>
+        </RadioGroup>
 
-        </div>
 
-        <p className="text-color_green_7 font-light text-lg font-poppins text-center pt-5">¿Forma de venta en mayoreo?</p>
-        <div className='grid grid-cols-2 gap-5 my-5'>
-          <div className='flex items-center gap-x-2 '>
-            <span className='block border rounded-full w-4 h-4 border-color_green_6' />
-            <label className='text-color_green_6'>costales</label>
+        <RadioGroup value={product.form_retail}
+          onChange={(e) => setProduct({ ...product, form_retail: e })}
+        >
+          <RadioGroup.Label className={'text-color_green_7 font-light text-lg font-poppins text-center'}>¿Forma de venta en minoreo?</RadioGroup.Label>
+          <div className=' grid grid-cols-2 gap-5 mt-5'>
+            {input_retail.map(v =>
+              <RadioGroup.Option key={v.id} value={v.value}>
+                {({ checked }) => (
+                  <span className={`cursor-pointer text-color_green_6 flex gap-x-2 items-center ${checked ? 'bg-color_green_3 text-black ' : ''}`}>
+                    <input
+                      className='accent-violet-500'
+                      checked={checked}
+                      type='radio'
+                      readOnly
+                    />
+                    <span className='capitalize'>{v.value}</span>
+                  </span>
+                )}
+              </RadioGroup.Option>
+            )}
           </div>
-          <div className='flex items-center gap-x-2 '>
-            <span className='block border rounded-full w-4 h-4 border-color_green_6' />
-            <label className='text-color_green_6'>bolsas</label>
+        </RadioGroup>
+
+
+        <RadioGroup value={product.wholesale_form}
+          onChange={(e) => setProduct({ ...product, wholesale_form: e })}
+        >
+          <RadioGroup.Label className={'text-color_green_7 font-light text-lg font-poppins text-center'}>¿Forma de venta en mayoreo?</RadioGroup.Label>
+          <div className=' grid grid-cols-2 gap-5 mt-5'>
+            {input_wholesaling.map(v =>
+              <RadioGroup.Option key={v.id} value={v.value}>
+                {({ checked }) => (
+                  <span className={`cursor-pointer text-color_green_6 flex gap-x-2 items-center ${checked ? 'bg-color_green_3 text-black ' : ''}`}>
+                    <input
+                      className='accent-violet-500'
+                      checked={checked}
+                      type='radio'
+                      readOnly
+                    />
+                    <span className='capitalize'>{v.value}</span>
+                  </span>
+                )}
+              </RadioGroup.Option>
+            )}
           </div>
-          <div className='flex items-center gap-x-2 '>
-            <span className='block border rounded-full w-4 h-4 border-color_green_6' />
-            <label className='text-color_green_6'>cajones</label>
-          </div>
-        </div>
+        </RadioGroup>
+
+
       </div>
       <div className='flex justify-center'>
-        <ButtonNext text={<IconNext />} />
+        <ButtonNext
+          onClick={handleSubmit}
+          text={<IconNext />} />
       </div>
     </div>
   );
 }
+
+const input_categories = [
+  { id: uuidv4(), value: 'frutas' },
+  { id: uuidv4(), value: 'vegetales' },
+  { id: uuidv4(), value: 'abarrotes' },
+];
+const input_retail = [
+  { id: uuidv4(), value: 'kilos' },
+  { id: uuidv4(), value: 'unidades' },
+];
+const input_wholesaling = [
+  { id: uuidv4(), value: 'costales' },
+  { id: uuidv4(), value: 'bolsas' },
+  { id: uuidv4(), value: 'cajones' },
+];
 
 export default DatosBasicosProducto;

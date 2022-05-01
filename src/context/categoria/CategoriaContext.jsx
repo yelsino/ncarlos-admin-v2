@@ -13,7 +13,7 @@ export const CateriaProvider = ({ children }) => {
 
 
   const obtenerCategorias = async () => {
-    const resp = await fetchConToken('categorias');
+    const resp = await fetchConToken('categories');
     console.log(resp);
     if (resp.ok) {
       setCategoria({ ...categoria, categorias: resp.categorias });

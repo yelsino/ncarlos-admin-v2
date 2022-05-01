@@ -15,7 +15,7 @@ const CompraDetalle = () => {
         <span className="bg-color_green_4 my-3 block w-full border-b border-color_green_4" />
 
         <p className="flex   px-5 justify-between">
-          <span className=" ">Fecha de compra</span>
+          <span className=" ">Fecha</span>
           <span className="text-color_green_7  ">12/05/2022</span>
         </p>
         <span className="bg-color_green_4 my-3 block w-full border-b border-color_green_4" />

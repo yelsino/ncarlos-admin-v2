@@ -3,7 +3,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IconClean, IconSearch } from "../../Components/Icons";
-
 import IconBrocoli from '../../assets/img/icons/brocoli.png';
 import { CategoriaContext } from "../../context/categoria/CategoriaContext";
 
@@ -17,9 +16,8 @@ const Productos = () => {
   }, []);
 
 
-
   return (
-    <div className="max-w-xl w-11/12 mx-auto pt-10 ">
+    <div className="pt-10 md:max-w-md max-w-sm mx-auto overflow-y-auto">
       <p className="text-center text-color_green_7 font-poppins text-lg">Productos</p>
 
       <div className="relative flex items-center  ">
@@ -29,6 +27,11 @@ const Productos = () => {
           id='text'
           onChange={(e) => {
             setTextSearch(e.target.value)
+          }}
+          onKeyUp={(e)=>{
+            if(e.key === "Escape") {
+              setTextSearch('')
+            }
           }}
           value={textsearch}
           type="text"
@@ -57,7 +60,7 @@ const Productos = () => {
           : <div className="flex flex-col gap-y-10  ">
             {
               categorias.map(v => (
-                <Link to={`/productos/${v.name.toLowerCase()}`} className="flex items-center gap-x-5">
+                <Link key={v._id} to={`/productos/${v.name.toLowerCase()}`} className="flex items-center gap-x-5">
                   <div className="bg-color_green_3 rounded-lg w-16 h-16 flex justify-center items-center text-color_green_7">
                     <img alt="img productos" src={IconBrocoli} className="w-8 h-8" />
                   </div>
@@ -70,45 +73,9 @@ const Productos = () => {
               ))
             }
           </div>
-
-
-
-
-
-
       }
-
-
     </div>
   );
 }
 
 export default Productos;
-
-
-
-{/* <div className="flex flex-col gap-y-10  "> */ }
-
-
-{/* <Link to='/productos/frutas' className="flex items-center gap-x-5">
-              <div className="bg-color_green_3 rounded-lg w-16 h-16 flex justify-center items-center text-color_green_7">
-                <img alt="img productos" src={IconLeche} className="w-8 h-8" />
-              </div>
-              <div className="flex flex-col">
-
-                <span className="text-lg text-color_green_7">Frutas</span>
-                <span className="text-color_green_5">Total 7 frutas en tienda</span>
-              </div>
-            </Link> */}
-
-{/* <Link to='/productos/abarrotes' className="flex items-center gap-x-5">
-              <div className="bg-color_green_3 rounded-lg w-16 h-16 flex justify-center items-center text-color_green_7">
-                <img alt="img producto" src={IconManzana} className="w-8 h-8" />
-              </div>
-              <div className="flex flex-col">
-
-                <span className="text-lg text-color_green_7">Abarrotes</span>
-                <span className="text-color_green_5">Total 7 abarrotes en tienda</span>
-              </div>
-            </Link> */}
-{/* </div> */ }

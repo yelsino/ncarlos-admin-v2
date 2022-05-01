@@ -1,4 +1,12 @@
+import { useLocation } from "react-router-dom";
+
+
+
 const PedidoTracking = () => {
+
+  // const { state: { order } } = useLocation();
+// console.log(order);
+
   return (
     <div className="flex  gap-x-5  overflow-y-auto tracking_pedido">
       <div>

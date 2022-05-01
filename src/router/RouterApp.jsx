@@ -77,8 +77,6 @@ const RouterApp = () => {
 
   const { auth, verificarToken } = useContext(AuthContext);
 
-
-
   let routes = [
     {
       path: '/auth',
@@ -148,15 +146,7 @@ const RouterApp = () => {
         {
           path: '/productos/:categoriaID/:productoID', element: <DetalleProducto />
         },
-        // {
-        //   path: '/productos/vegetales', element: <ProductoVegetal />,
-        // },
-        // {
-        //   path: '/productos/frutas', element: <ProductosFrutas />,
-        // },
-        // {
-        //   path: '/productos/abarrotes', element: <ProductosAbarrotes />,
-        // },
+       
         {
           path: '/ventas', element: <ComprasAdmin />, children: [
             { path: '/ventas/pedidos', element: <PedidosActivos /> },

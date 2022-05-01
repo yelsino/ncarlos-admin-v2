@@ -16,7 +16,7 @@ export const useOpenChat = () => {
       payload: id
     })
 
-    const resp = await fetchConToken(`mensajes/${id}`);
+    const resp = await fetchConToken(`messages/${id}`);
 
     dispatch({
       type: chatTypes.CARGAR_MENSAJES,

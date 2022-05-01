@@ -8,10 +8,19 @@ const notificacionReducer = (state, action) => {
         ...state,
         notificaciones: [...state.notificaciones, action.payload],
       };
-    case REMOVE_NOTIFICATION:
+    case 'UPDATE_ITEM':
+      // update a item of state
       return {
         ...state,
-        notificaciones: state.notificaciones.filter(v => v.id !== action.payload),
+        notificaciones: state.notificaciones.map(v => (v.id === action.payload) ? { ...v, show: false } : v)
+      }
+    case REMOVE_NOTIFICATION:
+      const notification = state.notificaciones;
+      const index = notification.findIndex(v => v.id === action.payload);
+      notification.splice(index, 1);
+      return {
+        ...state,
+        notificaciones: notification
       };
     default:
       return state;

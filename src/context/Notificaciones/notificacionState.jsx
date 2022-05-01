@@ -17,15 +17,27 @@ const NotificacionState = props => {
       type: ADD_NOTIFICATION,
       payload: {
         id: `${Date.now()}${(Math.random() * 10)}`,
+        show: true,
         ...props
       }
     })
   }
+
   const removeNotificacion = (id) => {
-    return dispatch({
-      type: REMOVE_NOTIFICATION,
-      payload: id
+
+    Promise.resolve(() => {
+      dispatch({
+        type: 'UPDATE_ITEM',
+        payload: id
+      });
+
+    }).then(() => {
+        return dispatch({
+          type: REMOVE_NOTIFICATION,
+          payload: id
+        })
     })
+    return { ok: true }
   }
 
   return (
