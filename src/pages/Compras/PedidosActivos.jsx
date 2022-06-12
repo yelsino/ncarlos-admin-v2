@@ -39,7 +39,7 @@ const PedidosActivos = () => {
             className="text-gray-500 hover:text-color_green_7 text-base sm:text-lg w-full relative flex items-center py-1 "
           >
             <div className="w-full flex ">
-              <span className="w-8/12 sm:w-5/12 truncate first-letter:uppercase">{o.list.name}</span>
+              <span className="w-8/12 sm:w-5/12 truncate first-letter:uppercase">{o?.list?.name}</span>
               <div className="w-4/12 sm:w-7/12 flex">
                 <span className="w-full text-center hidden md:block">{15}</span>
                 <span className="w-full text-right hidden sm:block">S/.{59.9}</span>

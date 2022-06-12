@@ -12,7 +12,7 @@ export const SocketContext = createContext(null);
 
 export const SocketProvider = ({ children }) => {
 
-  const { socket, online, conectarSocket, desconectarSocket } = useSocket('http://localhost:8080');
+  const { socket, online, conectarSocket, desconectarSocket } = useSocket('https://app-back-ns-v2.herokuapp.com');
 
   // http://localhost:8080
   // https://app-back-ns-v2.herokuapp.com
