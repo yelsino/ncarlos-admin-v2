@@ -32,7 +32,7 @@ const Login = () => {
         <Formik
           initialValues={{
             email: 'yelsin@gmail.com',
-            password: '123456',
+            password: 'Ilovelife@321',
           }}
           validationSchema={validar}
           onSubmit={async (values) => {
