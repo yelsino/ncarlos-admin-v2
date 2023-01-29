@@ -12,9 +12,7 @@ import { Transition } from '@headlessui/react'
 const Notificacion = ({ data }) => {
   const { id, message } = data;
 
-  const [handlePauseTimer, handleStartTimer] = useNotificacion(id)
-  // ${textos[type]} añadir al div
-  // extraer type si fuese el caso
+  const [ handlePauseTimer, handleStartTimer ] = useNotificacion(id)
 
   return (
     <div
