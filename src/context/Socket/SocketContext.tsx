@@ -1,0 +1,56 @@
+import { createContext, useContext, useEffect } from 'react'
+import { scrollBottomAnimated } from '../../helpers/scrollToBottom'
+import { useSocket } from '../../hooks/useSocket'
+import { chatTypes } from '../../types/chatTypes'
+import { AuthContext } from '../auth/AuthContext'
+import { ChatContext } from '../chat/ChatContext'
+
+export const SocketContext = createContext(null) as any
+
+export const SocketProvider = ({ children }:any) => {
+  const { socket, online, conectarSocket, desconectarSocket }:any = useSocket('https://app-back-ns-v2.herokuapp.com')
+
+  // http://localhost:8080
+  // https://app-back-ns-v2.herokuapp.com
+
+  const { auth }:any = useContext(AuthContext)
+  const { dispatch }:any = useContext(ChatContext)
+
+  useEffect(() => {
+    if (auth.logged) {
+      conectarSocket()
+    }
+  }, [auth, conectarSocket])
+
+  useEffect(() => {
+    if (!auth.logged) {
+      desconectarSocket()
+    }
+  }, [auth, desconectarSocket])
+
+  useEffect(() => {
+    socket?.on('lista-usuarios', (usuarios:any) => {
+      dispatch({
+        type: chatTypes.usuariosCargados,
+        payload: usuarios
+      })
+    })
+  }, [socket, dispatch])
+
+  useEffect(() => {
+    socket?.on('mensaje-personal', (mensaje:any) => {
+      dispatch({
+        type: chatTypes.NUEVO_MENSAJE,
+        payload: mensaje
+      })
+
+      scrollBottomAnimated('mensajes')
+    })
+  }, [socket, dispatch])
+
+  return (
+    <SocketContext.Provider value={{ socket, online }}>
+      {children}
+    </SocketContext.Provider>
+  )
+}
