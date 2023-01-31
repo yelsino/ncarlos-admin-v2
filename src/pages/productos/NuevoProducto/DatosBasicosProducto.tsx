@@ -4,7 +4,7 @@ import { IconNext } from '../../../Components/Icons'
 import ButtonNext from '../../../Components/utilidades/ButtonNext'
 import { v4 as uuidv4 } from 'uuid'
 import { RadioGroup } from '@headlessui/react'
-import NotificacionContext from '../../../context/Notificaciones/notificacionContext'
+import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
 
 const DatosBasicosProducto = () => {
   const navigate = useNavigate()

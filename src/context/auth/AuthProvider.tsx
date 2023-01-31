@@ -1,16 +1,15 @@
-import { createContext, useState, useCallback, useContext } from 'react'
+import { useState, useCallback, useContext } from 'react'
 import { IUsuario } from 'types-yola'
 import { fetchConToken, fetchSinToken } from '../../helpers/fetch'
 import { chatTypes } from '../../types/chatTypes'
 import { ChatContext } from '../chat/ChatContext'
 import { AuthContext } from './AuthContext'
 
-
 export interface AuthState {
-  uid: string | null
-  checking: boolean
-  logged: boolean
-  user: IUsuario | null
+    uid: string | null;
+    checking: boolean;
+    logged: boolean;
+    user: IUsuario | null;
 }
 
 const INITIAL_STATE = {

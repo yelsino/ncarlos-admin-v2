@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Outlet } from 'react-router-dom'
 import PuntosNext from '../../Components/utilidades/PuntosNext'
 import { v4 as uuidv4 } from 'uuid'
-import { ProductoContext } from '../../context/productos/ProductoContex'
+import { ProductoContext } from '../../context/productos/productoContext'
 
 const NuevoProducto = () => {
   const { productos } = useContext(ProductoContext) as any

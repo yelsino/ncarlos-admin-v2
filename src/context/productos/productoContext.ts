@@ -1,15 +1,16 @@
-import { createContext, Dispatch } from "react";
-import { IProducto } from "types-yola";
-import { ProductoState } from "./ProductoProvider";
-import { ProductoAction } from "./productoReducer";
-
+import { createContext, Dispatch } from 'react'
+import { ProductoState } from './ProductoProvider'
+import { ProductoAction } from './productoReducer'
 
 interface ProductoContextProps extends ProductoState {
-	dispatchProducto: Dispatch<ProductoAction>,
-	obtenerProductoXcategoria: (categoria: string) => Promise<void>,
-	createNewProduct: (data: any) => Promise<{
-		ok: boolean;
-	} | undefined>
+    dispatchProducto: Dispatch<ProductoAction>;
+    obtenerProductoXcategoria: (categoria: string) => Promise<void>;
+    createNewProduct: (data: any) => Promise<
+        | {
+              ok: boolean;
+          }
+        | undefined
+    >;
 }
 
 export const ProductoContext = createContext<ProductoContextProps>({} as ProductoContextProps)

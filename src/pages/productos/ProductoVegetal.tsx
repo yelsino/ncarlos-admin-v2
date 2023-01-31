@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ProductoContext } from '../../context/productos/ProductoContex'
+import { ProductoContext } from '../../context/productos/productoContext'
 import './productos.css'
 const ProductoVegetal = () => {
   const { categoriaID } = useParams() as any

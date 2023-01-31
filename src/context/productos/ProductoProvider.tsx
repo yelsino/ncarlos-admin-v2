@@ -1,9 +1,8 @@
-import { createContext, useReducer, useState } from 'react'
+import { useReducer } from 'react'
 import { IProducto } from 'types-yola'
 import { fetchConToken } from '../../helpers/fetch'
 import { ProductoContext } from './productoContext'
 import productoReducer from './productoReducer'
-
 
 export interface ProductoState {
   productos: IProducto[]
@@ -33,7 +32,7 @@ interface Props {
 }
 
 export const ProductoProvider = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(productoReducer,INITIAL_STATE)
+  const [state, dispatch] = useReducer(productoReducer, INITIAL_STATE)
 
   const obtenerProductoXcategoria = async (name: any) => {
     const resp = await fetchConToken(`products/${name}`)

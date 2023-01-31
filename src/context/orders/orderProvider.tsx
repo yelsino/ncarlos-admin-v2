@@ -1,22 +1,20 @@
-import {  useReducer } from 'react'
+import { useReducer } from 'react'
 import { IPedido } from 'types-yola'
 import { fetchConToken } from '../../helpers/fetch'
 import { OrderContext } from './OrderContext'
 import orderReducer from './orderReducer'
 
-
 export interface OrderState {
   orders: IPedido[]
 }
 
-const INITIAL_STATE:OrderState  = {
+const INITIAL_STATE:OrderState = {
   orders: []
 }
 
 interface Props {
   children: JSX.Element | JSX.Element[]
 }
-
 
 export const OrderProvider = ({ children }:Props) => {
   const [data, setData] = useReducer(orderReducer, INITIAL_STATE)

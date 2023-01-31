@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import Titulo from '../../Components/utilidades/Titulo'
 import ButtonAction from '../../Components/utilidades/ButtonAction'
 import { AuthContext } from '../../context/auth/AuthContext'
-import NotificacionContext from '../../context/Notificaciones/notificacionContext'
+import { NotificacionContext } from '../../context/Notificaciones/notificacionContext'
 
 const Login = () => {
   const notificacionContex = useContext(NotificacionContext)

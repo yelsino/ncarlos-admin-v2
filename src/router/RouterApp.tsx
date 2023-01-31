@@ -74,12 +74,12 @@ const RouterApp = () => {
   const rcliente = '/comprador/clientes/'
   const rusuario = '/comprador/usuarios/'
 
-  const { auth, verificarToken }:any = useContext(AuthContext)
+  const { logged, verificarToken, checking }:any = useContext(AuthContext)
 
   const routes = [
     {
       path: '/auth',
-      element: <PublicRoute isAutenticated={auth.logged} />,
+      element: <PublicRoute isAutenticated={logged} />,
       children: [
         { path: '/auth/login', element: <Login /> },
         { path: '/auth/registro', element: <Navigate to={`${rregistro}datos-basicos`} /> },
@@ -110,7 +110,7 @@ const RouterApp = () => {
 
     {
       path: '/',
-      element: <Admin isAutenticated={auth.logged} />,
+      element: <Admin isAutenticated={logged} />,
       children: [
         {
           path: '/comprador/search/:search', element: <ClienteSearch />
@@ -270,7 +270,7 @@ const RouterApp = () => {
     verificarToken()
   }, [verificarToken])
 
-  if (auth.checking) {
+  if (checking) {
     return <h1>cargando ....</h1>
   }
 

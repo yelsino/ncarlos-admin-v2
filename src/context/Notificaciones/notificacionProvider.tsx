@@ -1,30 +1,25 @@
-// @ts-nocheck
+/* eslint-disable react/prop-types */
 import { useReducer } from 'react'
-import notificacionReducer from './notificacionReducer'
-import { ADD_NOTIFICATION, REMOVE_NOTIFICATION } from '../../types/notificacionTypes'
+import { INotificacion, NotificacionState } from '../../interfaces/notificacion.interface'
 import { NotificacionContext } from './notificacionContext'
-
-export interface NotificacionState {
-  notificaciones: any[]
-}
-
-const INITIAL_STATE:NotificacionState = {
-  notificaciones: []
-}
+import { notificacionReducer } from './notificacionReducer'
 
 interface Props {
   children: JSX.Element | JSX.Element[]
 }
 
-const NotificacionState = ({children}:Props) => {
+const INITIAL_STATE: NotificacionState = {
+  notificaciones: []
+}
 
+export const NotificacionProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(notificacionReducer, INITIAL_STATE)
 
-  const setNotificacion = (props) => {
-    const finditem = state.notificaciones.find(v => v.message === props.message)
-    if (finditem) removeNotificacion(finditem.id)
-    return dispatch({
-      type: ADD_NOTIFICATION,
+  const setNotificacion = (props:INotificacion) => {
+    const finditem = state.notificaciones.find((v) => v.message === props.message)
+    if (finditem) removeNotificacion(props.id as string)
+    dispatch({
+      type: 'ADD_NOTIFICATION',
       payload: {
         id: `${Date.now()}${(Math.random() * 10)}`,
         show: true,
@@ -33,15 +28,15 @@ const NotificacionState = ({children}:Props) => {
     })
   }
 
-  const removeNotificacion = (id) => {
+  const removeNotificacion = (id:string) => {
     Promise.resolve(() => {
       dispatch({
-        type: 'UPDATE_ITEM',
+        type: 'UPDATE_NOTIFICATION',
         payload: id
       })
     }).then(() => {
       return dispatch({
-        type: REMOVE_NOTIFICATION,
+        type: 'REMOVE_NOTIFICATION',
         payload: id
       })
     })
@@ -51,14 +46,12 @@ const NotificacionState = ({children}:Props) => {
   return (
     <NotificacionContext.Provider
       value={{
-        ...notificaciones,
-        setNotificacion,
-        removeNotificacion
+        notificaciones: state.notificaciones,
+        removeNotificacion,
+        setNotificacion
       }}
     >
       {children}
     </NotificacionContext.Provider>
   )
 }
-
-export default NotificacionState

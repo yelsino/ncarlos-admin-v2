@@ -1,12 +1,12 @@
-import { createContext, Dispatch } from "react";
-import { NotificacionState } from "./notificacionProvider";
-import { NotificacionAction } from "./notificacionReducer";
+import { createContext } from 'react'
+import { INotificacion } from '../../interfaces/notificacion.interface'
 
-
-interface NotificacionContextProps extends NotificacionState {
-	dispatchNotificacion: Dispatch<NotificacionAction>,
-	setNotificacion: (props: any) => void,
-	removeNotificacion: (props: any) => void,
+interface NotificacionContextProps {
+  notificaciones: Array<INotificacion>
+  removeNotificacion : (id:string) => {ok:boolean}
+  setNotificacion : (notificacion: INotificacion) => void
 }
 
-export const NotificacionContext = createContext<NotificacionContextProps>({} as NotificacionContextProps)
+export const NotificacionContext = createContext<NotificacionContextProps>(
+  {} as NotificacionContextProps
+)

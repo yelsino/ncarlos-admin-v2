@@ -8,8 +8,8 @@ import PuntosNext from '../../../Components/utilidades/PuntosNext'
 import * as Yup from 'yup'
 import { useContext } from 'react'
 import { UserContext } from '../../../context/user/UserContext'
-import NotificacionContext from '../../../context/Notificaciones/notificacionContext'
 import { v4 as uuidv4 } from 'uuid'
+import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
 
 const rutas = [
   { id: uuidv4(), link: '/auth/registro/datos-basicos' },

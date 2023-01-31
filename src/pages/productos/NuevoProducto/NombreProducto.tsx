@@ -3,7 +3,7 @@ import { useEffect, useContext } from 'react'
 import IMG from '../../../assets/img/iconito.png'
 import { IconNext } from '../../../Components/Icons'
 import ButtonNext from '../../../Components/utilidades/ButtonNext'
-import NotificacionContext from '../../../context/Notificaciones/notificacionContext'
+import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
 
 const NombreProducto = () => {
   const location = useLocation()

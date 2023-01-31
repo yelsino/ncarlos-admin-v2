@@ -1,17 +1,16 @@
 import './App.css'
 import { initializeApp } from 'firebase/app'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { SocketProvider } from './context/Socket/SocketContext'
-import NotificacionState from './context/Notificaciones/notificacionState'
-import { ChatProvider } from './context/chat/ChatContext'
-import { AuthProvider } from './context/auth/AuthContext'
-// import Notificaciones from "./components/utilidades/Notificaciones/Notificaciones";
 import RouterApp from './router/RouterApp'
-import { UserProvider } from './context/user/UserContext'
-import { CateriaProvider } from './context/categoria/CategoriaContext'
-import { ProductoProvider } from './context/productos/ProductoContex'
-import { OrderProvider } from './context/orders/OrderContext'
 import Notificaciones from './Components/utilidades/Notificaciones/Notificaciones'
+import { NotificacionProvider } from './context/Notificaciones/notificacionProvider'
+import { ChatProvider } from './context/chat/ChatProvider'
+import { AuthProvider } from './context/auth/AuthProvider'
+import { SocketProvider } from './context/Socket/SocketProvider'
+import { UserProvider } from './context/user/userProvider'
+import { CategoriaProvider } from './context/categoria/CategoriaProvider'
+import { ProductoProvider } from './context/productos/ProductoProvider'
+import { OrderProvider } from './context/orders/OrderProvider'
 
 function App () {
   const firebaseConfig = {
@@ -32,12 +31,12 @@ function App () {
 
   return (
     <div className=" h-screen">
-      <NotificacionState>
+      <NotificacionProvider>
         <ChatProvider>
           <AuthProvider>
             <SocketProvider>
               <UserProvider>
-                <CateriaProvider>
+                <CategoriaProvider>
                   <ProductoProvider>
                     <OrderProvider>
                       <Router>
@@ -45,13 +44,13 @@ function App () {
                       </Router>
                     </OrderProvider>
                   </ProductoProvider>
-                </CateriaProvider>
+                </CategoriaProvider>
               </UserProvider>
               <Notificaciones />
             </SocketProvider>
           </AuthProvider>
         </ChatProvider>
-      </NotificacionState>
+      </NotificacionProvider>
     </div>
   )
 }

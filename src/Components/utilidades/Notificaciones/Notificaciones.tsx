@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { createPortal } from 'react-dom'
-import NotificacionContext from '../../../context/Notificaciones/notificacionContext'
+import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
 import Notificacion from './Notificacion'
 
 const Notificaciones = () => {

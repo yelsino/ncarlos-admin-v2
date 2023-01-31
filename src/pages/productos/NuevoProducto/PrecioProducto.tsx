@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import ButtonNext from '../../../Components/utilidades/ButtonNext'
 import { IconNext } from '../../../Components/Icons'
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import NotificacionContext from '../../../context/Notificaciones/notificacionContext'
+import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
 
 const PrecioProducto = () => {
   const navigate = useNavigate()
