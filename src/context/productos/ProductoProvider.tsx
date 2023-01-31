@@ -1,9 +1,16 @@
-import { createContext, useState } from 'react'
+import { createContext, useReducer, useState } from 'react'
+import { IProducto } from 'types-yola'
 import { fetchConToken } from '../../helpers/fetch'
+import { ProductoContext } from './productoContext'
+import productoReducer from './productoReducer'
 
-export const ProductoContext = createContext(null) as any
 
-const initialState = {
+export interface ProductoState {
+  productos: IProducto[]
+  keys_product: any
+}
+
+const INITIAL_STATE:ProductoState = {
   productos: [],
   keys_product: {
     name: '',
@@ -21,14 +28,18 @@ const initialState = {
   }
 }
 
-export const ProductoProvider = ({ children }: any) => {
-  const [productos, setProductos] = useState(initialState)
+interface Props {
+  children: JSX.Element | JSX.Element[]
+}
+
+export const ProductoProvider = ({ children }: Props) => {
+  const [state, dispatch] = useReducer(productoReducer,INITIAL_STATE)
 
   const obtenerProductoXcategoria = async (name: any) => {
     const resp = await fetchConToken(`products/${name}`)
 
     if (resp.ok) {
-      setProductos({ ...productos, productos: resp.productos })
+      // dispatch({ ...state, productos: resp.productos })
     }
   }
 
@@ -57,7 +68,8 @@ export const ProductoProvider = ({ children }: any) => {
 
   return (
     <ProductoContext.Provider value={{
-      productos,
+      ...state,
+      dispatchProducto: dispatch,
       obtenerProductoXcategoria,
       createNewProduct
     }}>

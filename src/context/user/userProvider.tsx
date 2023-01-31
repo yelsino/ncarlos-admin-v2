@@ -1,14 +1,26 @@
-import { createContext, useState } from 'react'
+import { createContext, useReducer, useState } from 'react'
+import { IReclamo, IUsuario } from 'types-yola'
 import { fetchConToken } from '../../helpers/fetch'
+import { UserContext } from './UserContext'
+import userReducer from './userReducer'
 
-export const UserContext = createContext(null) as any
+export interface UserState {
+  caceros: IUsuario[],
+  casero: IUsuario | null,
+  getdata: boolean,
+  usuarios: IUsuario[],
+  user_selected: IUsuario | null,
+  claims: IReclamo[],
+  trabajadores: IUsuario[],
+  newWorker: any
+}
 
-const initialState = {
+const INITIAL_STATE:UserState = {
   caceros: [],
-  casero: {},
+  casero: null,
   getdata: false,
   usuarios: [],
-  user_selected: {},
+  user_selected: null,
   claims: [],
   trabajadores: [],
   newWorker: {
@@ -24,20 +36,20 @@ const initialState = {
 }
 
 export const UserProvider = ({ children }:any) => {
-  const [users, setUser] = useState(initialState)
+  const [state, dispatch] = useReducer(userReducer, INITIAL_STATE)
 
   const obtenerCaseros = async () => {
     const resp = await fetchConToken('users/caseros')
     console.log(resp)
     if (resp.ok) {
-      setUser({ ...users, caceros: resp.usuarios })
+      // setUser({ ...users, caceros: resp.usuarios })
     }
   }
 
   const obtenerUsuarios = async () => {
     const resp = await fetchConToken('users')
     if (resp.ok) {
-      setUser({ ...users, usuarios: resp.usuarios })
+      // setUser({ ...users, usuarios: resp.usuarios })
     }
   }
 
@@ -46,7 +58,7 @@ export const UserProvider = ({ children }:any) => {
       const resp = await fetchConToken(`users/detail/${id}`)
       console.log(resp)
       if (resp.ok) {
-        setUser({ ...users, user_selected: resp.data })
+        // setUser({ ...users, user_selected: resp.data })
       }
     } catch (error) {
       console.log(error)
@@ -58,7 +70,7 @@ export const UserProvider = ({ children }:any) => {
       const resp = await fetchConToken(`users/detail-casero/${id}`)
       console.log(resp)
       if (resp.ok) {
-        setUser({ ...users, casero: resp.data, getdata: true })
+        // setUser({ ...users, casero: resp.data, getdata: true })
       }
     } catch (error) {
       console.log(error)
@@ -69,7 +81,7 @@ export const UserProvider = ({ children }:any) => {
     try {
       const resp = await fetchConToken('claims')
       if (resp.ok) {
-        setUser({ ...users, claims: resp.claims })
+        // setUser({ ...users, claims: resp.claims })
       }
     } catch (error) {
       console.log(error)
@@ -78,8 +90,8 @@ export const UserProvider = ({ children }:any) => {
 
   return (
     <UserContext.Provider value={{
-      users,
-      setUser,
+      ...state,
+      dispatchUser: dispatch,
       obtenerCaseros,
       obtenerUsuarios,
       getDetailUser,

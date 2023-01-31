@@ -1,7 +1,12 @@
 import { createContext, useState } from 'react'
+import { ICategoria } from 'types-yola'
 import { fetchConToken } from '../../helpers/fetch'
+import { CategoriaContext } from './CategoriaContext'
 
-export const CategoriaContext = createContext(null) as any
+
+export interface CategoriaState {
+  categorias: ICategoria[]
+}
 
 const initialState = {
   categorias: []
@@ -20,7 +25,7 @@ export const CateriaProvider = ({ children }:any) => {
 
   return (
     <CategoriaContext.Provider value={{
-      categorias: categoria.categorias,
+      ...categoria,
       obtenerCategorias
     }}>
       {children}

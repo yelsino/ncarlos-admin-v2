@@ -1,17 +1,19 @@
-import { createContext, useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { scrollBottomAnimated } from '../../helpers/scrollToBottom'
 import { useSocket } from '../../hooks/useSocket'
 import { chatTypes } from '../../types/chatTypes'
 import { AuthContext } from '../auth/AuthContext'
 import { ChatContext } from '../chat/ChatContext'
+import { SocketContext } from './SocketContext'
 
-export const SocketContext = createContext(null) as any
+interface Props {
+  children: JSX.Element | JSX.Element[]
+}
 
-export const SocketProvider = ({ children }:any) => {
-  const { socket, online, conectarSocket, desconectarSocket }:any = useSocket('https://app-back-ns-v2.herokuapp.com')
+const baseUrl = import.meta.env.VITE_SOME_KEY
 
-  // http://localhost:8080
-  // https://app-back-ns-v2.herokuapp.com
+export const SocketProvider = ({ children }:Props) => {
+  const { socket, online, conectarSocket, desconectarSocket } = useSocket(baseUrl)
 
   const { auth }:any = useContext(AuthContext)
   const { dispatch }:any = useContext(ChatContext)
@@ -49,7 +51,12 @@ export const SocketProvider = ({ children }:any) => {
   }, [socket, dispatch])
 
   return (
-    <SocketContext.Provider value={{ socket, online }}>
+    <SocketContext.Provider value={{ 
+      socket, 
+      online, 
+      conectarSocket, 
+      desconectarSocket 
+    }}>
       {children}
     </SocketContext.Provider>
   )

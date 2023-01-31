@@ -1,6 +1,14 @@
 import { ADD_NOTIFICATION } from '../../types/notificacionTypes'
+import { NotificacionState } from './notificacionProvider';
 
-const notificacionReducer = (state:any, action:any) => {
+export type NotificacionAction = 
+  | { type: 'ADD_NOTIFICATION'; payload: any }
+  | { type: 'UPDATE_ITEM'; payload: any }
+
+const notificacionReducer = (
+  state:any, 
+  action:NotificacionAction
+  ):NotificacionState => {
   switch (action.type) {
     case ADD_NOTIFICATION:
       return {

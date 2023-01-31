@@ -19,6 +19,7 @@
     "react-scroll": "^1.8.9",
     "socket.io-client": "^4.5.4",
     "type-formik": "^1.0.4",
+    "types-yola": "^0.1.22",
     "uuid": "^9.0.0",
     "vite-tsconfig-paths": "^4.0.5",
     "yup": "^0.32.11"

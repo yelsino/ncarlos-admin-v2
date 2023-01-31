@@ -3280,6 +3280,13 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
+types-yola@^0.1.22:
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/types-yola/-/types-yola-0.1.22.tgz#1579b2adcbdc2f60c0a59f3050114750bf18812a"
+  integrity sha512-FFXyiK4M6b+S4Yu04NvStEe/a3m6Oeln7Gh9TBs6CObntz7PFAbPxAEkdJsIPj8ftMfxFyLPlTMBnVO7HP1MQg==
+  dependencies:
+    formik "^2.2.9"
+
 typescript@^4.6.3:
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"

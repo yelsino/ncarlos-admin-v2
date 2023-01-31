@@ -1,14 +1,24 @@
 // @ts-nocheck
 import { useReducer } from 'react'
 import notificacionReducer from './notificacionReducer'
-import NotificacionContext from './notificacionContext'
 import { ADD_NOTIFICATION, REMOVE_NOTIFICATION } from '../../types/notificacionTypes'
+import { NotificacionContext } from './notificacionContext'
 
-const NotificacionState = (props:any) => {
-  const InitialState = {
-    notificaciones: []
-  }
-  const [state, dispatch] = useReducer(notificacionReducer, InitialState)
+export interface NotificacionState {
+  notificaciones: any[]
+}
+
+const INITIAL_STATE:NotificacionState = {
+  notificaciones: []
+}
+
+interface Props {
+  children: JSX.Element | JSX.Element[]
+}
+
+const NotificacionState = ({children}:Props) => {
+
+  const [state, dispatch] = useReducer(notificacionReducer, INITIAL_STATE)
 
   const setNotificacion = (props) => {
     const finditem = state.notificaciones.find(v => v.message === props.message)
@@ -41,12 +51,12 @@ const NotificacionState = (props:any) => {
   return (
     <NotificacionContext.Provider
       value={{
-        notificaciones: state.notificaciones,
+        ...notificaciones,
         setNotificacion,
         removeNotificacion
       }}
     >
-      {props.children}
+      {children}
     </NotificacionContext.Provider>
   )
 }

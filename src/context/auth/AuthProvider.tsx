@@ -1,19 +1,31 @@
 import { createContext, useState, useCallback, useContext } from 'react'
+import { IUsuario } from 'types-yola'
 import { fetchConToken, fetchSinToken } from '../../helpers/fetch'
 import { chatTypes } from '../../types/chatTypes'
 import { ChatContext } from '../chat/ChatContext'
+import { AuthContext } from './AuthContext'
 
-export const AuthContext = createContext(null) as any
 
-const initialState = {
+export interface AuthState {
+  uid: string | null
+  checking: boolean
+  logged: boolean
+  user: IUsuario | null
+}
+
+const INITIAL_STATE = {
   uid: null,
   checking: true,
   logged: false,
   user: null
 }
 
-export const AuthProvider = ({ children }:any) => {
-  const [auth, setAuth] = useState(initialState)
+interface Props {
+  children: JSX.Element | JSX.Element[]
+}
+
+export const AuthProvider = ({ children }:Props) => {
+  const [auth, setAuth] = useState(INITIAL_STATE)
   const { dispatch }:any = useContext(ChatContext)
 
   const login = async (email:any, password:any) => {
@@ -92,7 +104,7 @@ export const AuthProvider = ({ children }:any) => {
 
   return (
     <AuthContext.Provider value={{
-      auth,
+      ...auth,
       login,
       register,
       verificarToken,
