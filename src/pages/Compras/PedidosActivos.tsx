@@ -1,10 +1,8 @@
-import { Link } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
-import { IconLink } from '../../Components/Icons'
-import { OrderContext } from '../../context/orders/OrderContext'
+import { OrderContext } from '../../context/orders/orderContext'
 
 const PedidosActivos = () => {
-  const { data, getOrders }:any = useContext(OrderContext)
+  const { getOrders } = useContext(OrderContext)
 
   useEffect(() => {
     getOrders()
@@ -27,7 +25,7 @@ const PedidosActivos = () => {
       </div>
 
       <div className="pedidos-activos overflow-y-auto flex flex-col gap-y-5  sm:px-5">
-        {data.orders.map((o:any) => (
+        {/* {data.orders.map((o:any) => (
           <Link
             key={o._id} to={`/ventas/pedidos/${o._id}/detalles`}
             state={{ order: o }}
@@ -44,7 +42,7 @@ const PedidosActivos = () => {
             </div>
             <span className="text-color_green_7 absolute right-0 md:-right-3 "><IconLink /></span>
           </Link>
-        ))}
+        ))} */}
 
       </div>
     </div>

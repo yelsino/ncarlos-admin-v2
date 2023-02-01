@@ -1,15 +1,18 @@
-import { createContext } from 'react'
-import { IUsuario } from 'types-yola'
+import { AuthAction } from './AuthReducer'
+import { Dispatch, createContext } from 'react'
+
+import { IAuth, IAuthRest, IRespuesta, IUsuario } from 'types-yola'
 
 interface AuthContextProps {
     uid: string | null;
     checking: boolean;
     logged: boolean;
     user: IUsuario | null;
-    login: (uid: string, user: IUsuario) => void;
-    logout: () => void;
-    verificarToken: () => void;
-    register: () => void;
+    dispatchAuth: Dispatch<AuthAction>;
+    userLogin: (data: IAuth) => Promise<IRespuesta<IAuthRest>>;
+    registrarConEmail: (data: IAuth) => Promise<IRespuesta<IAuthRest>>;
+    userLogout: () => void;
+    verificarToken: () => Promise<boolean>;
 }
 
 export const AuthContext = createContext<AuthContextProps>({} as AuthContextProps)

@@ -7,7 +7,8 @@ const ClienteCreditos = () => {
   const params = useParams()
   const { clienteID, creditoID } = params
 
-  const { users: { casero: { credits } } }:any = useContext(UserContext)
+  // cambiar claims a creditos
+  const { claims } = useContext(UserContext)
 
   return (
     <>
@@ -27,7 +28,7 @@ const ClienteCreditos = () => {
             <div className="border-b border-color_green_4 w-full my-5"></div>
 
             <div className=" text-color_green_6 flex flex-col gap-y-5 ">
-              {credits.map((v:any) => (
+              {claims.map((v:any) => (
                 <Link key={v._id} to={`/comprador/clientes/${clienteID}/creditos/${v._id}/detalles`} className="flex justify-between w-full text-gray-500 hover:text-color_green_7">
                   <div className="w-8/12">Lunes 18 de nov. 2021</div>
                   <div className="w-4/12 flex items-center gap-x-3 justify-end ">

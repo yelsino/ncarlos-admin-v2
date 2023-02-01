@@ -1,7 +1,7 @@
 import { useReducer } from 'react'
 import { IPedido } from 'types-yola'
-import { fetchConToken } from '../../helpers/fetch'
-import { OrderContext } from './OrderContext'
+// import { fetchConToken } from '../../helpers/fetch'
+import { OrderContext } from './orderContext'
 import orderReducer from './orderReducer'
 
 export interface OrderState {
@@ -20,12 +20,12 @@ export const OrderProvider = ({ children }:Props) => {
   const [data, setData] = useReducer(orderReducer, INITIAL_STATE)
 
   const getOrders = async () => {
-    const resp = await fetchConToken('orders')
+    // const resp = await fetchConToken('orders')
 
-    console.log(resp)
-    if (resp.ok) {
-      // setData({ ...data, orders: resp.orders })
-    }
+    // console.log(resp)
+    // if (resp.ok) {
+    //   setData({ ...data, orders: resp.orders })
+    // }
   }
 
   return (

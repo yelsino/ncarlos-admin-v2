@@ -6,7 +6,7 @@ import { IconNotificacion, IconSearch } from '../Icons'
 import NavbarMenu from '../Organismos/Navbar/NavbarMenu'
 
 const Navbar = () => {
-  const { auth }:any = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   return (
     <div className=" font-poppins  justify-between border-b items-center pb-2 hidden sm:flex ">
       <Link to='/' className='flex items-center gap-x-3'>
@@ -25,7 +25,7 @@ const Navbar = () => {
           <IconNotificacion />
         </span>
         <div className='relative  navbar_perfil  py-2 pl-3'>
-          <img src={auth.user?.img} alt='img user' className='w-10 h-10 object-cover rounded-full' />
+          <img src={user?.foto} alt='img user' className='w-10 h-10 object-cover rounded-full' />
           <div className='absolute  -right-3 top-14  navbar_menu  '>
             <NavbarMenu />
           </div>

@@ -8,20 +8,20 @@ import './usuarios.css'
 const Usuario = () => {
   const params = useParams()
   const { userID } = params
-  const { users, getDetailUser }:any = useContext(UserContext)
-  const { user_selected: { user } } = users
+  const { usuarioSeleccionado: seleccionado, obtenerUsuario } = useContext(UserContext)
+  // const { user_selected: { user } } = users
 
   useEffect(() => {
-    getDetailUser(userID)
+    obtenerUsuario(userID)
   }, [])
 
   return (
     <div>
       <div className="flex items-center gap-x-5 sm:gap-x-10 border-b pb-7 border-color_green_4">
-        <img alt="img usuarios" className="img_perfil w-20 h-20 2xl:w-28 2xl:h-28 object-cover  " src={user?.img} />
+        <img alt="img usuarios" className="img_perfil w-20 h-20 2xl:w-28 2xl:h-28 object-cover  " src={seleccionado.foto} />
         <div>
-          <p className="text-3xl 2xl:text-4xl font-poppins font-bold text-color_gray_1 uppercase">{user?.nickname}</p>
-          <p className="text-lg 2xl:text-xl text-gray-600 truncate capitalize">{user?.names} {user?.surnames}</p>
+          <p className="text-3xl 2xl:text-4xl font-poppins font-bold text-color_gray_1 uppercase">{seleccionado?.sobreNombre}</p>
+          <p className="text-lg 2xl:text-xl text-gray-600 truncate capitalize">{seleccionado.nombres} {seleccionado.apellidos}</p>
         </div>
       </div>
 

@@ -1,13 +1,20 @@
-import { chatTypes } from '../../types/chatTypes'
+import { IMenaje, IUsuario } from 'types-yola'
 
-export const chatReducer = (state:any, action:any) => {
+export type ChatAction =
+  | { type: 'USUARIOS_CARGADOS'; payload: Array<IUsuario> }
+  | { type: 'CHAT_ACTIVO'; payload: IUsuario }
+  | { type: 'NUEVO_MENSAJE'; payload: IMenaje}
+  | { type: 'CARGAR_MENSAJES'; payload: Array<IMenaje> }
+  | { type: 'LIMPIAR_MENSAJES' }
+
+export const chatReducer = (state:any, action:ChatAction) => {
   switch (action.type) {
-    case chatTypes.usuariosCargados:
+    case 'USUARIOS_CARGADOS':
       return {
         ...state,
         usuarios: action.payload
       }
-    case chatTypes.CHAT_ACTIVO:
+    case 'CHAT_ACTIVO':
       if (state.chatActivo === action.payload) return state
       return {
         ...state,
@@ -15,7 +22,7 @@ export const chatReducer = (state:any, action:any) => {
         mensajes: [],
         userSelected: state.usuarios.find((e:any) => e.uid === action.payload)
       }
-    case chatTypes.NUEVO_MENSAJE:
+    case 'NUEVO_MENSAJE':
       if (state.chatActivo === action.payload.de ||
         state.chatActivo === action.payload.para) {
         return {
@@ -24,12 +31,12 @@ export const chatReducer = (state:any, action:any) => {
         }
       } else return state
 
-    case chatTypes.CARGAR_MENSAJES:
+    case 'CARGAR_MENSAJES':
       return {
         ...state,
         mensajes: action.payload
       }
-    case chatTypes.LIMPIAR_MENSAJES:
+    case 'LIMPIAR_MENSAJES':
       return {
         // uid: '',
         chatActivo: null,

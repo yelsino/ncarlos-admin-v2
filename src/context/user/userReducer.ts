@@ -1,16 +1,32 @@
-import { IUsuario } from 'types-yola'
+import { IUsuario, IReclamo } from 'types-yola'
 import { UserState } from './userProvider'
 
-export type UserAction = { type: 'GET_USERS'; payload: Array<IUsuario> };
+export type UserAction =
+| { type: 'OBTENER_USUARIOS'; payload: Array<IUsuario> }
+| { type: 'SELECCIONAR_USUARIO'; payload: IUsuario }
+| { type: 'OBTENER_RECLAMOS'; payload: IReclamo[] };
 
 const userReducer = (
   state: UserState,
   action: UserAction
 ): UserState => {
   switch (action.type) {
-    case 'GET_USERS':
+    case 'OBTENER_USUARIOS':
       return {
-        ...state
+        ...state,
+        usuarios: action.payload
+      }
+
+    case 'SELECCIONAR_USUARIO':
+      return {
+        ...state,
+        usuarioSeleccionado: action.payload
+      }
+
+    case 'OBTENER_RECLAMOS':
+      return {
+        ...state,
+        claims: action.payload
       }
     default:
       return state

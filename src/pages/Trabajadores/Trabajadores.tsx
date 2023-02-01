@@ -2,11 +2,13 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { IconLink } from '../../Components/Icons'
 import { AuthContext } from '../../context/auth/AuthContext'
-import { useOpenChat } from '../../hooks/useOpenChat'
+import { UserContext } from '../../context/user/UserContext'
+// import { useOpenChat } from '../../hooks/useOpenChat'
 
 const Trabajadores = () => {
-  const { auth } = useContext(AuthContext) as any
-  const [chatState] = useOpenChat() as any
+  const { uid } = useContext(AuthContext)
+  const { usuarios } = useContext(UserContext)
+  // const { usuarios } = useOpenChat()
 
   return (
     <div className="w-full px-7 mt-10">
@@ -25,22 +27,22 @@ const Trabajadores = () => {
 
       <div className="items_clientes overflow-y-auto sm:px-5 pr-5">
 
-        {chatState.usuarios.filter((usuario:any) => usuario.uid !== auth.uid).map((v:any) => (
+        {usuarios.filter((usuario) => usuario._id !== uid).map((v) => (
           <Link
-            key={v.uid}
-            to={`/trabajadores/${v.uid}/chat`}
+            key={v._id}
+            to={`/trabajadores/${v._id}/chat`}
             className="text-gray-500 hover:text-color_green_7 text-base sm:text-lg w-full relative flex items-center py-2"
           >
             <div className="w-8/12 sm:w-6/12 flex items-center gap-x-3 ">
-              <img alt="img trabajadores" className="  rounded-full object-cover h-10 w-10" src={v.img} />
-              <p className='truncate capitalize'>{` ${v.names} ${v.surnames}`}</p>
+              <img alt="img trabajadores" className="  rounded-full object-cover h-10 w-10" src={v.foto} />
+              <p className='truncate capitalize'>{` ${v.nombres} ${v.apellidos}`}</p>
             </div>
 
             <div className="w-4/12 sm:w-6/12 flex ">
-              <span className=" text-center   w-full hidden sm:inline sm:mx-2">{v.phone}</span>
+              <span className=" text-center   w-full hidden sm:inline sm:mx-2">{v.celular}</span>
               <span className=" lg:inline hidden text-center w-full truncate">{v.documento}</span>
               <span className=" flex justify-center   w-full">
-                <span className=" text-center truncate">{v.email}</span>
+                <span className=" text-center truncate">{v.correo}</span>
               </span >
 
             </div >

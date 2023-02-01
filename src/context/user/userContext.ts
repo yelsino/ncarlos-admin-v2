@@ -1,13 +1,13 @@
 import { createContext, Dispatch } from 'react'
+import { UserState } from './userProvider'
 // import { UserState } from './UserProvider'
 import { UserAction } from './userReducer'
 
-interface UserContextProps {
+interface UserContextProps extends UserState {
     dispatchUser: Dispatch<UserAction>;
     obtenerCaseros: () => Promise<void>;
     obtenerUsuarios: () => Promise<void>;
-    getDetailUser: (id: any) => Promise<void>;
-    getDetailCasero: (id: any) => Promise<void>;
+    obtenerUsuario: (id:string) => Promise<void>;
     getClaimsAll: () => Promise<void>;
 }
 

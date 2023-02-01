@@ -13,7 +13,7 @@ import { NotificacionContext } from '../../context/Notificaciones/notificacionCo
 const Login = () => {
   const notificacionContex = useContext(NotificacionContext)
   const { setNotificacion }:any = notificacionContex
-  const { login }:any = useContext(AuthContext)
+  const { userLogin } = useContext(AuthContext)
   // const navigate = useNavigate();
 
   const validar = Yup.object().shape({
@@ -30,18 +30,12 @@ const Login = () => {
         <Formik
           initialValues={{
             email: 'yelsin@gmail.com',
-            password: 'Ilovelife@321'
+            password: 'yelsin312@231'
           }}
           validationSchema={validar}
           onSubmit={async (values:any) => {
-            const res = await login(values.email, values.password)
-
-            console.log(res)
-            if (!res.ok) {
-              setNotificacion({
-                type: 1, message: res.message
-              })
-            }
+            const res = await userLogin({ correo: values.email, password: values.password })
+            if (!res.ok) { return setNotificacion({ type: 1, message: res.mensaje }) }
           }}
         >
           {({ errors, touched }:any) => (

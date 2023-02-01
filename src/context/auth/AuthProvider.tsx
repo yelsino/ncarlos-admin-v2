@@ -1,9 +1,9 @@
-import { useState, useCallback, useContext } from 'react'
-import { IUsuario } from 'types-yola'
+import { useCallback, useReducer } from 'react'
+import { IAuth, IAuthRest, IRespuesta, IUsuario } from 'types-yola'
 import { fetchConToken, fetchSinToken } from '../../helpers/fetch'
-import { chatTypes } from '../../types/chatTypes'
-import { ChatContext } from '../chat/ChatContext'
+// import { ChatContext } from '../chat/ChatContext'
 import { AuthContext } from './AuthContext'
+import { authReducer } from './AuthReducer'
 
 export interface AuthState {
     uid: string | null;
@@ -24,90 +24,104 @@ interface Props {
 }
 
 export const AuthProvider = ({ children }:Props) => {
-  const [auth, setAuth] = useState(INITIAL_STATE)
-  const { dispatch }:any = useContext(ChatContext)
+  const [auth, dispatchAuth] = useReducer(authReducer, INITIAL_STATE)
+  // const { chatDispatch } = useContext(ChatContext)
 
-  const login = async (email:any, password:any) => {
-    const resp = await fetchSinToken('login/worker', { email, password }, 'POST')
+  const userLogin = async (data:IAuth): Promise<IRespuesta<IAuthRest>> => {
+    console.log(data)
+
+    dispatchAuth({ type: 'LOADING', payload: true })
+
+    const resp = await fetchSinToken<IRespuesta<IAuthRest>>({
+      endpoint: 'auth/login',
+      body: data,
+      method: 'POST'
+    }).finally(() => dispatchAuth({ type: 'LOADING', payload: false }))
 
     if (resp.ok) {
-      localStorage.setItem('token', resp.token)
-      const { usuario } = resp
+      const { usuario, token } = resp.data
 
-      setAuth({
-        uid: usuario.uid,
-        checking: false,
-        logged: true,
-        user: usuario
+      localStorage.setItem('token', token)
+
+      dispatchAuth({
+        type: 'LOGIN',
+        payload: usuario
       })
+      return resp
     }
 
+    localStorage.setItem('noPassword', 'true')
     return resp
   }
 
-  const register = async () => {
-    // const resp = await fetchSinToken('api/login/new', { nombre, email, password }, 'POST');
-    // console.log(resp);
+  const registrarConEmail = async (
+    data: IAuth
+  ): Promise<IRespuesta<IAuthRest>> => {
+    const resp = await fetchSinToken<IRespuesta<IAuthRest>>({
+      endpoint: 'auth/registro-correo',
+      body: data,
+      method: 'POST'
+    })
+
+    if (resp.ok) {
+      localStorage.setItem('token', resp.data.token)
+      dispatchAuth({
+        type: 'LOGIN',
+        payload: resp.data.usuario
+      })
+      return resp
+    }
+    localStorage.setItem('noPassword', 'true')
+    return resp
   }
 
   const verificarToken = useCallback(async () => {
     const token = localStorage.getItem('token') || ''
-
     // si token no existe
     if (!token) {
-      setAuth({
-        uid: null,
-        checking: false,
-        logged: false,
-        user: null
-      })
+      dispatchAuth({ type: 'LOGOUT' })
 
       return false
     }
 
-    const resp = await fetchConToken('login/renew')
-    if (resp.ok) {
-      localStorage.setItem('token', resp.token)
-      const { usuario } = resp
+    const resp = await fetchConToken<IRespuesta<IAuthRest>>({ endpoint: 'auth/re-login' })
+    // const { usuario } = resp;
+    console.log(resp)
 
-      setAuth({
-        uid: usuario.uid,
-        checking: false,
-        logged: true,
-        user: usuario
+    if (!resp.ok) {
+      localStorage.removeItem('token')
+      window.location.reload()
+      return false
+    }
+
+    if (resp.ok) {
+      localStorage.setItem('token', resp.data.token)
+      dispatchAuth({
+        type: 'LOGIN',
+        payload: resp.data.usuario
       })
       return true
     } else {
-      setAuth({
-        uid: null,
-        checking: false,
-        logged: false,
-        user: null
-      })
+      dispatchAuth({ type: 'LOGOUT' })
       return false
     }
   }, [])
 
-  const logout = () => {
+  const userLogout = () => {
     localStorage.removeItem('token')
-
-    dispatch({ type: chatTypes.LIMPIAR_MENSAJES })
-
-    setAuth({
-      uid: null,
-      checking: false,
-      logged: false,
-      user: null
+    dispatchAuth({
+      type: 'LOGOUT'
     })
   }
 
   return (
     <AuthContext.Provider value={{
       ...auth,
-      login,
-      register,
+      dispatchAuth,
       verificarToken,
-      logout
+      userLogout,
+      userLogin,
+      registrarConEmail
     }}>
       {children}
     </AuthContext.Provider>

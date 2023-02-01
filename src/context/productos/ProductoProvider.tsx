@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import { IProducto } from 'types-yola'
+import { IProducto, IRespuesta } from 'types-yola'
 import { fetchConToken } from '../../helpers/fetch'
 import { ProductoContext } from './productoContext'
 import productoReducer from './productoReducer'
@@ -35,10 +35,13 @@ export const ProductoProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(productoReducer, INITIAL_STATE)
 
   const obtenerProductoXcategoria = async (name: any) => {
-    const resp = await fetchConToken(`products/${name}`)
+    const respuesta = await fetchConToken<IRespuesta<IProducto[]>>({ endpoint: 'productos' })
 
-    if (resp.ok) {
-      // dispatch({ ...state, productos: resp.productos })
+    if (respuesta.ok) {
+      dispatch({
+        type: 'OBTENER_PRODUCTOS',
+        payload: respuesta.data
+      })
     }
   }
 
@@ -58,8 +61,8 @@ export const ProductoProvider = ({ children }: Props) => {
     formProduct.append('alert_quantity', Number(data.alert_quantity) as any)
 
     try {
-      const resp = await fetchConToken('products', formProduct, 'POST')
-      if (resp.ok) return { ok: true }
+      const resp = await fetchConToken({ endpoint: 'products', body: formProduct, method: 'POST' })
+      if (resp) return { ok: true }
     } catch (error) {
       console.log(error)
     }

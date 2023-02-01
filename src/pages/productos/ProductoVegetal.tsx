@@ -5,7 +5,7 @@ import './productos.css'
 const ProductoVegetal = () => {
   const { categoriaID } = useParams() as any
 
-  const { productos, obtenerProductoXcategoria }:any = useContext(ProductoContext)
+  const { productos, obtenerProductoXcategoria } = useContext(ProductoContext)
 
   useEffect(() => {
     obtenerProductoXcategoria(`${categoriaID.toUpperCase()}`)
@@ -22,20 +22,20 @@ const ProductoVegetal = () => {
       </div>
       <div className="productos_vegetales overflow-y-auto flex gap-y-5 flex-col overflow-hidden text-sm  ">
 
-        {productos.productos.map((p:any) => (
+        {productos.map((p) => (
           <div key={p._id} className="flex  justify-between ">
             <div className="flex items-center gap-x-5">
               <Link to={`/productos/${categoriaID}/detalle`} className="bg-color_green_3 rounded-lg w-20 h-20">
-                <img alt='img producto' src={p.img} />
+                <img alt='img producto' src={p.imagen} />
               </Link>
               <div className="flex flex-col">
 
                 <span className="text-color_green_5">5 unidades</span>
-                <span className=" text-color_green_7">{p.name}</span>
+                <span className=" text-color_green_7">{p.nombre}</span>
               </div>
             </div>
             <div className="flex items-center">
-              <span className=" text-color_green_6">{p.precio_minoreo}</span>
+              <span className=" text-color_green_6">S/. {p.precioVenta}</span>
             </div>
           </div>
         ))}

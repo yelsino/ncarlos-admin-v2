@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import { IReclamo, IUsuario } from 'types-yola'
+import { IReclamo, IRespuesta, IUsuario } from 'types-yola'
 import { fetchConToken } from '../../helpers/fetch'
 import { UserContext } from './UserContext'
 import userReducer from './userReducer'
@@ -9,7 +9,7 @@ export interface UserState {
   casero: IUsuario | null,
   getdata: boolean,
   usuarios: IUsuario[],
-  user_selected: IUsuario | null,
+  usuarioSeleccionado: IUsuario | null,
   claims: IReclamo[],
   trabajadores: IUsuario[],
   newWorker: any
@@ -20,7 +20,7 @@ const INITIAL_STATE:UserState = {
   casero: null,
   getdata: false,
   usuarios: [],
-  user_selected: null,
+  usuarioSeleccionado: null,
   claims: [],
   trabajadores: [],
   newWorker: {
@@ -35,68 +35,53 @@ const INITIAL_STATE:UserState = {
   }
 }
 
-export const UserProvider = ({ children }:any) => {
-  const [state, dispatch] = useReducer(userReducer, INITIAL_STATE)
+interface Props {
+  children: JSX.Element | JSX.Element[]
+}
+
+export const UserProvider = ({ children }:Props) => {
+  const [state, dispatchUser] = useReducer(userReducer, INITIAL_STATE)
 
   const obtenerCaseros = async () => {
-    const resp = await fetchConToken('users/caseros')
-    console.log(resp)
+    const resp = await fetchConToken<IRespuesta<IUsuario[]>>({ endpoint: 'auth' })
     if (resp.ok) {
-      // setUser({ ...users, caceros: resp.usuarios })
+      dispatchUser({ type: 'OBTENER_USUARIOS', payload: resp.data })
     }
   }
 
   const obtenerUsuarios = async () => {
-    const resp = await fetchConToken('users')
+    const resp = await fetchConToken<IRespuesta<IUsuario[]>>({ endpoint: 'auth' })
     if (resp.ok) {
-      // setUser({ ...users, usuarios: resp.usuarios })
+      dispatchUser({ type: 'OBTENER_USUARIOS', payload: resp.data })
     }
   }
 
-  const getDetailUser = async (id:any) => {
-    try {
-      const resp = await fetchConToken(`users/detail/${id}`)
-      console.log(resp)
-      if (resp.ok) {
-        // setUser({ ...users, user_selected: resp.data })
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const getDetailCasero = async (id:any) => {
-    try {
-      const resp = await fetchConToken(`users/detail-casero/${id}`)
-      console.log(resp)
-      if (resp.ok) {
-        // setUser({ ...users, casero: resp.data, getdata: true })
-      }
-    } catch (error) {
-      console.log(error)
+  const obtenerUsuario = async (id:string) => {
+    const resp = await fetchConToken<IRespuesta<IUsuario>>({ endpoint: `auth/${id}` })
+    if (resp.ok) {
+      dispatchUser({ type: 'SELECCIONAR_USUARIO', payload: resp.data })
     }
   }
 
   const getClaimsAll = async () => {
-    try {
-      const resp = await fetchConToken('claims')
-      if (resp.ok) {
-        // setUser({ ...users, claims: resp.claims })
-      }
-    } catch (error) {
-      console.log(error)
+    const resp = await fetchConToken<IRespuesta<IReclamo[]>>({ endpoint: 'reclamos' })
+
+    if (resp.ok) {
+      dispatchUser({
+        type: 'OBTENER_RECLAMOS',
+        payload: resp.data
+      })
     }
   }
 
   return (
     <UserContext.Provider value={{
       ...state,
-      dispatchUser: dispatch,
+      dispatchUser,
       obtenerCaseros,
       obtenerUsuarios,
-      getDetailUser,
-      getClaimsAll,
-      getDetailCasero
+      obtenerUsuario,
+      getClaimsAll
     }}>
       {children}
     </UserContext.Provider>

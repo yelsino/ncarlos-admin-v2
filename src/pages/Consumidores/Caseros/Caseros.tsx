@@ -5,8 +5,8 @@ import { AuthContext } from '../../../context/auth/AuthContext'
 import { UserContext } from '../../../context/user/UserContext'
 
 const Clientes = () => {
-  const { users, obtenerCaseros }:any = useContext(UserContext)
-  const { auth }:any = useContext(AuthContext)
+  const { usuarios, obtenerCaseros } = useContext(UserContext)
+  const { uid } = useContext(AuthContext)
 
   useEffect(() => {
     obtenerCaseros()
@@ -28,16 +28,16 @@ const Clientes = () => {
 
       </div>
       <div className="items_clientes overflow-y-auto sm:px-5 pr-5">
-        {users.caceros.filter((c:any) => c.uid !== auth.uid)
-          .map((v:any) => (
+        {usuarios.filter((c) => c._id !== uid)
+          .map((v) => (
             <Link
-              key={v.uid}
-              to={`/comprador/clientes/${v.uid}/compras`}
+              key={v._id}
+              to={`/comprador/clientes/${v._id}/compras`}
               className="text-gray-500 hover:text-color_green_7 text-base sm:text-lg w-full relative flex items-center py-2"
             >
               <div className="w-8/12 sm:w-6/12 flex items-center gap-x-3 ">
-                <img alt="img casero" className="  rounded-full object-cover h-10 w-10" src={v.img} />
-                <p className='truncate capitalize'>{` ${v.names} ${v.surnames}`}</p>
+                <img alt="img casero" className="  rounded-full object-cover h-10 w-10" src={v.foto} />
+                <p className='truncate capitalize'>{` ${v.nombres} ${v.apellidos}`}</p>
               </div>
 
               <div className="w-4/12 sm:w-6/12 flex text-base">

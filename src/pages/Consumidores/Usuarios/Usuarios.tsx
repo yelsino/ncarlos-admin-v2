@@ -5,8 +5,8 @@ import { AuthContext } from '../../../context/auth/AuthContext'
 import { UserContext } from '../../../context/user/UserContext'
 import './usuarios.css'
 const Usuarios = () => {
-  const { users, obtenerUsuarios }:any = useContext(UserContext)
-  const { auth }:any = useContext(AuthContext)
+  const { usuarios, obtenerUsuarios } = useContext(UserContext)
+  const { uid } = useContext(AuthContext)
 
   useEffect(() => {
     obtenerUsuarios()
@@ -27,16 +27,16 @@ const Usuarios = () => {
       </div>
 
       <div className="items_clientes overflow-y-auto sm:px-5 pr-5">
-        {users.usuarios.filter((u:any) => u.uid !== auth.uid)
-          .map((v:any) => (
+        {usuarios.filter((u:any) => u.uid !== uid)
+          .map((v) => (
             <Link
-              key={v.uid}
-              to={`/comprador/usuarios/${v.uid}/datos`}
+              key={v._id}
+              to={`/comprador/usuarios/${v._id}/datos`}
               className="text-gray-500 hover:text-color_green_7 text-base sm:text-lg w-full relative flex items-center py-2"
             >
               <div className="w-8/12 sm:w-6/12 flex items-center gap-x-3 ">
-                <img alt="img usuario" className="  rounded-full object-cover h-10 w-10" src={v.img} />
-                <p className='truncate capitalize'>{` ${v.names} ${v.surnames}`}</p>
+                <img alt="img usuario" className="  rounded-full object-cover h-10 w-10" src={v.foto} />
+                <p className='truncate capitalize'>{` ${v.nombres} ${v.apellidos}`}</p>
               </div>
 
               <div className="w-4/12 sm:w-6/12 flex ">

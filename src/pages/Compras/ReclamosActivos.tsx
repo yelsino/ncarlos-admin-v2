@@ -5,7 +5,7 @@ import { IconLink } from '../../Components/Icons'
 import { UserContext } from '../../context/user/UserContext'
 
 const ReclamosActivos = () => {
-  const { users, getClaimsAll }:any = useContext(UserContext)
+  const { claims, getClaimsAll } = useContext(UserContext)
 
   useEffect(() => {
     getClaimsAll()
@@ -22,7 +22,7 @@ const ReclamosActivos = () => {
       </div>
 
       <div className="pedidos-activos overflow-y-auto flex flex-col gap-y-5  sm:px-5">
-        {users.claims?.map((c:any) => (
+        {claims?.map((c:any) => (
           <Link
             key={c?._id} to={'/comprador/usuarios/3/reclamos/8'}
             className=" text-gray-500 hover:text-color_green_7 text-base sm:text-lg w-full relative flex items-center py-1 "

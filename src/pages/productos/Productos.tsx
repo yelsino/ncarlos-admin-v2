@@ -58,13 +58,13 @@ const Productos = () => {
           : <div className="flex flex-col gap-y-10  ">
             {
               categorias.map(v => (
-                <Link key={v._id} to={`/productos/${v.name.toLowerCase()}`} className="flex items-center gap-x-5">
+                <Link key={v._id} to={`/productos/${v.nombre}`} className="flex items-center gap-x-5">
                   <div className="bg-color_green_3 rounded-lg w-16 h-16 flex justify-center items-center text-color_green_7">
                     <img alt="img productos" src={IconBrocoli} className="w-8 h-8" />
                   </div>
                   <div className="flex flex-col">
 
-                    <span className="text-lg text-color_green_7">{v.name}</span>
+                    <span className="text-lg text-color_green_7">{v.nombre}</span>
                     <span className="text-color_green_5">Total 12 vegetales en tienda</span>
                   </div>
                 </Link>

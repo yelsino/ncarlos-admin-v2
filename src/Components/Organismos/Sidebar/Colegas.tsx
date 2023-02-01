@@ -4,16 +4,16 @@ import { AuthContext } from '../../../context/auth/AuthContext'
 import { useOpenChat } from '../../../hooks/useOpenChat'
 
 const Colegas = () => {
-  const { auth }:any = useContext(AuthContext)
+  const { uid } = useContext(AuthContext)
 
-  const [chatState, abrirChat] = useOpenChat()
+  const { usuarios, abrirChat } = useOpenChat()
 
   return (
     <div className=" pb-2 pt-3 font-poppins  flex flex-col border-b border-color_green_4 ">
       <p className="text-color_green_5  text-sm">Colegas</p>
       <div className="flex flex-col gap-y-4 py-4 text-sm">
         {
-          chatState.usuarios.filter((usuario:any) => usuario.uid !== auth.uid).map((usuario:any) => (<Link
+          usuarios.filter((usuario:any) => usuario.uid !== uid).map((usuario:any) => (<Link
             onClick={() => abrirChat(usuario.uid)}
             key={usuario.uid} to={`/trabajadores/${usuario.uid}/chat`} className="flex justify-between items-center">
             <div className="flex gap-x-3 items-center ">

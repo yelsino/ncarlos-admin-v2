@@ -10,7 +10,7 @@ import { SocketProvider } from './context/Socket/SocketProvider'
 import { UserProvider } from './context/user/userProvider'
 import { CategoriaProvider } from './context/categoria/CategoriaProvider'
 import { ProductoProvider } from './context/productos/ProductoProvider'
-import { OrderProvider } from './context/orders/OrderProvider'
+import { OrderProvider } from './context/orders/orderProvider'
 
 function App () {
   const firebaseConfig = {
