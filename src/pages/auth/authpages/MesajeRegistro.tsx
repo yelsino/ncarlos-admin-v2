@@ -1,9 +1,9 @@
 import LOGO from '../../../assets/img/logo.png'
-import { IconCar } from '../../../Components/Icons'
-import Titulo from '../../../Components/utilidades/Titulo'
-import ButtonAction from '../../../Components/utilidades/ButtonAction'
-import Parrafo from '../../../Components/utilidades/Parrafo'
 import { useNavigate } from 'react-router-dom'
+import { IconCar } from 'Components/Icons'
+import Titulo from 'Components/utilidades/Titulo'
+import Parrafo from 'Components/utilidades/Parrafo'
+import ButtonAction from 'Components/utilidades/ButtonAction'
 
 const MensajeRegistro = () => {
   const navigate = useNavigate()

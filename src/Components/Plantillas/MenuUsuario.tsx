@@ -1,5 +1,5 @@
+import { IconCardBuy, IconDirecciones, IconListas, IconReclamos, IconUser } from 'Components/Icons'
 import { NavLink, useParams } from 'react-router-dom'
-import { IconCardBuy, IconDirecciones, IconListas, IconReclamos, IconUser } from '../Icons'
 
 const MenuUsuario = () => {
   const params = useParams()

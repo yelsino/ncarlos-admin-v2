@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
+import { INotificacion, NotificacionState } from 'interfaces/notificacion.interface'
 import { useReducer } from 'react'
-import { INotificacion, NotificacionState } from '../../interfaces/notificacion.interface'
 import { NotificacionContext } from './notificacionContext'
 import { notificacionReducer } from './notificacionReducer'
 

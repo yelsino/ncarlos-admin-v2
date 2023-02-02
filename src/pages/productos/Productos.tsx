@@ -1,10 +1,9 @@
 // @ts-nocheck
 
+import { IconClean } from 'Components/Icons'
+import { CategoriaContext } from 'context/categoria/CategoriaContext'
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { IconClean, IconSearch } from '../../Components/Icons'
-import IconBrocoli from '../../assets/img/icons/brocoli.png'
-import { CategoriaContext } from '../../context/categoria/CategoriaContext'
 
 const Productos = () => {
   const [textsearch, setTextSearch] = useState('')

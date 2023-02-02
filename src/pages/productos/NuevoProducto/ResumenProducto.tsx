@@ -1,9 +1,8 @@
+import ButtonAction from 'Components/utilidades/ButtonAction'
+import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { ProductoContext } from 'context/productos/productoContext'
 import { useContext } from 'react'
-
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import ButtonAction from '../../../Components/utilidades/ButtonAction'
-import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
-import { ProductoContext } from '../../../context/productos/productoContext'
 
 const ResumenProducto = () => {
   const { productos } = useContext(ProductoContext) as any

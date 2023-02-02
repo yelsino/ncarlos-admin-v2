@@ -1,6 +1,6 @@
+import { fetchConToken } from 'helpers/fetch'
 import { useReducer } from 'react'
 import { ICategoria, IRespuesta } from 'types-yola'
-import { fetchConToken } from '../../helpers/fetch'
 import { CategoriaContext } from './CategoriaContext'
 import { categoriaReducer } from './CategoriaReducer'
 

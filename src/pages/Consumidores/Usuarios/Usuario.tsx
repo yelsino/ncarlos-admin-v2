@@ -1,8 +1,8 @@
+import { IconArrow } from 'Components/Icons'
+import MenuUsuario from 'Components/Plantillas/MenuUsuario'
+import { UserContext } from 'context/user/userContext'
 import { useEffect, useContext } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
-import { IconArrow } from '../../../Components/Icons'
-import MenuUsuario from '../../../Components/Plantillas/MenuUsuario'
-import { UserContext } from '../../../context/user/UserContext'
 import './usuarios.css'
 
 const Usuario = () => {

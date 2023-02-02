@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import LOGO from '../../../assets/img/logo.png'
-import { IconCar, IconKey } from '../../../Components/Icons'
 import { Field, Form, Formik } from 'formik'
-import Titulo from '../../../Components/utilidades/Titulo'
-import ButtonAction from '../../../Components/utilidades/ButtonAction'
-import Parrafo from '../../../Components/utilidades/Parrafo'
 import * as Yup from 'yup'
+import { IconCar, IconKey } from 'Components/Icons'
+import Titulo from 'Components/utilidades/Titulo'
+import Parrafo from 'Components/utilidades/Parrafo'
+import ButtonAction from 'Components/utilidades/ButtonAction'
 
 const RestoreInit = () => {
   const navigate = useNavigate()

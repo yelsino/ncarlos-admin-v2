@@ -1,14 +1,14 @@
 import { useContext } from 'react'
 import IMGDEVELOPER from '../../assets/img/developer.svg'
 import LOGO from '../../assets/img/logo.png'
-import { IconCar, IconEmail, IconKey } from '../../Components/Icons'
 import { Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import { Link } from 'react-router-dom'
-import Titulo from '../../Components/utilidades/Titulo'
-import ButtonAction from '../../Components/utilidades/ButtonAction'
-import { AuthContext } from '../../context/auth/AuthContext'
-import { NotificacionContext } from '../../context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { AuthContext } from 'context/auth/AuthContext'
+import { IconCar, IconEmail, IconKey } from 'Components/Icons'
+import Titulo from 'Components/utilidades/Titulo'
+import ButtonAction from 'Components/utilidades/ButtonAction'
 
 const Login = () => {
   const notificacionContex = useContext(NotificacionContext)

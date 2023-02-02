@@ -1,9 +1,8 @@
+import { AuthContext } from 'context/auth/AuthContext'
+import { ChatContext } from 'context/chat/ChatContext'
+import { scrollBottomAnimated } from 'helpers/scrollToBottom'
+import { useSocket } from 'hooks/useSocket'
 import { useContext, useEffect } from 'react'
-import { scrollBottomAnimated } from '../../helpers/scrollToBottom'
-import { useSocket } from '../../hooks/useSocket'
-import { chatTypes } from '../../types/chatTypes'
-import { AuthContext } from '../auth/AuthContext'
-import { ChatContext } from '../chat/ChatContext'
 import { SocketContext } from './SocketContext'
 
 interface Props {
@@ -33,7 +32,7 @@ export const SocketProvider = ({ children }:Props) => {
   useEffect(() => {
     socket?.on('LISTA_USUARIOS', (usuarios:any) => {
       dispatch({
-        type: chatTypes.usuariosCargados,
+        type: "USUARIOS_CARGADOS",
         payload: usuarios
       })
     })
@@ -42,7 +41,7 @@ export const SocketProvider = ({ children }:Props) => {
   useEffect(() => {
     socket?.on('MENSJE_PERSONAL', (mensaje:any) => {
       dispatch({
-        type: chatTypes.NUEVO_MENSAJE,
+        type: "NUEVO_MENSAJE",
         payload: mensaje
       })
 

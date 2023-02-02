@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import { IconNext } from '../../../Components/Icons'
-import ButtonNext from '../../../Components/utilidades/ButtonNext'
 import { v4 as uuidv4 } from 'uuid'
 import { RadioGroup } from '@headlessui/react'
-import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import ButtonNext from 'Components/utilidades/ButtonNext'
+import { IconNext } from 'Components/Icons'
 
 const DatosBasicosProducto = () => {
   const navigate = useNavigate()

@@ -1,15 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom'
 import LOGO from '../../../assets/img/logo.png'
-import { IconCar, IconEmail, IconKey } from '../../../Components/Icons'
 import { Field, Form, Formik } from 'formik'
-import Titulo from '../../../Components/utilidades/Titulo'
-import ButtonAction from '../../../Components/utilidades/ButtonAction'
-import PuntosNext from '../../../Components/utilidades/PuntosNext'
 import * as Yup from 'yup'
 import { useContext } from 'react'
-import { UserContext } from '../../../context/user/UserContext'
 import { v4 as uuidv4 } from 'uuid'
-import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
+import { UserContext } from 'context/user/userContext'
+import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { IconCar, IconEmail, IconKey } from 'Components/Icons'
+import Titulo from 'Components/utilidades/Titulo'
+import ButtonAction from 'Components/utilidades/ButtonAction'
+import PuntosNext from 'Components/utilidades/PuntosNext'
 
 const rutas = [
   { id: uuidv4(), link: '/auth/registro/datos-basicos' },

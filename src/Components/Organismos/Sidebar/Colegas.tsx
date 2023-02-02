@@ -1,7 +1,7 @@
+import { AuthContext } from 'context/auth/AuthContext'
+import { useOpenChat } from 'hooks/useOpenChat'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../../context/auth/AuthContext'
-import { useOpenChat } from '../../../hooks/useOpenChat'
 
 const Colegas = () => {
   const { uid } = useContext(AuthContext)

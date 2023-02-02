@@ -1,8 +1,8 @@
+import { IconLink } from 'Components/Icons'
+import { UserContext } from 'context/user/userContext'
 import { useContext, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
-import { IconLink } from '../../Components/Icons'
-import { UserContext } from '../../context/user/UserContext'
 
 const ReclamosActivos = () => {
   const { claims, getClaimsAll } = useContext(UserContext)

@@ -1,5 +1,5 @@
 import { ICategoria } from 'types-yola'
-import { CategoriaState } from './CategoriaProvider'
+import { CategoriaState } from './CategoriaProvider';
 
 export type CategoriaAction =
 | { type: 'OBTENER_CATEGORIAS'; payload: ICategoria[] }

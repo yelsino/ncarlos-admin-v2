@@ -1,7 +1,7 @@
+import { UserContext } from 'context/user/userContext'
 import { useContext } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { IconLink } from '../../../Components/Icons'
-import { UserContext } from '../../../context/user/UserContext'
 
 const ClienteCompras = () => {
   const params = useParams()

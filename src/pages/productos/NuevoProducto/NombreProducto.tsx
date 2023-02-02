@@ -1,9 +1,9 @@
 import { useLocation, useNavigate, useOutletContext } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import IMG from '../../../assets/img/iconito.png'
-import { IconNext } from '../../../Components/Icons'
-import ButtonNext from '../../../Components/utilidades/ButtonNext'
-import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import ButtonNext from 'Components/utilidades/ButtonNext'
+import { IconNext } from 'Components/Icons'
 
 const NombreProducto = () => {
   const location = useLocation()

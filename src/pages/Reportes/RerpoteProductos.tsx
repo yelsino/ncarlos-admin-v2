@@ -1,4 +1,4 @@
-import { IconSetting } from '../../Components/Icons'
+import { IconSetting } from 'Components/Icons'
 import './reportes.css'
 
 const ReporteProductos = () => {

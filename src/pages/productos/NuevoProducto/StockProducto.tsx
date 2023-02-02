@@ -1,8 +1,8 @@
+import { IconNext } from 'Components/Icons'
+import ButtonNext from 'Components/utilidades/ButtonNext'
+import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
 import { useContext } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import { IconNext } from '../../../Components/Icons'
-import ButtonNext from '../../../Components/utilidades/ButtonNext'
-import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
 
 const StockProducto = () => {
   const [product, setProduct] = useOutletContext() as any

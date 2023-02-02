@@ -1,9 +1,9 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import SidebarMovil from '../Components/Organismos/Sidebar/SidebarMovil'
-import Navbar from '../Components/Plantillas/Navbar'
-import SidebarWeb from '../Components/Plantillas/SidebarWeb'
 import moment from 'moment'
 import 'moment/locale/es'
+import Navbar from 'Components/Plantillas/Navbar'
+import SidebarMovil from 'Components/Organismos/Sidebar/SidebarMovil'
+import SidebarWeb from 'Components/Plantillas/SidebarWeb'
 moment.locale('es')
 
 const Admin = ({ isAutenticated }:any) => {

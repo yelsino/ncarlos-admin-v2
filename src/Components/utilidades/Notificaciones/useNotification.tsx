@@ -1,5 +1,5 @@
+import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
 import { useContext, useEffect, useState } from 'react'
-import { NotificacionContext } from '../../../context/Notificaciones/notificacionContext'
 
 const useNotificacion = (initialState = {}) => {
   const notificacionContext = useContext(NotificacionContext)

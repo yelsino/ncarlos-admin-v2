@@ -1,5 +1,5 @@
+import { IconWork } from 'Components/Icons'
 import { memo } from 'react'
-import { IconWork } from '../../Icons'
 import './notificacion.css'
 import useNotificacion from './useNotification'
 

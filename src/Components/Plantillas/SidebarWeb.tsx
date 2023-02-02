@@ -1,9 +1,8 @@
+import Actividades from 'Components/Organismos/Sidebar/Actividades'
+import Colegas from 'Components/Organismos/Sidebar/Colegas'
+import Menu from 'Components/Organismos/Sidebar/Menu'
+import MenuReportes from 'Components/Organismos/Sidebar/MenuReportes'
 import { useLocation } from 'react-router-dom'
-import Actividades from '../Organismos/Sidebar/Actividades'
-import Colegas from '../Organismos/Sidebar/Colegas'
-import Menu from '../Organismos/Sidebar/Menu'
-import MenuReportes from '../Organismos/Sidebar/MenuReportes'
-import './plantillas.css'
 
 const SidebarWeb = () => {
   const location = useLocation()

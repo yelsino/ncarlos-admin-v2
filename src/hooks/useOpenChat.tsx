@@ -1,8 +1,8 @@
+import { ChatContext } from 'context/chat/ChatContext'
+import { fetchConToken } from 'helpers/fetch'
 import { useContext } from 'react'
+import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll'
 import { IMenaje } from 'types-yola'
-import { ChatContext } from '../context/chat/ChatContext'
-import { fetchConToken } from '../helpers/fetch'
-import { scrollToBottom } from '../helpers/scrollToBottom'
 
 export const useOpenChat = () => {
   const { chatDispatch, usuarios } = useContext(ChatContext)

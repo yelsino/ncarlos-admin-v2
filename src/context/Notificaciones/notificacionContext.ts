@@ -1,5 +1,5 @@
+import { INotificacion } from 'interfaces/notificacion.interface'
 import { createContext } from 'react'
-import { INotificacion } from '../../interfaces/notificacion.interface'
 
 interface NotificacionContextProps {
   notificaciones: Array<INotificacion>

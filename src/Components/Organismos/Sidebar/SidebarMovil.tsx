@@ -1,7 +1,7 @@
+import { IconCardBuyInactive, IconProductInactivo, IconUsersInactive, IconWork } from 'Components/Icons'
 import { NavLink, useLocation } from 'react-router-dom'
-import { IconCardBuyInactive, IconProductInactivo, IconUsersInactive, IconWork } from '../../Icons'
 
-const Sidebar = () => {
+const SidebarMovil = () => {
   const location = useLocation()
 
   const { pathname } = location
@@ -34,4 +34,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default SidebarMovil

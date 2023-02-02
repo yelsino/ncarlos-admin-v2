@@ -1,6 +1,6 @@
+import { IconCamera, IconMoney, IconPicture } from 'Components/Icons'
+import ButtonAction from 'Components/utilidades/ButtonAction'
 import { useNavigate } from 'react-router-dom'
-import { IconCamera, IconMoney, IconPicture } from '../../../Components/Icons'
-import ButtonAction from '../../../Components/utilidades/ButtonAction'
 
 const NuevoCredito = () => {
   const navigate = useNavigate()

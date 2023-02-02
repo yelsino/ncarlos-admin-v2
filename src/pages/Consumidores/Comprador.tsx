@@ -1,5 +1,5 @@
+import { IconSearch } from 'Components/Icons'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { IconSearch } from '../../Components/Icons'
 import './comprador.css'
 
 const Comprador = () => {

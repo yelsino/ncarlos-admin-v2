@@ -1,8 +1,8 @@
+import { IconLink } from 'Components/Icons'
+import { AuthContext } from 'context/auth/AuthContext'
+import { UserContext } from 'context/user/userContext'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { IconLink } from '../../Components/Icons'
-import { AuthContext } from '../../context/auth/AuthContext'
-import { UserContext } from '../../context/user/UserContext'
 // import { useOpenChat } from '../../hooks/useOpenChat'
 
 const Trabajadores = () => {

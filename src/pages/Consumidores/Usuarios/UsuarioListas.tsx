@@ -1,7 +1,7 @@
+import { IconLink } from 'Components/Icons'
+import { UserContext } from 'context/user/userContext'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { IconLink } from '../../../Components/Icons'
-import { UserContext } from '../../../context/user/UserContext'
 
 const UsuarioListas = () => {
   const { users }:any = useContext(UserContext)

@@ -1,7 +1,6 @@
+import { fetchConToken, fetchSinToken } from 'helpers/fetch';
 import { useCallback, useReducer } from 'react'
 import { IAuth, IAuthRest, IRespuesta, IUsuario } from 'types-yola'
-import { fetchConToken, fetchSinToken } from '../../helpers/fetch'
-// import { ChatContext } from '../chat/ChatContext'
 import { AuthContext } from './AuthContext'
 import { authReducer } from './AuthReducer'
 

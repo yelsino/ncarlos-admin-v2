@@ -1,5 +1,5 @@
+import { UserContext } from 'context/user/userContext'
 import { useContext } from 'react'
-import { UserContext } from '../../../context/user/UserContext'
 
 const UsuarioInfo = () => {
   const { users }:any = useContext(UserContext)

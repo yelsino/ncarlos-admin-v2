@@ -1,7 +1,7 @@
+import { UserContext } from 'context/user/userContext'
 import { useContext } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { IconCard, IconLink } from '../../../Components/Icons'
-import { UserContext } from '../../../context/user/UserContext'
 
 const ClienteCreditos = () => {
   const params = useParams()
@@ -38,8 +38,8 @@ const ClienteCreditos = () => {
 
                 </Link>
               ))}
-
             </div>
+            
             <Link to={`/comprador/clientes/${clienteID}/nuevo-credito`} className=" fixed bottom-24 right-10 bg-color_green_9 p-3 shadow-lg rounded-full text-color_green_3">
               <IconCard stile='w-6 h-6' />
             </Link>

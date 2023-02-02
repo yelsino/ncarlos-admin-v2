@@ -1,5 +1,4 @@
-import { NotificacionAction } from './../../interfaces/notificacion.interface'
-import { NotificacionState } from '../../interfaces/notificacion.interface'
+import { NotificacionAction, NotificacionState } from "interfaces/notificacion.interface"
 
 export const notificacionReducer = (
   state: NotificacionState,

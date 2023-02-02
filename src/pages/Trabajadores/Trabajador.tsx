@@ -1,12 +1,12 @@
+import { IconCall, IconInfo, IconMessaje } from 'Components/Icons'
+import { useOpenChat } from 'hooks/useOpenChat'
 import { useEffect } from 'react'
 import { NavLink, Outlet, useParams } from 'react-router-dom'
-import { IconCall, IconInfo, IconMessaje } from '../../Components/Icons'
-import { useOpenChat } from '../../hooks/useOpenChat'
 import './Trabajador.css'
 
 const Trabajador = () => {
   // falta abrir chat si reacarga la pagina
-  const [chatState, abrirChat] = useOpenChat()
+  const [chatState, abrirChat] = useOpenChat() as any
 
   const { userSelected } = chatState
   const params = useParams()

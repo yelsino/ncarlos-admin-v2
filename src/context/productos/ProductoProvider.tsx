@@ -1,6 +1,6 @@
+import { fetchConToken } from 'helpers/fetch'
 import { useReducer } from 'react'
 import { IProducto, IRespuesta } from 'types-yola'
-import { fetchConToken } from '../../helpers/fetch'
 import { ProductoContext } from './productoContext'
 import productoReducer from './productoReducer'
 

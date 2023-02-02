@@ -1,5 +1,5 @@
+import { IconBox, IconCard } from 'Components/Icons'
 import { NavLink, Outlet, useParams } from 'react-router-dom'
-import { IconBox, IconCard } from '../../../../Components/Icons'
 
 const Compra = () => {
   const params = useParams()

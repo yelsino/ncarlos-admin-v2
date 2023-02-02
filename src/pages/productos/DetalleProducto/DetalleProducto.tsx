@@ -1,6 +1,6 @@
+import ButtonAction from 'Components/utilidades/ButtonAction'
 import { useNavigate } from 'react-router-dom'
 import mandarina from '../../../assets/img/mandarina.png'
-import ButtonAction from '../../../Components/utilidades/ButtonAction'
 
 const DetalleProducto = () => {
   const navigate = useNavigate()

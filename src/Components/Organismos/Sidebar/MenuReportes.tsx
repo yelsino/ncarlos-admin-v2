@@ -1,5 +1,5 @@
+import { IconCardBuyInactive, IconProductInactivo, IconWork } from 'Components/Icons'
 import { NavLink } from 'react-router-dom'
-import { IconCardBuyInactive, IconProductInactivo, IconWork } from '../../Icons'
 
 const MenuReportes = () => {
   // const location = useLocation()

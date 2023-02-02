@@ -8,7 +8,7 @@ import ButtonAction from '../../../Components/utilidades/ButtonAction'
 import PuntosNext from '../../../Components/utilidades/PuntosNext'
 import * as Yup from 'yup'
 import { useContext } from 'react'
-import { UserContext } from '../../../context/user/UserContext'
+import { UserContext } from 'context/user/userContext'
 
 const rutas = [
   { id: uuidv4(), link: '/auth/registro/datos-basicos' },

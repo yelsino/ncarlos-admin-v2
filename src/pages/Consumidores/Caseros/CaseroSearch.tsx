@@ -1,6 +1,6 @@
+import { IconArrow, IconClean, IconSearch } from 'Components/Icons'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { IconArrow, IconClean, IconSearch } from '../../../Components/Icons'
 
 const ClienteSearch = () => {
   const [textsearch, setTextSearch] = useState('')

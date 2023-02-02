@@ -1,7 +1,7 @@
+import { IconConfigInactivo, IconEstadisticaInactivo, IconLogOut, IconUserOutline } from 'Components/Icons'
+import { AuthContext } from 'context/auth/AuthContext'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../../context/auth/AuthContext'
-import { IconConfigInactivo, IconEstadisticaInactivo, IconLogOut, IconUserOutline } from '../../Icons'
 
 const NavbarMenu = () => {
   const { logout }:any = useContext(AuthContext)

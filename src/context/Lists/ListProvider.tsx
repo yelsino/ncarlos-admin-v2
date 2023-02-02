@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState } from 'react'
-import { ILista } from 'types-yola'
+import { ILista, IRespuesta } from 'types-yola'
 import { fetchConToken } from '../../helpers/fetch'
 import { ListContext } from './ListContext'
 import { listReducer } from './ListReducer'
@@ -20,7 +20,7 @@ export const ListProvider = ({ children }:Props) => {
   const [state, dispatchList] = useReducer(listReducer, INITIAL_STATE)
 
   const obtenerListas = async () => {
-    const resp = await fetchConToken('lists')
+    const resp = await fetchConToken<IRespuesta<ILista>>({endpoint:'listas'})
 
     if (resp.ok) {
       // setLists();

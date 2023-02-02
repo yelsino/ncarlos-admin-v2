@@ -1,9 +1,9 @@
+import { IconNotificacion, IconSearch } from 'Components/Icons'
+import NavbarMenu from 'Components/Organismos/Navbar/NavbarMenu'
+import { AuthContext } from 'context/auth/AuthContext'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 // import Logo from '../../assets/img/logo.png'
-import { AuthContext } from '../../context/auth/AuthContext'
-import { IconNotificacion, IconSearch } from '../Icons'
-import NavbarMenu from '../Organismos/Navbar/NavbarMenu'
 
 const Navbar = () => {
   const { user } = useContext(AuthContext)

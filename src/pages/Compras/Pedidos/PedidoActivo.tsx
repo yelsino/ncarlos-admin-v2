@@ -1,5 +1,5 @@
+import { IconBox, IconCard, IconUser } from 'Components/Icons'
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
-import { IconBox, IconCard, IconUser } from '../../../Components/Icons'
 
 const PedidoActivo = () => {
   const params = useParams()
