@@ -1,9 +1,9 @@
 import { ICategoria } from 'types-yola'
-import { CategoriaState } from './CategoriaProvider';
+import { CategoriaState } from './CategoriaProvider'
 
 export type CategoriaAction =
-| { type: 'OBTENER_CATEGORIAS'; payload: ICategoria[] }
-| { type: 'SELECCIONAR_CATEGORIA'; payload: ICategoria }
+  | { type: 'OBTENER_CATEGORIAS'; payload: ICategoria[] }
+  | { type: 'SELECCIONAR_CATEGORIA'; payload: ICategoria }
 
 export const categoriaReducer = (
   state: CategoriaState,

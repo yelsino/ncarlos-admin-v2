@@ -5,7 +5,7 @@ import { CategoriaContext } from './CategoriaContext'
 import { categoriaReducer } from './CategoriaReducer'
 
 export interface CategoriaState {
-  categorias: ICategoria[],
+  categorias: ICategoria[]
   categoria: ICategoria | null
 }
 
@@ -14,11 +14,13 @@ const INITIAL_STATE = {
   categoria: null
 }
 
-export const CategoriaProvider = ({ children }:any) => {
+export const CategoriaProvider = ({ children }: any) => {
   const [categoria, setCategoria] = useReducer(categoriaReducer, INITIAL_STATE)
 
   const obtenerCategorias = async () => {
-    const resp = await fetchConToken<IRespuesta<ICategoria[]>>({ endpoint: 'categorias' })
+    const resp = await fetchConToken<IRespuesta<ICategoria[]>>({
+      endpoint: 'categorias'
+    })
     if (resp.ok) {
       setCategoria({
         type: 'OBTENER_CATEGORIAS',
@@ -27,8 +29,10 @@ export const CategoriaProvider = ({ children }:any) => {
     }
   }
 
-  const obtenerCategoria = async (id:string) => {
-    const resp = await fetchConToken<IRespuesta<ICategoria>>({ endpoint: `categorias/${id}` })
+  const obtenerCategoria = async (id: string) => {
+    const resp = await fetchConToken<IRespuesta<ICategoria>>({
+      endpoint: `categorias/${id}`
+    })
     if (resp.ok) {
       setCategoria({
         type: 'SELECCIONAR_CATEGORIA',
@@ -38,11 +42,13 @@ export const CategoriaProvider = ({ children }:any) => {
   }
 
   return (
-    <CategoriaContext.Provider value={{
-      ...categoria,
-      obtenerCategorias,
-      obtenerCategoria
-    }}>
+    <CategoriaContext.Provider
+      value={{
+        ...categoria,
+        obtenerCategorias,
+        obtenerCategoria
+      }}
+    >
       {children}
     </CategoriaContext.Provider>
   )

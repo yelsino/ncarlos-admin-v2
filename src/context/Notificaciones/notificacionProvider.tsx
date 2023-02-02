@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
-import { INotificacion, NotificacionState } from 'interfaces/notificacion.interface'
+import {
+  INotificacion,
+  NotificacionState
+} from 'interfaces/notificacion.interface'
 import { useReducer } from 'react'
 import { NotificacionContext } from './notificacionContext'
 import { notificacionReducer } from './notificacionReducer'
@@ -15,20 +18,22 @@ const INITIAL_STATE: NotificacionState = {
 export const NotificacionProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(notificacionReducer, INITIAL_STATE)
 
-  const setNotificacion = (props:INotificacion) => {
-    const finditem = state.notificaciones.find((v) => v.message === props.message)
+  const setNotificacion = (props: INotificacion) => {
+    const finditem = state.notificaciones.find(
+      (v) => v.message === props.message
+    )
     if (finditem) removeNotificacion(props.id as string)
     dispatch({
       type: 'ADD_NOTIFICATION',
       payload: {
-        id: `${Date.now()}${(Math.random() * 10)}`,
+        id: `${Date.now()}${Math.random() * 10}`,
         show: true,
         ...props
       }
     })
   }
 
-  const removeNotificacion = (id:string) => {
+  const removeNotificacion = (id: string) => {
     Promise.resolve(() => {
       dispatch({
         type: 'UPDATE_NOTIFICATION',

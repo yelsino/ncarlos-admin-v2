@@ -1,6 +1,6 @@
-const Parrafo = (props:any) => {
+const Parrafo = (props: any) => {
   return (
-    <p className="break-words text-center text-color_green_6 font-poppins w-60 text-sm mx-auto leading-6">
+    <p className="text-color_green_6 font-poppins mx-auto w-60 break-words text-center text-sm leading-6">
       {props.text}
     </p>
   )

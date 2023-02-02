@@ -2,10 +2,11 @@ import ListaProductos from './ListaProductos'
 
 const ListaUsuario = () => {
   return (
-    <div className="w-full usuario_lista overflow-y-auto">
-      <p className="text-color_green_7 text-lg font-poppins font-medium text-center tracking-tighter mb-7">Arroz con pollo a la huachana</p>
+    <div className="usuario_lista w-full overflow-y-auto">
+      <p className="text-color_green_7 font-poppins mb-7 text-center text-lg font-medium tracking-tighter">
+        Arroz con pollo a la huachana
+      </p>
       <ListaProductos />
-
     </div>
   )
 }

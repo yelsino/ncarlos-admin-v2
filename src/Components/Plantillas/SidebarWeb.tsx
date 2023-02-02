@@ -10,13 +10,8 @@ const SidebarWeb = () => {
   const currentPath = location.pathname.split('/')
 
   return (
-    <div className=" w-60 md:w-64 hidden sm:block sidebar-web minw">
-
-      {
-        currentPath[1] === 'reportes'
-          ? <MenuReportes />
-          : <Menu />
-      }
+    <div className=" sidebar-web minw hidden w-60 sm:block md:w-64">
+      {currentPath[1] === 'reportes' ? <MenuReportes /> : <Menu />}
       <Colegas />
       <Actividades />
     </div>

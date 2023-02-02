@@ -1,37 +1,53 @@
-import { IconConfigInactivo, IconEstadisticaInactivo, IconLogOut, IconUserOutline } from 'Components/Icons'
+import {
+  IconConfigInactivo,
+  IconEstadisticaInactivo,
+  IconLogOut,
+  IconUserOutline
+} from 'Components/Icons'
 import { AuthContext } from 'context/auth/AuthContext'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 const NavbarMenu = () => {
-  const { logout }:any = useContext(AuthContext)
+  const { logout }: any = useContext(AuthContext)
 
   return (
     <>
-      <div className="absolute   -top-1 w-14 h-14 rotate-45 transform rounded-lg z-30 right-2 bg-color_green_1 border border-gray-50 " />
+      <div className="bg-color_green_1   absolute -top-1 right-2 z-30 h-14 w-14 rotate-45 rounded-lg border border-gray-50" />
 
-      <div className=" p-5 z-auto  shadow-3xl  rounded-md w-60      flex flex-col h-56  opacity-100 navbar_item_b" />
+      <div className=" shadow-3xl navbar_item_b  z-auto  flex h-56      w-60 flex-col rounded-md  p-5 opacity-100" />
 
-      <div className=" w-full z-40 flex flex-col absolute top-0 left-0   rounded-lg pt-3 bg-color_green_1 font-semibold font-mono text-lg">
-        <Link to='/reportes/ventas' className="hover:bg-gray-100 cursor-pointer py-3 px-5 flex items-center gap-x-3">
-          <span><IconEstadisticaInactivo stile='h-7 w-7' /></span>
+      <div className=" bg-color_green_1 absolute top-0 left-0 z-40 flex w-full   flex-col rounded-lg pt-3 font-mono text-lg font-semibold">
+        <Link
+          to="/reportes/ventas"
+          className="flex cursor-pointer items-center gap-x-3 py-3 px-5 hover:bg-gray-100"
+        >
+          <span>
+            <IconEstadisticaInactivo stile="h-7 w-7" />
+          </span>
           <span>Ver Reportes</span>
         </Link>
-        <p className="hover:bg-gray-100 cursor-pointer py-3 px-5 flex items-center gap-x-3">
-          <span><IconUserOutline /></span>
+        <p className="flex cursor-pointer items-center gap-x-3 py-3 px-5 hover:bg-gray-100">
+          <span>
+            <IconUserOutline />
+          </span>
           <span>Ver Perfil </span>
         </p>
-        <p className="hover:bg-gray-100 cursor-pointer py-3 px-5 flex items-center gap-x-3">
-          <span><IconConfigInactivo /></span>
+        <p className="flex cursor-pointer items-center gap-x-3 py-3 px-5 hover:bg-gray-100">
+          <span>
+            <IconConfigInactivo />
+          </span>
           <span>Configuración</span>
         </p>
         <button
           onClick={() => logout()}
-          className="hover:bg-gray-100 cursor-pointer py-3 px-5 flex items-center border-t gap-x-3  mt-1 font-bold">
-          <span><IconLogOut /></span>
+          className="mt-1 flex cursor-pointer items-center gap-x-3 border-t py-3 px-5  font-bold hover:bg-gray-100"
+        >
+          <span>
+            <IconLogOut />
+          </span>
           <span>Cerrar Sesión</span>
         </button>
-
       </div>
     </>
   )

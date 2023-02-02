@@ -7,37 +7,36 @@ const ClienteSearch = () => {
 
   return (
     <div className="  w-full px-7 ">
-
-      <div className="relative flex items-center  w-full mx-auto">
+      <div className="relative mx-auto flex  w-full items-center">
         <input
           autoComplete={'off'}
           name="password"
-          id='text'
+          id="text"
           onChange={(e) => {
             setTextSearch(e.target.value)
           }}
           value={textsearch}
           type="text"
           placeholder="Buscar clientes"
-          className='rounded-md p-4 outline-none my-7 text-base sm:text-lg  placeholder-green-400 text-color_green_7 w-full bg-color_green_3 pl-11'
+          className="text-color_green_7 bg-color_green_3 my-7 w-full rounded-md p-4  pl-11 text-base outline-none placeholder:text-green-400 sm:text-lg"
         />
-        <label
-          htmlFor='email'
-          className="absolute text-green-400 left-3">
+        <label htmlFor="email" className="absolute left-3 text-green-400">
           <IconSearch />
         </label>
-        {
-          textsearch.length > 0 &&
+        {textsearch.length > 0 && (
           <button
             onClick={() => setTextSearch('')}
-            className="absolute text-green-400 right-3">
+            className="absolute right-3 text-green-400"
+          >
             <IconClean />
           </button>
-        }
-
+        )}
       </div>
 
-      <Link to='/comprador/clientes' className="text-color_green_7 fixed bottom-10 right-10">
+      <Link
+        to="/comprador/clientes"
+        className="text-color_green_7 fixed bottom-10 right-10"
+      >
         <IconArrow />
       </Link>
     </div>

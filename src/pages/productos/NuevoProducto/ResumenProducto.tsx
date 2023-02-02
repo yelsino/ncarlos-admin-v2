@@ -27,67 +27,78 @@ const ResumenProducto = () => {
   }
 
   return (
-    <div className='flex-col flex items-center w-full '>
-      <p className="text-color_green_7 font-semibold text-2xl font-poppins text-center">{product?.name}</p>
-      <div className='w-full'>
-        <div className='w-28 mx-auto'>
+    <div className="flex w-full flex-col items-center ">
+      <p className="text-color_green_7 font-poppins text-center text-2xl font-semibold">
+        {product?.name}
+      </p>
+      <div className="w-full">
+        <div className="mx-auto w-28">
           <img src={product.img_local} />
         </div>
 
         <div className="  text-color_green_6 mt-3 w-full ">
-          <p className="flex  px-5 justify-between">
+          <p className="flex  justify-between px-5">
             <span className="  ">Categoria</span>
             <span className="text-color_green_7    ">{product?.category}</span>
           </p>
-          <span className="bg-color_green_4 my-3 block w-full border-b border-color_green_4" />
+          <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
 
           <p className="flex justify-between  px-5">
             <span className="  ">Cantidad por {product?.wholesale_form}</span>
-            <span className="text-color_green_7  ">{product?.wholesaling_weight} {product?.form_retail}</span>
+            <span className="text-color_green_7  ">
+              {product?.wholesaling_weight} {product?.form_retail}
+            </span>
           </p>
 
-          <span className="bg-color_green_4 my-3 block w-full border-b border-color_green_4" />
+          <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
 
           <p className="flex justify-between  px-5">
             <span className="  ">Precio por {product?.wholesale_form}</span>
-            <span className="text-color_green_7  ">S/. {product?.wholesaling_price}</span>
+            <span className="text-color_green_7  ">
+              S/. {product?.wholesaling_price}
+            </span>
           </p>
 
-          <span className="bg-color_green_4 my-3 block w-full border-b border-color_green_4" />
+          <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
 
           <p className="flex justify-between  px-5">
             <span className="  ">Precio por {product.form_retail}</span>
-            <span className="text-color_green_7  ">S/. {product.retail_price}</span>
+            <span className="text-color_green_7  ">
+              S/. {product.retail_price}
+            </span>
           </p>
 
-          <span className="bg-color_green_4 my-3 block w-full border-b border-color_green_4" />
+          <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
 
           <p className="flex justify-between  px-5">
             <span className="  ">Total en {product.wholesale_form}</span>
-            <span className="text-color_green_7  ">{product.wholesaling_weight} {product.wholesale_form} {product.spare} {product.form_retail}</span>
+            <span className="text-color_green_7  ">
+              {product.wholesaling_weight} {product.wholesale_form}{' '}
+              {product.spare} {product.form_retail}
+            </span>
           </p>
 
-          <span className="bg-color_green_4 my-3 block w-full border-b border-color_green_4" />
+          <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
 
           <p className="flex justify-between  px-5">
             <span className="  ">Total en {product.form_retail}</span>
-            <span className="text-color_green_7  ">{product.spare} {product.form_retail}</span>
+            <span className="text-color_green_7  ">
+              {product.spare} {product.form_retail}
+            </span>
           </p>
 
-          <span className="bg-color_green_4 my-3 block w-full border-b border-color_green_4" />
+          <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
 
           <p className="flex justify-between  px-5">
             <span className="  ">Alertarme en</span>
-            <span className="text-color_green_7">{product.alert_quantity} {product.form_retail}</span>
+            <span className="text-color_green_7">
+              {product.alert_quantity} {product.form_retail}
+            </span>
           </p>
-
         </div>
-
       </div>
       <div className="my-5 w-11/12 pt-5">
-        <ButtonAction
-         onClick={sendNewProduct}
-        text=' CREAR ' />
+        <ButtonAction onClick={sendNewProduct} text=" CREAR " />
       </div>
     </div>
   )

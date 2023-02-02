@@ -11,11 +11,12 @@ interface Props {
 
 const baseUrl = import.meta.env.VITE_SOME_KEY
 
-export const SocketProvider = ({ children }:Props) => {
-  const { socket, online, conectarSocket, desconectarSocket } = useSocket(baseUrl)
+export const SocketProvider = ({ children }: Props) => {
+  const { socket, online, conectarSocket, desconectarSocket } =
+    useSocket(baseUrl)
 
-  const { logged }:any = useContext(AuthContext)
-  const { dispatch }:any = useContext(ChatContext)
+  const { logged }: any = useContext(AuthContext)
+  const { dispatch }: any = useContext(ChatContext)
 
   useEffect(() => {
     if (logged) {
@@ -30,18 +31,18 @@ export const SocketProvider = ({ children }:Props) => {
   }, [logged, desconectarSocket])
 
   useEffect(() => {
-    socket?.on('LISTA_USUARIOS', (usuarios:any) => {
+    socket?.on('LISTA_USUARIOS', (usuarios: any) => {
       dispatch({
-        type: "USUARIOS_CARGADOS",
+        type: 'USUARIOS_CARGADOS',
         payload: usuarios
       })
     })
   }, [socket, dispatch])
 
   useEffect(() => {
-    socket?.on('MENSJE_PERSONAL', (mensaje:any) => {
+    socket?.on('MENSJE_PERSONAL', (mensaje: any) => {
       dispatch({
-        type: "NUEVO_MENSAJE",
+        type: 'NUEVO_MENSAJE',
         payload: mensaje
       })
 
@@ -50,12 +51,14 @@ export const SocketProvider = ({ children }:Props) => {
   }, [socket, dispatch])
 
   return (
-    <SocketContext.Provider value={{
-      socket,
-      online,
-      conectarSocket,
-      desconectarSocket
-    }}>
+    <SocketContext.Provider
+      value={{
+        socket,
+        online,
+        conectarSocket,
+        desconectarSocket
+      }}
+    >
       {children}
     </SocketContext.Provider>
   )

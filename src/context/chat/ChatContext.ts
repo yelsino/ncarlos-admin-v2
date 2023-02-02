@@ -4,7 +4,9 @@ import { ChatState } from './ChatProvider'
 import { ChatAction } from './chatReducer'
 
 interface ChatContextProps extends ChatState {
-    chatDispatch: Dispatch<ChatAction>;
+  chatDispatch: Dispatch<ChatAction>
 }
 
-export const ChatContext = createContext<ChatContextProps>({} as ChatContextProps)
+export const ChatContext = createContext<ChatContextProps>(
+  {} as ChatContextProps
+)

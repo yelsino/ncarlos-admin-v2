@@ -1,4 +1,3 @@
-
 import PuntosNext from 'Components/utilidades/PuntosNext'
 import { ProductoContext } from 'context/productos/productoContext'
 import { useState, useEffect, useContext } from 'react'
@@ -7,7 +6,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 const NuevoProducto = () => {
   const { productos } = useContext(ProductoContext) as any
-  const LSproduct:any = JSON.parse(localStorage.getItem('LSproduct') as any) || productos.keys_product
+  const LSproduct: any =
+    JSON.parse(localStorage.getItem('LSproduct') as any) ||
+    productos.keys_product
   const [product, setProduct] = useState(LSproduct)
 
   useEffect(() => {
@@ -15,10 +16,10 @@ const NuevoProducto = () => {
   }, [product])
 
   return (
-    <div className="pt-10  max-w-sm mx-auto overflow-y-auto nuevo_producto">
+    <div className="nuevo_producto  mx-auto max-w-sm overflow-y-auto pt-10">
       <Outlet context={[product, setProduct]} />
 
-      <div className='mt-3'>
+      <div className="mt-3">
         <PuntosNext puntos={rutas} />
       </div>
     </div>

@@ -5,14 +5,14 @@ import Notificaciones from 'Components/utilidades/Notificaciones/Notificaciones'
 import { AuthProvider } from 'context/auth/AuthProvider'
 import { CategoriaProvider } from 'context/categoria/CategoriaProvider'
 import { ChatProvider } from 'context/chat/ChatProvider'
-import { NotificacionProvider } from 'context/Notificaciones/notificacionProvider'
-import { OrderProvider } from 'context/orders/orderProvider'
 import { ProductoProvider } from 'context/productos/ProductoProvider'
 import { SocketProvider } from 'context/Socket/SocketProvider'
-import { UserProvider } from 'context/user/userProvider'
 import RouterApp from 'router/RouterApp'
+import { NotificacionProvider } from 'context/Notificaciones/NotificacionProvider'
+import { UserProvider } from 'context/user/userProvider'
+import { OrderProvider } from 'context/orders/orderProvider'
 
-function App () {
+function App() {
   const firebaseConfig = {
     apiKey: 'AIzaSyB_EXIwYUNuWOll1ZVbQ9El0cnNhLryXjk',
     authDomain: 'admin-ncarlos.firebaseapp.com',

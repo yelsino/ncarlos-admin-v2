@@ -10,21 +10,24 @@ const PedidosActivos = () => {
 
   return (
     <div className="relative">
-
-      <div className="absolute bottom-32 right-0 z-20 rounded-full bg-black text-white w-12 h-12 flex justify-center items-center shadow-lg text-sm font-bold font-poppins cursor-pointer">
+      <div className="font-poppins absolute bottom-32 right-0 z-20 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-black text-sm font-bold text-white shadow-lg">
         ADD
       </div>
 
-      <div className="flex font-bold text-color_gray_1 mb-5 font-poppins sm:text-lg sm:px-5">
-        <span className="w-8/12 sm:w-5/12 truncate ">Lista</span>
-        <div className="w-4/12 sm:w-7/12 flex">
-          <span className="w-full text-center hidden md:block truncate">Productos</span>
-          <span className="w-full truncate text-right hidden sm:block">Monto</span>
-          <span className="w-full sm:mx-2 truncate  text-center">Orden</span>
+      <div className="text-color_gray_1 font-poppins mb-5 flex font-bold sm:px-5 sm:text-lg">
+        <span className="w-8/12 truncate sm:w-5/12 ">Lista</span>
+        <div className="flex w-4/12 sm:w-7/12">
+          <span className="hidden w-full truncate text-center md:block">
+            Productos
+          </span>
+          <span className="hidden w-full truncate text-right sm:block">
+            Monto
+          </span>
+          <span className="w-full truncate text-center  sm:mx-2">Orden</span>
         </div>
       </div>
 
-      <div className="pedidos-activos overflow-y-auto flex flex-col gap-y-5  sm:px-5">
+      <div className="pedidos-activos flex flex-col gap-y-5 overflow-y-auto  sm:px-5">
         {/* {data.orders.map((o:any) => (
           <Link
             key={o._id} to={`/ventas/pedidos/${o._id}/detalles`}
@@ -43,7 +46,6 @@ const PedidosActivos = () => {
             <span className="text-color_green_7 absolute right-0 md:-right-3 "><IconLink /></span>
           </Link>
         ))} */}
-
       </div>
     </div>
   )

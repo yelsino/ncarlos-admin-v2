@@ -74,7 +74,7 @@ const RouterApp = () => {
   const rcliente = '/comprador/clientes/'
   const rusuario = '/comprador/usuarios/'
 
-  const { logged, verificarToken, checking }:any = useContext(AuthContext)
+  const { logged, verificarToken, checking }: any = useContext(AuthContext)
 
   const routes = [
     {
@@ -82,19 +82,28 @@ const RouterApp = () => {
       element: <PublicRoute isAutenticated={logged} />,
       children: [
         { path: '/auth/login', element: <Login /> },
-        { path: '/auth/registro', element: <Navigate to={`${rregistro}datos-basicos`} /> },
+        {
+          path: '/auth/registro',
+          element: <Navigate to={`${rregistro}datos-basicos`} />
+        },
         {
           path: '/auth/registro',
           element: <Registro />,
           children: [
             { path: `${rregistro}datos-basicos`, element: <DatosBasicos /> },
-            { path: `${rregistro}datos-personales`, element: <DatosPersonales /> },
+            {
+              path: `${rregistro}datos-personales`,
+              element: <DatosPersonales />
+            },
             { path: `${rregistro}datos-contacto`, element: <DatosContacto /> },
             { path: `${rregistro}finalizado`, element: <MensajeRegistro /> }
           ]
         },
 
-        { path: '/auth/restore', element: <Navigate to={`${rrestore}credenciales`} /> },
+        {
+          path: '/auth/restore',
+          element: <Navigate to={`${rrestore}credenciales`} />
+        },
         {
           path: '/auth/restore',
           element: <Restore />,
@@ -106,17 +115,19 @@ const RouterApp = () => {
       ]
     },
 
-    { path: '/', element: <Navigate to='/ventas/pedidos' /> },
+    { path: '/', element: <Navigate to="/ventas/pedidos" /> },
 
     {
       path: '/',
       element: <Admin isAutenticated={logged} />,
       children: [
         {
-          path: '/comprador/search/:search', element: <ClienteSearch />
+          path: '/comprador/search/:search',
+          element: <ClienteSearch />
         },
         {
-          path: '/configuracion', element: <Config />
+          path: '/configuracion',
+          element: <Config />
         },
         {
           path: '/reportes',
@@ -128,34 +139,57 @@ const RouterApp = () => {
           ]
         },
         {
-          path: '/trabajadores', element: <Trabajadores />
+          path: '/trabajadores',
+          element: <Trabajadores />
         },
         {
           path: '/trabajadores/:trabajadorID',
           element: <Trabajador />,
           children: [
             { path: '/trabajadores/:trabajadorID/chat', element: <Chat /> },
-            { path: '/trabajadores/:trabajadorID/info', element: <TrabajadorInfo /> },
-            { path: '/trabajadores/:trabajadorID/call', element: <TrabajadorCall /> }
+            {
+              path: '/trabajadores/:trabajadorID/info',
+              element: <TrabajadorInfo />
+            },
+            {
+              path: '/trabajadores/:trabajadorID/call',
+              element: <TrabajadorCall />
+            }
           ]
         },
         {
-          path: '/productos', element: <Productos />
+          path: '/productos',
+          element: <Productos />
         },
         {
           path: '/productos/:categoriaID',
           element: <ProductoCategoria />,
           children: [
-
-            { path: '/productos/:categoriaID/nombre', element: <NombreProducto /> },
-            { path: '/productos/:categoriaID/datos-basicos', element: <DatosBasicosProducto /> },
-            { path: '/productos/:categoriaID/precios', element: <PrecioProducto /> },
-            { path: '/productos/:categoriaID/stock', element: <StockProducto /> },
-            { path: '/productos/:categoriaID/resumen', element: <ResumenProducto /> }
+            {
+              path: '/productos/:categoriaID/nombre',
+              element: <NombreProducto />
+            },
+            {
+              path: '/productos/:categoriaID/datos-basicos',
+              element: <DatosBasicosProducto />
+            },
+            {
+              path: '/productos/:categoriaID/precios',
+              element: <PrecioProducto />
+            },
+            {
+              path: '/productos/:categoriaID/stock',
+              element: <StockProducto />
+            },
+            {
+              path: '/productos/:categoriaID/resumen',
+              element: <ResumenProducto />
+            }
           ]
         },
         {
-          path: '/productos/:categoriaID/:productoID', element: <DetalleProducto />
+          path: '/productos/:categoriaID/:productoID',
+          element: <DetalleProducto />
         },
 
         {
@@ -167,9 +201,18 @@ const RouterApp = () => {
               path: '/ventas/pedidos/:pedidoactivoID',
               element: <PedidoActivo />,
               children: [
-                { path: '/ventas/pedidos/:pedidoactivoID/detalles', element: <PedidoDetalle /> },
-                { path: '/ventas/pedidos/:pedidoactivoID/productos', element: <PedidoProductos /> },
-                { path: '/ventas/pedidos/:pedidoactivoID/tracking', element: <PedidoTracking /> }
+                {
+                  path: '/ventas/pedidos/:pedidoactivoID/detalles',
+                  element: <PedidoDetalle />
+                },
+                {
+                  path: '/ventas/pedidos/:pedidoactivoID/productos',
+                  element: <PedidoProductos />
+                },
+                {
+                  path: '/ventas/pedidos/:pedidoactivoID/tracking',
+                  element: <PedidoTracking />
+                }
               ]
             },
             { path: '/ventas/reclamos', element: <ReclamosActivos /> }
@@ -181,7 +224,8 @@ const RouterApp = () => {
           element: <Comprador />,
           children: [
             {
-              path: '/comprador/clientes', element: <Clientes />
+              path: '/comprador/clientes',
+              element: <Clientes />
             },
 
             {
@@ -198,9 +242,18 @@ const RouterApp = () => {
                       path: `${rcliente}:clienteID/compras/:compraID`,
                       element: <Compra />,
                       children: [
-                        { path: `${rcliente}:clienteID/compras/:compraID/abonos`, element: <HistorialAbonos /> },
-                        { path: `${rcliente}:clienteID/compras/:compraID/fotos`, element: <Fotos /> },
-                        { path: `${rcliente}:clienteID/compras/:compraID/detalles`, element: <DatosCompra /> }
+                        {
+                          path: `${rcliente}:clienteID/compras/:compraID/abonos`,
+                          element: <HistorialAbonos />
+                        },
+                        {
+                          path: `${rcliente}:clienteID/compras/:compraID/fotos`,
+                          element: <Fotos />
+                        },
+                        {
+                          path: `${rcliente}:clienteID/compras/:compraID/detalles`,
+                          element: <DatosCompra />
+                        }
                       ]
                     }
                   ]
@@ -213,44 +266,93 @@ const RouterApp = () => {
                       path: `${rcliente}:clienteID/creditos/:creditoID`,
                       element: <Credito />,
                       children: [
-                        { path: `${rcliente}:clienteID/creditos/:creditoID/abonos`, element: <HistorialAbonos /> },
-                        { path: `${rcliente}:clienteID/creditos/:creditoID/fotos`, element: <Fotos /> },
-                        { path: `${rcliente}:clienteID/creditos/:creditoID/detalles`, element: <DatosCredito /> },
-                        { path: `${rcliente}:clienteID/creditos/:creditoID/nuevo-abono`, element: <NuevoAbono /> }
+                        {
+                          path: `${rcliente}:clienteID/creditos/:creditoID/abonos`,
+                          element: <HistorialAbonos />
+                        },
+                        {
+                          path: `${rcliente}:clienteID/creditos/:creditoID/fotos`,
+                          element: <Fotos />
+                        },
+                        {
+                          path: `${rcliente}:clienteID/creditos/:creditoID/detalles`,
+                          element: <DatosCredito />
+                        },
+                        {
+                          path: `${rcliente}:clienteID/creditos/:creditoID/nuevo-abono`,
+                          element: <NuevoAbono />
+                        }
                       ]
                     }
                   ]
                 },
-                { path: `${rcliente}:clienteID/nuevo-credito`, element: <NuevoCredito /> }
+                {
+                  path: `${rcliente}:clienteID/nuevo-credito`,
+                  element: <NuevoCredito />
+                }
               ]
             },
 
             {
-              path: '/comprador/usuarios', element: <Usuarios />
+              path: '/comprador/usuarios',
+              element: <Usuarios />
             },
             {
               path: '/comprador/usuarios/:userID',
               element: <Usuario />,
               children: [
-                { path: `${rusuario}:userID/elementos`, element: <UsuarioComponents /> },
+                {
+                  path: `${rusuario}:userID/elementos`,
+                  element: <UsuarioComponents />
+                },
                 { path: `${rusuario}:userID/datos`, element: <UsuarioInfo /> },
-                { path: `${rusuario}:userID/compras`, element: <UsuarioCompras /> },
+                {
+                  path: `${rusuario}:userID/compras`,
+                  element: <UsuarioCompras />
+                },
                 {
                   path: `${rusuario}:userID/compras/:compraID`,
                   element: <CompraUsuario />,
                   children: [
-                    { path: `${rusuario}:userID/compras/:compraID/detalle`, element: <CompraDetalle /> },
-                    { path: `${rusuario}:userID/compras/:compraID/productos`, element: <CompraProductos /> },
-                    { path: `${rusuario}:userID/compras/:compraID/reclamos`, element: <CompraReclamos /> }
+                    {
+                      path: `${rusuario}:userID/compras/:compraID/detalle`,
+                      element: <CompraDetalle />
+                    },
+                    {
+                      path: `${rusuario}:userID/compras/:compraID/productos`,
+                      element: <CompraProductos />
+                    },
+                    {
+                      path: `${rusuario}:userID/compras/:compraID/reclamos`,
+                      element: <CompraReclamos />
+                    }
                   ]
                 },
 
-                { path: `${rusuario}:userID/listas`, element: <UsuarioListas /> },
-                { path: `${rusuario}:userID/listas/:listaID`, element: <ListaUsuario /> },
-                { path: `${rusuario}:userID/direcciones`, element: <UsuarioDirecciones /> },
-                { path: `${rusuario}:userID/direcciones/:direccionID`, element: <DireccionUsuario /> },
-                { path: `${rusuario}:userID/reclamos`, element: <UsuarioReclamos /> },
-                { path: `${rusuario}:userID/reclamos/:reclamoID`, element: <ReclamoUsuario /> }
+                {
+                  path: `${rusuario}:userID/listas`,
+                  element: <UsuarioListas />
+                },
+                {
+                  path: `${rusuario}:userID/listas/:listaID`,
+                  element: <ListaUsuario />
+                },
+                {
+                  path: `${rusuario}:userID/direcciones`,
+                  element: <UsuarioDirecciones />
+                },
+                {
+                  path: `${rusuario}:userID/direcciones/:direccionID`,
+                  element: <DireccionUsuario />
+                },
+                {
+                  path: `${rusuario}:userID/reclamos`,
+                  element: <UsuarioReclamos />
+                },
+                {
+                  path: `${rusuario}:userID/reclamos/:reclamoID`,
+                  element: <ReclamoUsuario />
+                }
               ]
             }
           ]
@@ -276,11 +378,7 @@ const RouterApp = () => {
 
   // aca hay error
 
-  return (
-    <>
-      {element}
-    </>
-  )
+  return <>{element}</>
 }
 
 export default RouterApp

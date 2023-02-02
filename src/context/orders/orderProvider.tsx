@@ -8,7 +8,7 @@ export interface OrderState {
   orders: IPedido[]
 }
 
-const INITIAL_STATE:OrderState = {
+const INITIAL_STATE: OrderState = {
   orders: []
 }
 
@@ -16,12 +16,11 @@ interface Props {
   children: JSX.Element | JSX.Element[]
 }
 
-export const OrderProvider = ({ children }:Props) => {
+export const OrderProvider = ({ children }: Props) => {
   const [data, setData] = useReducer(orderReducer, INITIAL_STATE)
 
   const getOrders = async () => {
     // const resp = await fetchConToken('orders')
-
     // console.log(resp)
     // if (resp.ok) {
     //   setData({ ...data, orders: resp.orders })

@@ -7,12 +7,11 @@ const ProductoCategoria = () => {
   const { categoriaID } = params
   return (
     <>
-      {
-        categoriaID === 'nuevo-producto'
-          ? <NuevoProducto />
-          : <ProductoVegetal />
-
-      }
+      {categoriaID === 'nuevo-producto' ? (
+        <NuevoProducto />
+      ) : (
+        <ProductoVegetal />
+      )}
     </>
   )
 }

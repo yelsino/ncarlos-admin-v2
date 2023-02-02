@@ -1,5 +1,4 @@
-
-import { ILista } from 'types-yola';
+import { ILista } from 'types-yola'
 import { ListState } from './ListProvider'
 
 export type ListAction =
@@ -17,17 +16,17 @@ export const listReducer = (
     case 'GET_USER_LISTS':
       return {
         ...state,
-        lists: action.payload,
+        lists: action.payload
       }
 
     case 'SELECT_LIST':
       return {
-        ...state,
+        ...state
       }
-    case 'DELETE_LIST': 
+    case 'DELETE_LIST':
       return {
         ...state,
-        lists: state.lists.filter((list) => list._id !== action.  payload)
+        lists: state.lists.filter((list) => list._id !== action.payload)
       }
 
     default:

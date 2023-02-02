@@ -2,7 +2,7 @@
 
 const Actividades = () => {
   return (
-    <div className=" pb-2 pt-3 font-poppins  flex flex-col text-color_gray_1   ">
+    <div className=" font-poppins text-color_gray_1 flex  flex-col pb-2 pt-3   ">
       <p className="text-color_green_5  text-sm">Colegas</p>
 
       <div className="flex flex-col gap-y-4 py-4 text-sm">
@@ -10,9 +10,10 @@ const Actividades = () => {
         <p>Activar nuevo trabajador</p>
         <p>Arqueo de caja</p>
         <p>Pedido #200 pediente</p>
-
       </div>
-      <p className=" text-sm text-color_green_7 font-semibold cursor-pointer">ver mas</p>
+      <p className=" text-color_green_7 cursor-pointer text-sm font-semibold">
+        ver mas
+      </p>
     </div>
   )
 }

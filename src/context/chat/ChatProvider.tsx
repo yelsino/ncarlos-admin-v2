@@ -4,13 +4,13 @@ import { ChatContext } from './ChatContext'
 import { chatReducer } from './chatReducer'
 
 export interface ChatState {
-  chatActivo: string | null,
-  userSelected: string | null,
-  usuarios: IUsuario[],
+  chatActivo: string | null
+  userSelected: string | null
+  usuarios: IUsuario[]
   mensajes: any[]
 }
 
-const INITIAL_STATE:ChatState = {
+const INITIAL_STATE: ChatState = {
   // uid: '',
   chatActivo: null, // UID del usuario al que yo quiero enviar mensajes
   userSelected: null,
@@ -22,10 +22,12 @@ export const ChatProvider = ({ children }: any) => {
   const [chatState, dispatch] = useReducer(chatReducer, INITIAL_STATE)
 
   return (
-    <ChatContext.Provider value={{
-      ...chatState,
-      chatDispatch: dispatch
-    }}>
+    <ChatContext.Provider
+      value={{
+        ...chatState,
+        chatDispatch: dispatch
+      }}
+    >
       {children}
     </ChatContext.Provider>
   )

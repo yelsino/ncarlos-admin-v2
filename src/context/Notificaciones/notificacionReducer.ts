@@ -1,4 +1,7 @@
-import { NotificacionAction, NotificacionState } from "interfaces/notificacion.interface"
+import {
+  NotificacionAction,
+  NotificacionState
+} from 'interfaces/notificacion.interface'
 
 export const notificacionReducer = (
   state: NotificacionState,
@@ -13,7 +16,7 @@ export const notificacionReducer = (
 
     case 'REMOVE_NOTIFICATION': {
       const notification = state.notificaciones
-      const index = notification.findIndex(v => v.id === action.payload)
+      const index = notification.findIndex((v) => v.id === action.payload)
       notification.splice(index, 1)
       return {
         ...state,
@@ -24,7 +27,9 @@ export const notificacionReducer = (
     case 'UPDATE_NOTIFICATION':
       return {
         ...state,
-        notificaciones: state.notificaciones.map(n => (n.id === action.payload) ? { ...n, show: false } : n)
+        notificaciones: state.notificaciones.map((n) =>
+          n.id === action.payload ? { ...n, show: false } : n
+        )
       }
 
     default:

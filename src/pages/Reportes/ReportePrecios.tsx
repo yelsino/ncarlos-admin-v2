@@ -1,9 +1,5 @@
 const ReportePrecios = () => {
-  return (
-    <div>
-      REPORTE  PRECIOS
-    </div>
-  )
+  return <div>REPORTE PRECIOS</div>
 }
 
 export default ReportePrecios

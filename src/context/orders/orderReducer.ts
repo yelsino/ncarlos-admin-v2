@@ -1,7 +1,7 @@
 import { IPedido } from 'types-yola'
 import { OrderState } from './orderProvider'
 
-export type OrderAction = { type: 'GET_ORDERS', payload: Array<IPedido> };
+export type OrderAction = { type: 'GET_ORDERS'; payload: Array<IPedido> }
 
 const orderReducer = (state: OrderState, action: OrderAction): OrderState => {
   switch (action.type) {

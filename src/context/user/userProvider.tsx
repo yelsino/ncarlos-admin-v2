@@ -5,17 +5,17 @@ import { UserContext } from './userContext'
 import userReducer from './userReducer'
 
 export interface UserState {
-  caceros: IUsuario[],
-  casero: IUsuario | null,
-  getdata: boolean,
-  usuarios: IUsuario[],
-  usuarioSeleccionado: IUsuario | null,
-  claims: IReclamo[],
-  trabajadores: IUsuario[],
+  caceros: IUsuario[]
+  casero: IUsuario | null
+  getdata: boolean
+  usuarios: IUsuario[]
+  usuarioSeleccionado: IUsuario | null
+  claims: IReclamo[]
+  trabajadores: IUsuario[]
   newWorker: any
 }
 
-const INITIAL_STATE:UserState = {
+const INITIAL_STATE: UserState = {
   caceros: [],
   casero: null,
   getdata: false,
@@ -39,32 +39,40 @@ interface Props {
   children: JSX.Element | JSX.Element[]
 }
 
-export const UserProvider = ({ children }:Props) => {
+export const UserProvider = ({ children }: Props) => {
   const [state, dispatchUser] = useReducer(userReducer, INITIAL_STATE)
 
   const obtenerCaseros = async () => {
-    const resp = await fetchConToken<IRespuesta<IUsuario[]>>({ endpoint: 'auth' })
+    const resp = await fetchConToken<IRespuesta<IUsuario[]>>({
+      endpoint: 'auth'
+    })
     if (resp.ok) {
       dispatchUser({ type: 'OBTENER_USUARIOS', payload: resp.data })
     }
   }
 
   const obtenerUsuarios = async () => {
-    const resp = await fetchConToken<IRespuesta<IUsuario[]>>({ endpoint: 'auth' })
+    const resp = await fetchConToken<IRespuesta<IUsuario[]>>({
+      endpoint: 'auth'
+    })
     if (resp.ok) {
       dispatchUser({ type: 'OBTENER_USUARIOS', payload: resp.data })
     }
   }
 
-  const obtenerUsuario = async (id:string) => {
-    const resp = await fetchConToken<IRespuesta<IUsuario>>({ endpoint: `auth/${id}` })
+  const obtenerUsuario = async (id: string) => {
+    const resp = await fetchConToken<IRespuesta<IUsuario>>({
+      endpoint: `auth/${id}`
+    })
     if (resp.ok) {
       dispatchUser({ type: 'SELECCIONAR_USUARIO', payload: resp.data })
     }
   }
 
   const getClaimsAll = async () => {
-    const resp = await fetchConToken<IRespuesta<IReclamo[]>>({ endpoint: 'reclamos' })
+    const resp = await fetchConToken<IRespuesta<IReclamo[]>>({
+      endpoint: 'reclamos'
+    })
 
     if (resp.ok) {
       dispatchUser({
@@ -75,14 +83,16 @@ export const UserProvider = ({ children }:Props) => {
   }
 
   return (
-    <UserContext.Provider value={{
-      ...state,
-      dispatchUser,
-      obtenerCaseros,
-      obtenerUsuarios,
-      obtenerUsuario,
-      getClaimsAll
-    }}>
+    <UserContext.Provider
+      value={{
+        ...state,
+        dispatchUser,
+        obtenerCaseros,
+        obtenerUsuarios,
+        obtenerUsuario,
+        getClaimsAll
+      }}
+    >
       {children}
     </UserContext.Provider>
   )

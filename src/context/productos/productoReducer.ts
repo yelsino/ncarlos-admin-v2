@@ -1,8 +1,7 @@
 import { IProducto } from 'types-yola'
 import { ProductoState } from './ProductoProvider'
 
-export type ProductoAction =
-| { type: 'OBTENER_PRODUCTOS', payload: IProducto[] }
+export type ProductoAction = { type: 'OBTENER_PRODUCTOS'; payload: IProducto[] }
 
 const productoReducer = (
   state: ProductoState,

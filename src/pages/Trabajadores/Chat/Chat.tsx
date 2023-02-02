@@ -3,7 +3,7 @@ import NavChat from './NavChat'
 
 const Chat = () => {
   return (
-    <div className="relative trabajador_chat ">
+    <div className="trabajador_chat relative ">
       <Mensajes />
       <NavChat />
     </div>

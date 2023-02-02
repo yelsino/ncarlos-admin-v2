@@ -14,41 +14,56 @@ const Usuarios = () => {
 
   return (
     <div className="">
-      <div className=" flex justify-between text-sm sm:text-lg mb-3 font-poppins pr-5 sm:px-5">
-        <div className="w-8/12 sm:w-6/12 text-color_gray_1 font-bold inline"><div className="  inline">Nombres</div></div>
+      <div className=" font-poppins mb-3 flex justify-between pr-5 text-sm sm:px-5 sm:text-lg">
+        <div className="text-color_gray_1 inline w-8/12 font-bold sm:w-6/12">
+          <div className="  inline">Nombres</div>
+        </div>
 
         <div className="flex w-4/12 sm:w-6/12">
-          <div className="font-bold   text-color_gray_1 w-full text-center hidden sm:inline">Total</div>
+          <div className="text-color_gray_1   hidden w-full text-center font-bold sm:inline">
+            Total
+          </div>
 
-          <div className="font-bold w-full  text-center   text-color_gray_1 hidden md:inline truncate ">Reclamos</div>
+          <div className="text-color_gray_1 hidden  w-full   truncate text-center font-bold md:inline ">
+            Reclamos
+          </div>
 
-          <div className=" w-full font-bold  text-center  text-color_gray_1 ">Gastó </div>
+          <div className=" text-color_gray_1 w-full  text-center  font-bold ">
+            Gastó{' '}
+          </div>
         </div>
       </div>
 
-      <div className="items_clientes overflow-y-auto sm:px-5 pr-5">
-        {usuarios.filter((u:any) => u.uid !== uid)
+      <div className="items_clientes overflow-y-auto pr-5 sm:px-5">
+        {usuarios
+          .filter((u: any) => u.uid !== uid)
           .map((v) => (
             <Link
               key={v._id}
               to={`/comprador/usuarios/${v._id}/datos`}
-              className="text-gray-500 hover:text-color_green_7 text-base sm:text-lg w-full relative flex items-center py-2"
+              className="hover:text-color_green_7 relative flex w-full items-center py-2 text-base text-gray-500 sm:text-lg"
             >
-              <div className="w-8/12 sm:w-6/12 flex items-center gap-x-3 ">
-                <img alt="img usuario" className="  rounded-full object-cover h-10 w-10" src={v.foto} />
-                <p className='truncate capitalize'>{` ${v.nombres} ${v.apellidos}`}</p>
+              <div className="flex w-8/12 items-center gap-x-3 sm:w-6/12 ">
+                <img
+                  alt="img usuario"
+                  className="  h-10 w-10 rounded-full object-cover"
+                  src={v.foto}
+                />
+                <p className="truncate capitalize">{` ${v.nombres} ${v.apellidos}`}</p>
               </div>
 
-              <div className="w-4/12 sm:w-6/12 flex ">
-                <span className=" text-center   w-full hidden sm:inline ">{` ${200}`}</span>
-                <span className=" md:inline hidden text-center w-full">{'3'}</span>
-                <span className=" flex justify-center   w-full">
+              <div className="flex w-4/12 sm:w-6/12 ">
+                <span className=" hidden   w-full text-center sm:inline ">{` ${200}`}</span>
+                <span className=" hidden w-full text-center md:inline">
+                  {'3'}
+                </span>
+                <span className=" flex w-full   justify-center">
                   <span className=" text-center ">{`s/ ${400}`}</span>
-                </span >
-
-              </div >
-              <div className=" absolute -right-5 text-color_green_7"><IconLink /></div>
-
+                </span>
+              </div>
+              <div className=" text-color_green_7 absolute -right-5">
+                <IconLink />
+              </div>
             </Link>
           ))}
       </div>

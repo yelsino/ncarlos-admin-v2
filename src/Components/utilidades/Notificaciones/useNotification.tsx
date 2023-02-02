@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 
 const useNotificacion = (initialState = {}) => {
   const notificacionContext = useContext(NotificacionContext)
-  const { removeNotificacion }:any = notificacionContext
+  const { removeNotificacion }: any = notificacionContext
 
   const [width, setWidth] = useState(0)
   const [intervalID, setIntervalID] = useState<any>(null)

@@ -1,4 +1,3 @@
-// @ts-nocheck
 // const baseUrl = process.env.REACT_APP_API_URL;
 const baseUrl = import.meta.env.VITE_SOME_KEY
 
@@ -35,7 +34,7 @@ export const fetchConToken = async <T>({
   endpoint,
   body,
   method = 'GET'
-}: Props):Promise<T> => {
+}: Props): Promise<T> => {
   const url = `${baseUrl}/${endpoint}`
   const token = localStorage.getItem('token') || ''
 

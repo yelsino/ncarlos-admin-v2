@@ -1,13 +1,12 @@
-
 export interface INotificacion {
- id?: string
- show?: boolean
- type: number
- message: string
+  id?: string
+  show?: boolean
+  type: number
+  message: string
 }
 
 export interface NotificacionState {
-notificaciones: Array<INotificacion>
+  notificaciones: Array<INotificacion>
 }
 
 export type NotificacionAction =

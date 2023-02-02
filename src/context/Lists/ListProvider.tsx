@@ -8,7 +8,7 @@ export interface ListState {
   lists: ILista[]
 }
 
-const INITIAL_STATE:ListState = {
+const INITIAL_STATE: ListState = {
   lists: []
 }
 
@@ -16,11 +16,11 @@ interface Props {
   children: JSX.Element | JSX.Element[]
 }
 
-export const ListProvider = ({ children }:Props) => {
+export const ListProvider = ({ children }: Props) => {
   const [state, dispatchList] = useReducer(listReducer, INITIAL_STATE)
 
   const obtenerListas = async () => {
-    const resp = await fetchConToken<IRespuesta<ILista>>({endpoint:'listas'})
+    const resp = await fetchConToken<IRespuesta<ILista>>({ endpoint: 'listas' })
 
     if (resp.ok) {
       // setLists();
@@ -28,11 +28,13 @@ export const ListProvider = ({ children }:Props) => {
   }
 
   return (
-    <ListContext.Provider value={{
-      ...state,
-      dispatchList,
-      obtenerListas,
-    }}>
+    <ListContext.Provider
+      value={{
+        ...state,
+        dispatchList,
+        obtenerListas
+      }}
+    >
       {children}
     </ListContext.Provider>
   )

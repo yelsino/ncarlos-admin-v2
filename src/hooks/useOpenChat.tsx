@@ -7,13 +7,15 @@ import { IMenaje } from 'types-yola'
 export const useOpenChat = () => {
   const { chatDispatch, usuarios } = useContext(ChatContext)
 
-  const abrirChat = async (id:any) => {
+  const abrirChat = async (id: any) => {
     chatDispatch({
       type: 'CHAT_ACTIVO',
       payload: id
     })
 
-    const resp = await fetchConToken<Array<IMenaje>>({ endpoint: `mensajes/${id}` })
+    const resp = await fetchConToken<Array<IMenaje>>({
+      endpoint: `mensajes/${id}`
+    })
 
     chatDispatch({
       type: 'CARGAR_MENSAJES',

@@ -1,37 +1,41 @@
-
 const ReporteVentas = () => {
   return (
-
     <>
-      <p className=" text-color_green_7 text-3xl font-poppins font-bold border-b pb-3">Reporte ventas</p>
+      <p className=" text-color_green_7 font-poppins border-b pb-3 text-3xl font-bold">
+        Reporte ventas
+      </p>
       <div className="my-5 flex gap-x-2 ">
-        <p className="text-color_green_7 font-medium px-2 py-1 bg-color_green_2 inline rounded-full font-poppins tracking-tighter">Los ultimos 7 días</p>
-        <p className="text-color_gray_2 font-medium px-2 py-1 bg-gray-100 inline rounded-full font-poppins tracking-tighter">Los ultimos 28 días</p>
-        <p className="text-color_gray_2 font-medium px-2 py-1 bg-gray-100 inline rounded-full font-poppins tracking-tighter">Los ultimos 60 días</p>
-        <p className="text-color_gray_2 font-medium px-2 py-1 bg-gray-100 inline rounded-full font-poppins tracking-tighter">Personalizado</p>
+        <p className="text-color_green_7 bg-color_green_2 font-poppins inline rounded-full px-2 py-1 font-medium tracking-tighter">
+          Los ultimos 7 días
+        </p>
+        <p className="text-color_gray_2 font-poppins inline rounded-full bg-gray-100 px-2 py-1 font-medium tracking-tighter">
+          Los ultimos 28 días
+        </p>
+        <p className="text-color_gray_2 font-poppins inline rounded-full bg-gray-100 px-2 py-1 font-medium tracking-tighter">
+          Los ultimos 60 días
+        </p>
+        <p className="text-color_gray_2 font-poppins inline rounded-full bg-gray-100 px-2 py-1 font-medium tracking-tighter">
+          Personalizado
+        </p>
       </div>
 
-      <div className="flex gap-x-2 justify-between">
-        <div className="bg-color_green_2 w-44 h-28">
-        </div>
-        <div className="bg-gray-100 w-44 h-28">
-        </div>
-        <div className="bg-gray-100 w-44 h-28">
-        </div>
-        <div className="bg-gray-100 w-44 h-28">
-        </div>
+      <div className="flex justify-between gap-x-2">
+        <div className="bg-color_green_2 h-28 w-44"></div>
+        <div className="h-28 w-44 bg-gray-100"></div>
+        <div className="h-28 w-44 bg-gray-100"></div>
+        <div className="h-28 w-44 bg-gray-100"></div>
       </div>
 
       <div className="pt-7">
-        <p className=" text-color_gray_1 text-lg font-poppins font-semibold  pb-3">Diagrama de ventas</p>
+        <p className=" text-color_gray_1 font-poppins pb-3 text-lg  font-semibold">
+          Diagrama de ventas
+        </p>
 
-        <div className=" w-full bg-gray-100 h-56 flex justify-center items-center text-gray-600">
+        <div className=" flex h-56 w-full items-center justify-center bg-gray-100 text-gray-600">
           aqui va el grafico
         </div>
       </div>
-
     </>
-
   )
 }
 

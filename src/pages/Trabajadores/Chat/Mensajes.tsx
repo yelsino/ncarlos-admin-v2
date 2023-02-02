@@ -9,55 +9,52 @@ const Mensajes = () => {
   let msgDe = ''
   return (
     <div
-      className=" msg_history tracking-tight text-color_green_7"
+      className=" msg_history text-color_green_7 tracking-tight"
       id="mensajes"
     >
-      {chatState.mensajes.map((msg:any, index:any) => {
+      {chatState.mensajes.map((msg: any, index: any) => {
         if (msgDe !== msg.de && msgDe !== '') {
           chatState.mensajes[index - 1].css = 'ocultar'
         }
         msgDe = msg.de
 
-        return msg.de === auth.uid
-          ? (
+        return msg.de === auth.uid ? (
           <div
-            className={`flex gap-x-3 justify-end my-1 items-end msg_derecha ${'2xl:'}`}
+            className={`msg_derecha my-1 flex items-end justify-end gap-x-3 ${'2xl:'}`}
           >
             <p
               key={msg.id}
-              className="bg-color_green_2 py-1 rounded-full  px-3 inline-block"
+              className="bg-color_green_2 inline-block rounded-full  py-1 px-3"
             >
               {msg.mensaje}
             </p>
             {/* <p>{horaMes(msg.createdAt)}</p> */}
           </div>
-            )
-          : (
+        ) : (
           <div
-
             key={msg._id}
             className={`
-            flex gap-x-3 justify-start  items-end  ${msg.css === 'ocultar'
-                ? 'msg_visible'
-                : 'msg_invisible'
-              }`}
+            flex items-end justify-start  gap-x-3  ${
+              msg.css === 'ocultar' ? 'msg_visible' : 'msg_invisible'
+            }`}
           >
             <span
               // style={msg.css}
-              className="pb-2 ">
+              className="pb-2 "
+            >
               <img
                 alt="img mensaje"
-                className={'img_perfil_trabajador_inchat w-8 h-8 object-cover '}
+                className={'img_perfil_trabajador_inchat h-8 w-8 object-cover '}
                 src={PERFIL12}
               />
             </span>
             <div className="flex flex-col gap-y-1">
-              <p className="bg-color_green_3 py-1 rounded-full  px-3 inline-block">
+              <p className="bg-color_green_3 inline-block rounded-full  py-1 px-3">
                 {msg.mensaje}
               </p>
             </div>
           </div>
-            )
+        )
       })}
     </div>
   )

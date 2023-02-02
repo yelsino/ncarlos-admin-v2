@@ -1,6 +1,8 @@
-const Titulo = (props:any) => {
+const Titulo = (props: any) => {
   return (
-    <h1 className="text-center md:text-left text-xl sm:text-3xl text-color_green_7 font-poppins">{props.texto}</h1>
+    <h1 className="text-color_green_7 font-poppins text-center text-xl sm:text-3xl md:text-left">
+      {props.texto}
+    </h1>
   )
 }
 

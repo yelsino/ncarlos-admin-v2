@@ -9,7 +9,7 @@ export interface ProductoState {
   keys_product: any
 }
 
-const INITIAL_STATE:ProductoState = {
+const INITIAL_STATE: ProductoState = {
   productos: [],
   keys_product: {
     name: '',
@@ -35,7 +35,9 @@ export const ProductoProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(productoReducer, INITIAL_STATE)
 
   const obtenerProductoXcategoria = async (name: any) => {
-    const respuesta = await fetchConToken<IRespuesta<IProducto[]>>({ endpoint: 'productos' })
+    const respuesta = await fetchConToken<IRespuesta<IProducto[]>>({
+      endpoint: 'productos'
+    })
 
     if (respuesta.ok) {
       dispatch({
@@ -53,15 +55,25 @@ export const ProductoProvider = ({ children }: Props) => {
     formProduct.append('category', data.category)
     formProduct.append('wholesale_form', data.wholesale_form)
     formProduct.append('form_retail', data.form_retail)
-    formProduct.append('wholesaling_price', Number(data.wholesaling_price) as any)
-    formProduct.append('wholesaling_weight', Number(data.wholesaling_weight) as any)
+    formProduct.append(
+      'wholesaling_price',
+      Number(data.wholesaling_price) as any
+    )
+    formProduct.append(
+      'wholesaling_weight',
+      Number(data.wholesaling_weight) as any
+    )
     formProduct.append('retail_price', Number(data.retail_price) as any)
     formProduct.append('quantity', Number(data.quantity) as any)
     formProduct.append('spare', Number(data.spare) as any)
     formProduct.append('alert_quantity', Number(data.alert_quantity) as any)
 
     try {
-      const resp = await fetchConToken({ endpoint: 'products', body: formProduct, method: 'POST' })
+      const resp = await fetchConToken({
+        endpoint: 'products',
+        body: formProduct,
+        method: 'POST'
+      })
       if (resp) return { ok: true }
     } catch (error) {
       console.log(error)
@@ -69,12 +81,14 @@ export const ProductoProvider = ({ children }: Props) => {
   }
 
   return (
-    <ProductoContext.Provider value={{
-      ...state,
-      dispatchProducto: dispatch,
-      obtenerProductoXcategoria,
-      createNewProduct
-    }}>
+    <ProductoContext.Provider
+      value={{
+        ...state,
+        dispatchProducto: dispatch,
+        obtenerProductoXcategoria,
+        createNewProduct
+      }}
+    >
       {children}
     </ProductoContext.Provider>
   )

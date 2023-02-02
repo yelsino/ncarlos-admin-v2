@@ -8,21 +8,24 @@ import ButtonAction from 'Components/utilidades/ButtonAction'
 const MensajeRegistro = () => {
   const navigate = useNavigate()
   return (
-    <div
-      className="w-full md:w-1/2 p-10 flex flex-col items-center gap-5">
-      <div className=" w-24 md:w-32 sm:w-32  select-none md:hidden object-contain">
+    <div className="flex w-full flex-col items-center gap-5 p-10 md:w-1/2">
+      <div className=" w-24 select-none object-contain  sm:w-32 md:hidden md:w-32">
         <img src={LOGO} alt="logo negocios carlos" />
       </div>
-      <div className="hidden sm:flex absolute top-5  right-5  sm:top-10 sm:right-10 font-extrabold font-poppins text-color_green_4 text-lg  items-center justify-center gap-x-2">
-        <span><IconCar /></span>
-        <h1 >Administrador</h1>
+      <div className="font-poppins text-color_green_4 absolute top-5  right-5  hidden items-center justify-center gap-x-2 text-lg font-extrabold  sm:top-10 sm:right-10 sm:flex">
+        <span>
+          <IconCar />
+        </span>
+        <h1>Administrador</h1>
       </div>
       <Titulo texto="REGISTRO ENVIADO" />
-      <Parrafo text='
+      <Parrafo
+        text="
              Sus datos estan registrados, debe estar atento a su dispositivo movil o correo indicado para validar sus datos.
-              ' />
+              "
+      />
 
-      <div className="w-72 sm:w-80 mt-5">
+      <div className="mt-5 w-72 sm:w-80">
         <ButtonAction
           type="button"
           text="TERMINAR"
@@ -32,7 +35,6 @@ const MensajeRegistro = () => {
         />
       </div>
     </div>
-
   )
 }
 

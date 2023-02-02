@@ -1,9 +1,10 @@
-const ButtonAction = (props:any) => {
+const ButtonAction = (props: any) => {
   return (
     <button
       type={props.type}
       onClick={props.onClick}
-      className="hover:shadow-xl shadow-sm transition ease-in duration-300  w-full bg-black p-4 text-color_green_3 text-2xl rounded-full mb-3 ">
+      className="text-color_green_3 mb-3 w-full rounded-full bg-black  p-4 text-2xl shadow-sm transition duration-300 ease-in hover:shadow-xl "
+    >
       {props.text}
     </button>
   )

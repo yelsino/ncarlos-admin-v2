@@ -1,14 +1,14 @@
-import { fetchConToken, fetchSinToken } from 'helpers/fetch';
+import { fetchConToken, fetchSinToken } from 'helpers/fetch'
 import { useCallback, useReducer } from 'react'
 import { IAuth, IAuthRest, IRespuesta, IUsuario } from 'types-yola'
 import { AuthContext } from './AuthContext'
 import { authReducer } from './AuthReducer'
 
 export interface AuthState {
-    uid: string | null;
-    checking: boolean;
-    logged: boolean;
-    user: IUsuario | null;
+  uid: string | null
+  checking: boolean
+  logged: boolean
+  user: IUsuario | null
 }
 
 const INITIAL_STATE = {
@@ -22,11 +22,11 @@ interface Props {
   children: JSX.Element | JSX.Element[]
 }
 
-export const AuthProvider = ({ children }:Props) => {
+export const AuthProvider = ({ children }: Props) => {
   const [auth, dispatchAuth] = useReducer(authReducer, INITIAL_STATE)
   // const { chatDispatch } = useContext(ChatContext)
 
-  const userLogin = async (data:IAuth): Promise<IRespuesta<IAuthRest>> => {
+  const userLogin = async (data: IAuth): Promise<IRespuesta<IAuthRest>> => {
     console.log(data)
 
     dispatchAuth({ type: 'LOADING', payload: true })
@@ -83,7 +83,9 @@ export const AuthProvider = ({ children }:Props) => {
       return false
     }
 
-    const resp = await fetchConToken<IRespuesta<IAuthRest>>({ endpoint: 'auth/re-login' })
+    const resp = await fetchConToken<IRespuesta<IAuthRest>>({
+      endpoint: 'auth/re-login'
+    })
     // const { usuario } = resp;
     console.log(resp)
 
@@ -114,14 +116,16 @@ export const AuthProvider = ({ children }:Props) => {
   }
 
   return (
-    <AuthContext.Provider value={{
-      ...auth,
-      dispatchAuth,
-      verificarToken,
-      userLogout,
-      userLogin,
-      registrarConEmail
-    }}>
+    <AuthContext.Provider
+      value={{
+        ...auth,
+        dispatchAuth,
+        verificarToken,
+        userLogout,
+        userLogin,
+        registrarConEmail
+      }}
+    >
       {children}
     </AuthContext.Provider>
   )

@@ -1,31 +1,29 @@
-// @ts-nocheckk
 
 import { useCallback, useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
 
-type SocketEmit =
-    | 'get-user-orders'
+type SocketEmit = 'get-user-orders'
 
 type SocketOn =
-    | 'disconnect'
-    | 'connect'
-    | 'USER_ACTIONS'
-    | 'GET_ALL_PRODUCTS'
-    | 'GET_USER_LISTS'
-    | 'GET_USER_ORDERS'
-    | 'GET_USER_DIRECTIONS'
-    | 'RETORN_LIST_SELECTED'
-    | 'MENSJE_PERSONAL'
-    | 'LISTA_USUARIOS'
+  | 'disconnect'
+  | 'connect'
+  | 'USER_ACTIONS'
+  | 'GET_ALL_PRODUCTS'
+  | 'GET_USER_LISTS'
+  | 'GET_USER_ORDERS'
+  | 'GET_USER_DIRECTIONS'
+  | 'RETORN_LIST_SELECTED'
+  | 'MENSJE_PERSONAL'
+  | 'LISTA_USUARIOS'
 
 export interface SocketProps {
-    on: (action: SocketOn, callback: (data: any) => void) => void;
-    emit?: (action: SocketEmit, data: object) => void;
-    disconnect: () => void;
-    connected: boolean;
+  on: (action: SocketOn, callback: (data: any) => void) => void
+  emit?: (action: SocketEmit, data: object) => void
+  disconnect: () => void
+  connected: boolean
 }
 
-export const useSocket = (serverPath:string) => {
+export const useSocket = (serverPath: string) => {
   const [socket, setSocket] = useState<SocketProps>()
   const [online, setOnline] = useState(false)
 
@@ -33,7 +31,7 @@ export const useSocket = (serverPath:string) => {
   const conectarSocket = useCallback(() => {
     const token = localStorage.getItem('token')
 
-    const socketTemp:SocketProps = io(serverPath, {
+    const socketTemp: SocketProps = io(serverPath, {
       transports: ['websocket'],
       autoConnect: true,
       forceNew: true,
