@@ -10,7 +10,7 @@ import { SocketProvider } from 'context/Socket/SocketProvider'
 import RouterApp from 'router/RouterApp'
 import { NotificacionProvider } from 'context/Notificaciones/NotificacionProvider'
 import { UserProvider } from 'context/user/UserProvider'
-import { OrderProvider } from 'context/orders/orderProvider'
+import { OrderProvider } from 'context/orders/OrderProvider'
 
 function App() {
   const firebaseConfig = {

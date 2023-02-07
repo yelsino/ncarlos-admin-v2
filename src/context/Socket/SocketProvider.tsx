@@ -1,5 +1,5 @@
 import { AuthContext } from 'context/auth/AuthContext'
-import { ChatContext } from 'context/chat/ChatContext'
+import { ChatContext } from 'context/chat/chatContext'
 import { ProductoContext } from 'context/productos/ProductoContext'
 import { UserContext } from 'context/user/UserContext'
 import { scrollBottomAnimated } from 'helpers/scrollToBottom'

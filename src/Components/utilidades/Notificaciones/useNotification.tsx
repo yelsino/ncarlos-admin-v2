@@ -1,4 +1,4 @@
-import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
 import { useContext, useEffect, useState } from 'react'
 
 const useNotificacion = (initialState = {}) => {

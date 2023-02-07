@@ -4,7 +4,7 @@ import {
   NotificacionState
 } from 'interfaces/notificacion.interface'
 import { useReducer } from 'react'
-import { NotificacionContext } from './notificacionContext'
+import { NotificacionContext } from './NotificacionContext'
 import { notificacionReducer } from './notificacionReducer'
 
 interface Props {

@@ -1,5 +1,5 @@
 import { AuthContext } from 'context/auth/AuthContext';
-import { NotificacionContext } from 'context/Notificaciones/notificacionContext';
+import { NotificacionContext } from 'context/Notificaciones/NotificacionContext';
 import { SocketContext } from 'context/Socket/SocketContext';
 import { NuevoProducto, OutletProducto } from 'pages/productos/NuevoProducto';
 import { useContext, useEffect, useState } from 'react'
@@ -79,7 +79,7 @@ export const useSwitchWeight = ({ producto }: Props) => {
     const position = JSON.parse(localStorage.getItem("position")) ? Number(JSON.parse(localStorage.getItem("position"))) : 0
     // setPosicionSeleccionada(position)
     const precioId = producto?.precios[position]?._id
-    seleccionarPeso(precioId ? precioId : producto.precios[0]._id)
+    seleccionarPeso(precioId ? precioId : producto?.precios[0]?._id)
     // setPrecio(producto?.precios[position])
   }, [producto])
 

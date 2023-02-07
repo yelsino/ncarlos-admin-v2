@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import ButtonNext from '../../../Components/utilidades/ButtonNext'
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
 import { IconNext } from 'Components/Icons'
 import { NuevoProducto, OutletProducto } from '../NuevoProducto'
 import { Formik, Form } from 'formik'
@@ -153,11 +153,17 @@ useEffect(() => {
     setCantidadPrecios(Number(e.target.value))
   }
 
-  const handleChangePesoCantidad = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangePesoCantidad = (e:React.ChangeEvent<HTMLInputElement>, setFormikState) => {
     const { name, value } = e.target;
-    setCantidadPeso(
-      Math.round(Number(value) / 50) * 50)
-      
+    setCantidadPeso(Math.round(Number(value) / 50) * 50)
+    // handleChange(Math.round(Number(value) / 50) * 50)
+    setFormikState(prev=> ({
+      ...prev,
+      values: {
+        ...prev.values,
+        pesoSeleccionado: Math.round(Number(value) / 50) * 50
+      }
+    }))
     // setNuevoProducto((prev)=>({
     //   ...prev, 
     //   [name]: Number(value)
@@ -187,13 +193,13 @@ useEffect(() => {
           cantidadPrecios: 3,
           precioUnidad: nuevoProducto.precioUnidad ?? 0,
           pesoSeleccionado: cantidadPeso,
-          precioSeleccionado: 40
+          precioSeleccionado: 0
           // precioCompra: nuevoProducto.precioCompra
         }}
         validationSchema={validar}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched, isSubmitting, handleChange, values }) => (
+        {({ errors, touched, isSubmitting, handleChange, values,setFormikState }) => (
           <Form>
             <p className="text-color_green_7 font-poppins mb-5 text-center text-lg font-light">
               Configuración de precios <br /> al minoreo
@@ -242,12 +248,14 @@ useEffect(() => {
                 value={values.pesoSeleccionado}
               />
               <RangeSelector
-                onChange={handleChangePesoCantidad}
+                onChange={(evento)=>{
+                  handleChangePesoCantidad(evento, setFormikState)
+                }}
                 valor={cantidadPeso}
                 min={0}
                 max={1000}
                 multiple={5}
-                titulo={``}
+                titulo={`Cantidad en gramos`}
               />
 
               <InputFormik

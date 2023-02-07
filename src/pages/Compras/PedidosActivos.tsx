@@ -1,4 +1,4 @@
-import { OrderContext } from 'context/orders/orderContext'
+import { OrderContext } from 'context/orders/OrderContext'
 import { useContext, useEffect } from 'react'
 
 const PedidosActivos = () => {

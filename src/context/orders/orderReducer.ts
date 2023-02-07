@@ -1,5 +1,5 @@
 import { IPedido } from 'types-yola'
-import { OrderState } from './orderProvider'
+import { OrderState } from './OrderProvider'
 
 export type OrderAction = { type: 'GET_ORDERS'; payload: Array<IPedido> }
 

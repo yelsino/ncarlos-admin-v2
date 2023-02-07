@@ -81,7 +81,7 @@ const NuevoCredito = () => {
         </div>
       </div>
       <div className="   w-10/12 ">
-        <ButtonAction text="REGISTRAR" onClick={() => navigate('/')} />
+        <ButtonAction text="REGISTRAR" onClick={() => navigate('/')} type="submit" />
       </div>
     </div>
   )

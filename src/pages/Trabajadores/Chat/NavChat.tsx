@@ -8,7 +8,7 @@ import {
   IconSend
 } from '../../../Components/Icons'
 import { AuthContext } from '../../../context/auth/AuthContext'
-import { ChatContext } from '../../../context/chat/ChatContext'
+import { ChatContext } from '../../../context/chat/chatContext'
 import { SocketContext } from '../../../context/Socket/SocketContext'
 
 const NavChat = () => {

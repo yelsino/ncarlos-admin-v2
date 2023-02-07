@@ -37,7 +37,7 @@ const NuevoAbono = () => {
         />
       </div>
 
-      <ButtonAction text="ABONAR" />
+      <ButtonAction text="ABONAR" type='submit' />
     </div>
   )
 }

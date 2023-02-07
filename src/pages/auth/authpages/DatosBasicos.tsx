@@ -63,7 +63,7 @@ const DatosBasicos = () => {
         navigate('/auth/registro/datos-personales')
       }}
     >
-      {({ errors, touched }: FormikProps<FormValues>) => (
+      {({ errors, touched, handleChange }) => (
         <Form className="flex w-full flex-col items-center gap-5 p-10 md:w-1/2">
           <div className=" w-24 select-none object-contain  sm:w-32 md:hidden md:w-32">
             <img src={LOGO} alt="logo negocios carlos" />
@@ -81,6 +81,7 @@ const DatosBasicos = () => {
             errors={errors}
             touched={touched}
             titulo='Documento (DNI)'
+            handleChange={handleChange}
           >
             <IconEmail />
           </InputFormik>
@@ -91,6 +92,7 @@ const DatosBasicos = () => {
             touched={touched}
             titulo='Contraseña'
             type='password'
+            handleChange={handleChange}
           >
             <IconKey />
           </InputFormik>

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import ButtonNext from '../../../Components/utilidades/ButtonNext'
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
 import { IconNext } from 'Components/Icons'
 import { OutletProducto } from '../NuevoProducto'
 import { Formik, Form } from 'formik'

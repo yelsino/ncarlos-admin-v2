@@ -8,7 +8,7 @@ import Parrafo from 'Components/utilidades/Parrafo'
 import ButtonAction from 'Components/utilidades/ButtonAction'
 import { useContext } from 'react'
 import { AuthContext } from 'context/auth/AuthContext'
-import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
 import { TextoAccion } from 'Components/utilidades/TextoAccion'
 
 const RestoreInit = () => {

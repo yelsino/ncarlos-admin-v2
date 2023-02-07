@@ -4,7 +4,7 @@ import { Form, Formik, Field } from 'formik'
 import * as Yup from 'yup'
 import { useContext } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
 import { IconDireccion, IconEmail, IconPhone, IconUsersInactive } from 'Components/Icons'
 import Titulo from 'Components/utilidades/Titulo'
 import ButtonAction from 'Components/utilidades/ButtonAction'
@@ -100,7 +100,7 @@ const DatosContacto = () => {
       validationSchema={validar}
       onSubmit={(values) => handleSubmit(values)}
     >
-      {({ errors, touched }:FormikProps<FormValues>) => (
+      {({ errors, touched, handleChange }) => (
         <Form className="flex w-full flex-col items-center gap-5 p-10 md:w-1/2">
           <div className=" w-24 select-none object-contain  sm:w-32 md:hidden md:w-32">
             <img src={LOGO} alt="logo de negocios carlos" />
@@ -114,6 +114,7 @@ const DatosContacto = () => {
             touched={touched}
             titulo='N° celular'
             type='number'
+            handleChange={handleChange}
           >
             <IconPhone />
           </InputFormik>
@@ -124,6 +125,7 @@ const DatosContacto = () => {
             touched={touched}
             titulo='Correo'
             type='email'
+            handleChange={handleChange}
           >
             <IconEmail />
           </InputFormik>
@@ -133,6 +135,7 @@ const DatosContacto = () => {
             errors={errors}
             touched={touched}
             titulo='Dirección de domicilio'
+            handleChange={handleChange}
           >
             <IconDireccion />
           </InputFormik>

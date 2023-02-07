@@ -57,7 +57,7 @@ const DatosPersonales = () => {
        
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, handleChange }) => (
         <Form className="flex w-full flex-col items-center gap-5 p-10 md:w-1/2">
           <div className=" w-24 select-none object-contain  sm:w-32 md:hidden md:w-32">
             <img src={LOGO} alt="logo negocios carlos" />
@@ -76,6 +76,7 @@ const DatosPersonales = () => {
             errors={errors}
             touched={touched}
             titulo='Nombres'
+            handleChange={handleChange}
           >
             <IconUsersInactive stile={`h-6 w-6`} />
           </InputFormik>
@@ -85,6 +86,7 @@ const DatosPersonales = () => {
             errors={errors}
             touched={touched}
             titulo='Apellidos'
+            handleChange={handleChange}
           >
             <IconUsersInactive stile={`h-6 w-6`} />
           </InputFormik>
@@ -94,6 +96,7 @@ const DatosPersonales = () => {
             errors={errors}
             touched={touched}
             titulo='Sobre Nombre'
+            handleChange={handleChange}
           >
             <IconUsersInactive stile={`h-6 w-6`} />
           </InputFormik>

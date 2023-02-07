@@ -1,5 +1,5 @@
 import { createContext, Dispatch } from 'react'
-import { OrderState } from './orderProvider'
+import { OrderState } from './OrderProvider'
 import { OrderAction } from './orderReducer'
 
 interface OrderContextProps extends OrderState {

@@ -4,7 +4,7 @@ import LOGO from '../../assets/img/logo.png'
 import { Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import { Link } from 'react-router-dom'
-import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
+import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
 import { AuthContext } from 'context/auth/AuthContext'
 import { IconCar, IconEmail, IconKey } from 'Components/Icons'
 import Titulo from 'Components/utilidades/Titulo'
@@ -50,7 +50,7 @@ const Login = () => {
             }
           }}
         >
-          {({errors, touched, isSubmitting}: FormikProps<FormValues>) => (
+          {({errors, touched, isSubmitting, handleChange}) => (
             <Form className="flex w-full flex-col items-center gap-5 p-10 md:w-1/2">
               <div className=" w-24   object-contain sm:w-40 md:hidden">
                 <img src={LOGO} alt="logo de negocios carlos" />
@@ -64,6 +64,7 @@ const Login = () => {
                 errors={errors}
                 touched={touched}
                 titulo='Documento'
+                handleChange={handleChange}
               >
                 <IconEmail />
               </InputFormik>
@@ -74,6 +75,7 @@ const Login = () => {
                 touched={touched}
                 titulo='Contraseña'
                 type='password'
+                handleChange={handleChange}
               >
                 <IconKey />
               </InputFormik>

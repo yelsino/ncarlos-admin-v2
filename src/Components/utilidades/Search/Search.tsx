@@ -42,7 +42,8 @@ const Search = (props) => {
   })
 
   return (
-    <form ref={formRef} className="mb-20 flex justify-center" {...formProps}>
+    <div>
+    {/* <form ref={formRef} className="mb-20 flex justify-center" {...formProps}>
       <div className="relative flex w-2/6  rounded-full bg-gradient-to-tr from-purple-600 to-blue-300 p-1">
         <input
           ref={inputRef}
@@ -73,7 +74,8 @@ const Search = (props) => {
           </div>
         )}
       </div>
-    </form>
+    </form> */}
+    </div>
   )
 }
 
