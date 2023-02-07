@@ -21,6 +21,17 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-/* * {
-  border: solid black 1px !important;
-} */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+     
+  input[type="range"]::-webkit-slider-thumb {
+      width: 13px;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 13px;
+      cursor: pointer;
+      background: #ff761b;
+      box-shadow: -405px 0 0 400px #000000;
+      border-radius: 50%;
+      
+  }
+}

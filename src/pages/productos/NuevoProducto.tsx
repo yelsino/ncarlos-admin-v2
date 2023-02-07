@@ -22,16 +22,16 @@ const NuevoProducto = () => {
   const [precio, setPrecio] = useState<Precio>(null);
   const [nuevoProducto, setNuevoProducto] = useState<NuevoProducto>({
     _id: uuidv4(),
-    nombre: "Mandarina Wando",
+    nombre: "",
     imagen: null,
     descripcion: "",
     marca: "",
     tipoVenta: "KILOGRAMOS",
     precioCompra: 0,
-    precioVenta: 120,
+    precioVenta: 0,
     unidades: 0,
     sobrante: 0,
-    cantidadPorUnidad: 60,
+    cantidadPorUnidad: 0,
     envoltorio: "COSTALES",
     estados: "CON_STOCK",
     visibilidad: true,
@@ -44,7 +44,8 @@ const NuevoProducto = () => {
 
 
   return (
-    <div className="nuevo_producto  mx-auto max-w-sm overflow-y-auto pt-10">
+    // <div className="nuevo_producto  mx-auto max-w-sm overflow-y-auto pt-10">
+    <div className="nuevo_producto  mx-auto max-w-md overflow-y-auto pt-10">
       {/* <pre>
         {JSON.stringify(nuevoProducto, null, 2)}
       </pre> */}

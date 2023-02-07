@@ -7,21 +7,23 @@ interface Props {
   max?: number;
   titulo?: string;
   multiple?: number;
+  step?: number;
 }
 
-const RangeSelector: React.FC<Props> = ({ onChange,valor, titulo, min, max }) => {
-  // const [value, setValue] = useState(1);
+const RangeSelector: React.FC<Props> = ({ onChange,valor, titulo, min, max, step }) => {
 
   return (
-    <div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={valor}
-        onChange={onChange}
-      />
-      <p>{titulo}</p>
+    <div className=''>
+      
+        <input 
+          className="rounded-lg overflow-hidden appearance-none bg-gray-100 h-3 w-full accent-orange-600" type="range" 
+          min={min}
+          max={max} 
+          step={step} 
+          onChange={onChange}
+          value={valor} 
+          />
+          <p className='font-semibold font-poppins'>{titulo}</p>
     </div>
   );
 };

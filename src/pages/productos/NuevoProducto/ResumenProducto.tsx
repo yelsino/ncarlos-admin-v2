@@ -6,41 +6,38 @@ import { useNavigate, useOutletContext } from 'react-router-dom'
 import { OutletProducto } from '../NuevoProducto'
 
 const ResumenProducto = () => {
-  const { productos } = useContext(ProductoContext) as any
   const {nuevoProducto, setNuevoProducto} = useOutletContext<OutletProducto>();
   const navigate = useNavigate()
-  const { createNewProduct } = useContext(ProductoContext) as any
-  const alert = useContext(NotificacionContext) as any
+  const {setNotificacion} = useContext(NotificacionContext)
 
   const sendNewProduct = async () => {
-    // const res = await createNewProduct(product)
-    // if (res) {
-    //   // vaciar estado y ls
-    //   localStorage.removeItem('LSproduct')
-    //   setProduct(productos.keys_product)
-    // } else {
-    //   alert.setNotificacion({
-    //     type: 1,
-    //     message: 'ERROR: verifica si llenaste todos los campos'
-    //   })
-    // }
     navigate(`/productos/${nuevoProducto.categoria.nombre}`)
   }
 
   return (
     <div className="flex w-full flex-col items-center ">
-      <p className="text-color_green_7 font-poppins text-center text-2xl font-semibold">
-        {nuevoProducto?.nombre}
-      </p>
-      <div className="w-full">
-        <div className="mx-auto w-28">
-          <img src={nuevoProducto.imagenLocal} />
-        </div>
 
-        <div className="  text-color_green_6 mt-3 w-full ">
+      <div className="flex justify-center flex-col items-center gap-y-3">
+        <p className="font-poppins text-xl font-semibold">
+          {nuevoProducto.nombre}
+        </p>
+        <div className="mb-3 flex h-[130px] w-[140px] items-center justify-center rounded-tl-[50px] rounded-tr-[10px] rounded-bl-[20px] rounded-br-[50px] bg-emerald-300 bg-opacity-50 ">
+          <img src={nuevoProducto.imagenLocal} className=" mb-3 scale-125" />
+        </div>
+      </div>
+
+      <div className="w-full">
+        
+
+        <p className="text-color_green_7 font-poppins mb-7 text-center text-lg font-light">
+          Datos del producto
+        </p>
+        <div className="  text-color_green_6 mt-3 w-full lowercase">
           <p className="flex  justify-between px-5">
             <span className="  ">Categoria</span>
-            <span className="text-color_green_7    ">{nuevoProducto?.categoria.nombre}</span>
+            <span className="text-color_green_7    ">
+              {nuevoProducto?.categoria.nombre}
+            </span>
           </p>
           <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
 
@@ -65,16 +62,16 @@ const ResumenProducto = () => {
           <p className="flex justify-between  px-5">
             <span className="  ">Precio por {nuevoProducto.tipoVenta}</span>
             <span className="text-color_green_7  ">
-              S/. {nuevoProducto.precioVenta}
+              S/. {nuevoProducto.precioUnidad}
             </span>
           </p>
 
           <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
 
           <p className="flex justify-between  px-5">
-            <span className="  ">Total en {nuevoProducto.envoltorio}</span>
+            <span className="  ">Total de {nuevoProducto.envoltorio}</span>
             <span className="text-color_green_7  ">
-              {nuevoProducto.cantidadPorUnidad} {nuevoProducto.envoltorio}{' '}
+              {nuevoProducto.unidades} {nuevoProducto.envoltorio}{' '}
               {nuevoProducto.sobrante} {nuevoProducto.tipoVenta}
             </span>
           </p>
@@ -84,7 +81,8 @@ const ResumenProducto = () => {
           <p className="flex justify-between  px-5">
             <span className="  ">Total en {nuevoProducto.tipoVenta}</span>
             <span className="text-color_green_7  ">
-              {nuevoProducto.sobrante} {nuevoProducto.tipoVenta}
+              {nuevoProducto.cantidadPorUnidad * nuevoProducto.unidades}{' '}
+              {nuevoProducto.tipoVenta}
             </span>
           </p>
 
@@ -96,14 +94,30 @@ const ResumenProducto = () => {
               {nuevoProducto.alertaCantidad} {nuevoProducto.tipoVenta}
             </span>
           </p>
+
+         
         </div>
       </div>
+
+      <p className="text-color_green_7 font-poppins mb-5 text-center text-lg font-light pt-5">
+            Precios al minoreo
+      </p>
+
+      <div className='w-full text-color_green_6 mt-3 lowercase'>
+        {nuevoProducto.precios.map((precio, index) => (
+         <div key={precio._id}>
+           <p className="flex  justify-between px-5">
+            <span className="  ">{precio.textoPesoA}</span>
+            <span className="text-color_green_7    ">
+              S/. {precio.precio} 
+            </span>
+          </p>
+          <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
+         </div>
+        ))}
+      </div>
       <div className="my-5 w-11/12 pt-5">
-        <ButtonAction 
-          onClick={sendNewProduct} 
-          text=" CREAR" 
-          type='button' 
-        />
+        <ButtonAction onClick={sendNewProduct} text=" CREAR" type="button" />
       </div>
     </div>
   )

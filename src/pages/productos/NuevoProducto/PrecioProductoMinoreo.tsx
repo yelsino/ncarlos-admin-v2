@@ -11,6 +11,7 @@ import ViewProduct from 'Components/Organismos/ViewProduct/ViewProduct'
 import RangeSelector from 'Components/utilidades/RangeSelector'
 import { uuidv4 } from '@firebase/util'
 import ButtonAction from 'Components/utilidades/ButtonAction'
+import TagInput from 'Components/utilidades/TagInput'
 interface FormValues {
   cantidadPrecios: number
   precioUnidad: number
@@ -28,27 +29,59 @@ interface Precio {
   textoPesoB?: string;
 }
 
+interface ChangeEvent extends React.ChangeEvent<HTMLInputElement> {}
+
 const PrecioProductoMinoreo = () => {
   const navigate = useNavigate()
-  const { nuevoProducto, setNuevoProducto } = useOutletContext<OutletProducto>()
+  const { nuevoProducto, setNuevoProducto, precio, setPrecio } = useOutletContext<OutletProducto>()
   const alert = useContext(NotificacionContext)
 
-  const handleSubmit = () => {
-  
+  const handleSubmit = (e:FormValues) => {
+    if(
+      e.cantidadPrecios === 0 ||
+      // e.pesoSeleccionado === 0 ||
+      // e.precioSeleccionado === 0 ||
+      e.precioUnidad === 0 
+      
+      ){
+        return alert.setNotificacion({message:'todos los campos son requeridos', type: 1})
+    }
+
+    // _id?: string;
+    // nombre: string;
+    // imagen: string;
+    // descripcion: string;
+    // marca: string;
+    // tipoVenta: TipoVenta;
+    // precioCompra: number;
+    // precioVenta: number;
+    // unidades: number;
+    // sobrante: number;
+    // cantidadPorUnidad: number;
+    // envoltorio: Envoltorio;
+    // estados: EstadosProducto;
+    // visibilidad: Boolean;
+    // alertaCantidad: number;
+    // categoria: ICategoria;
+    // tags: Array<string>;
+    // precios: Array<Precio>;
+    // precioUnidad: number;
+
+    setNuevoProducto((prev)=>({
+      ...prev,
+      precioUnidad: e.precioUnidad,
+      precios: precios,
+     
+
+    }))
+    
     navigate('/productos/nuevo-producto/stock')
   }
 
   const [ cantidadPrecios, setCantidadPrecios ] = useState(3);
-  const [ cantidadPeso, setCantidadPeso ] = useState(0);
-  // const [ precioSeleccionado, setPrecioSeleccionado ] = useState<Precio>(null);
+  const [ pesoSeleccionado, setPesoSeleccionado ] = useState(0);
   const [posicionActual, setPosicionActual] = useState(0)
 
- // ¿cual de las medidas esta seleccionada?
-//  useEffect(() => {
-//   const position = JSON.parse(localStorage.getItem("position")) ? Number(JSON.parse(localStorage.getItem("position"))) : 0
-
-//   setPrecioSeleccionado(nuevoProducto?.precios[position])
-// }, [producto])
 
 useEffect(() => {
   localStorage.setItem("position", JSON.stringify(posicionActual))
@@ -60,9 +93,17 @@ useEffect(() => {
       .string()
       .max(1,"solo se permite un digito")
       .required('es requerido'),
-    cantidadPorUnidad: Yup
-      .number()
-      .required('es requerido'),
+    // cantidadPorUnidad: Yup
+    //   .number()
+    //   .required('es requerido'),
+    // pesoSeleccionado: Yup
+    //   .number()
+    //   .max(1000,"maximo 1000")
+    //   .required('es requerido'),
+      // precioSeleccionado: Yup
+      // .number()
+      // .max(1000,"maximo 1000")
+      // .required('es requerido'),
     // precioCompra: Yup.string().required('es requerido')
   })
 
@@ -95,7 +136,7 @@ useEffect(() => {
          case "KILOGRAMOS":
            return {
              ...nuevoPrecio,
-             precio: (i+1) !==3 ? producto.precioUnidad/ (i+1) : producto.precioUnidad / 4,
+             precio: (i+1) !==3 ? (producto.precioUnidad ?? 0) / (i+1) : producto.precioUnidad / 4,
              peso: (i+1) !==3 ? 1000 / (i+1) : 1000 / 4,
            }
         
@@ -140,7 +181,7 @@ useEffect(() => {
    
   }
   // :React.ChangeEvent<HTMLInputElement>
-  const handleChangePesonalizado = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangePesonalizado = (e:ChangeEvent) => {
     
     setNuevoProducto((prev)=>({
       ...prev, 
@@ -149,25 +190,90 @@ useEffect(() => {
     
   }
 
-  const handleChangeCantidadPrecios = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeCantidadPrecios = (e:ChangeEvent) => {
     setCantidadPrecios(Number(e.target.value))
   }
 
-  const handleChangePesoCantidad = (e:React.ChangeEvent<HTMLInputElement>, setFormikState) => {
+  const handleChangePesoCantidad = (e:ChangeEvent, setFormikState) => {
     const { name, value } = e.target;
-    setCantidadPeso(Math.round(Number(value) / 50) * 50)
-    // handleChange(Math.round(Number(value) / 50) * 50)
+    // setPesoSeleccionado(Math.round(Number(value) / 50) * 50)
     setFormikState(prev=> ({
       ...prev,
       values: {
         ...prev.values,
-        pesoSeleccionado: Math.round(Number(value) / 50) * 50
+        pesoSeleccionado: Number(value)
       }
     }))
-    // setNuevoProducto((prev)=>({
-    //   ...prev, 
-    //   [name]: Number(value)
-    // }))
+
+    setNuevoProducto((prev)=>{
+      // modificar el precio
+      const nuevoPrecio = {
+        ...precio,
+        peso: Number(value),
+      }
+
+      // crear nuevo arreglo de precios que mantengue el orden y los valores anteriores
+      const nuevoArrayPrecios = prev.precios.map((p)=> {
+        if(p._id === precio._id) {
+          return nuevoPrecio
+        } else {
+          return p
+        }
+      })
+
+      return {
+        ...prev,
+        precios: nuevoArrayPrecios
+      }
+      
+    })
+
+    setPrecio((prev)=>({
+      ...prev,
+      peso: Number(value),
+    }))
+    
+  }
+
+  const handleChangePrecioSeleccionado = (e:ChangeEvent, setFormikState) => {
+    const { name, value } = e.target;
+
+    setFormikState(prev=> ({
+      ...prev,
+      values: {
+        ...prev.values,
+        precioSeleccionado: Number(value)
+      }
+    }))
+
+    setNuevoProducto((prev)=>{
+      // modificar el precio
+      const nuevoPrecio = {
+        ...precio,
+        precio: Number(value),
+      }
+
+      // crear nuevo arreglo de precios que mantengue el orden y los valores anteriores
+      const nuevoArrayPrecios = prev.precios.map((p)=> {
+        if(p._id === precio._id) {
+          return nuevoPrecio
+        } else {
+          return p
+        }
+      })
+
+      return {
+        ...prev,
+        precios: nuevoArrayPrecios
+      }
+      
+    })
+
+    setPrecio((prev)=>({
+      ...prev,
+      precio: Number(value),
+    }))
+    
   }
 
   useEffect(()=> {
@@ -185,45 +291,55 @@ useEffect(() => {
   },[cantidadPrecios,nuevoProducto.precioUnidad])
 
 
-
   return (
     <>
       <Formik<FormValues>
         initialValues={{
           cantidadPrecios: 3,
-          precioUnidad: nuevoProducto.precioUnidad ?? 0,
-          pesoSeleccionado: cantidadPeso,
-          precioSeleccionado: 0
-          // precioCompra: nuevoProducto.precioCompra
+          precioUnidad: 0,
+          pesoSeleccionado: precio?.peso ?? 0,
+          precioSeleccionado: precio?.precio ?? 0,
         }}
         validationSchema={validar}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched, isSubmitting, handleChange, values,setFormikState }) => (
-          <Form>
+        {({
+          errors,
+          touched,
+          isSubmitting,
+          handleChange,
+          values,
+          setFormikState
+        }) => (
+          <Form
+            // onSubmit={(e) => e.preventDefault()}
+            className="w-full "
+          >
             <p className="text-color_green_7 font-poppins mb-5 text-center text-lg font-light">
               Configuración de precios <br /> al minoreo
             </p>
 
-            <div className="flex  flex-col items-center w-72 mb-5 mx-auto gap-y-3">
+            <div className="flex  flex-col items-center w-full mb-5 mx-auto gap-y-3">
               <RangeSelector
                 onChange={handleChangeCantidadPrecios}
                 valor={cantidadPrecios}
                 min={1}
                 max={3}
-                titulo="Cantidad de precios"
+                titulo={`Cantidad de precios ${cantidadPrecios}`}
               />
 
-              <InputFormik
-                nombre="precioUnidad"
-                errors={errors}
-                touched={touched}
-                type="number"
-                titulo={`Precio por ${nuevoProducto.tipoVenta}`}
-                value={values.precioUnidad}
-                handleChange={handleChange}
-                handleChangePesonalizado={handleChangePesonalizado}
-              />
+              <div className="w-72">
+                <InputFormik
+                  nombre="precioUnidad"
+                  errors={errors}
+                  touched={touched}
+                  type="number"
+                  titulo={`Precio por ${nuevoProducto.tipoVenta}`}
+                  value={values.precioUnidad}
+                  handleChange={handleChange}
+                  handleChangePesonalizado={handleChangePesonalizado}
+                />
+              </div>
 
               <p className="text-color_green_7 font-poppins mb-5 text-center text-lg font-light">
                 Vista previa de producto <br /> en tienda
@@ -238,38 +354,70 @@ useEffect(() => {
                 adding={false}
               />
 
-              <InputFormik
-                nombre="pesoSeleccionado"
-                errors={errors}
-                touched={touched}
-                type="number"
-                titulo={`Peso en gramos`}
-                handleChange={handleChange}
-                value={values.pesoSeleccionado}
-              />
-              <RangeSelector
-                onChange={(evento)=>{
-                  handleChangePesoCantidad(evento, setFormikState)
-                }}
-                valor={cantidadPeso}
-                min={0}
-                max={1000}
-                multiple={5}
-                titulo={`Cantidad en gramos`}
-              />
+              {/* <div className="w-72">
+                <InputFormik
+                  nombre="pesoSeleccionado"
+                  errors={errors}
+                  touched={touched}
+                  type="number"
+                  titulo={`Peso en gramos`}
+                  handleChange={handleChange}
+                  value={values.pesoSeleccionado}
+                />
+                <RangeSelector
+                  onChange={(evento) => {
+                    handleChangePesoCantidad(evento, setFormikState)
+                  }}
+                  valor={values.pesoSeleccionado}
+                  min={0}
+                  max={1000}
+                  step={50}
+                />
 
-              <InputFormik
-                nombre="precioSeleccionado"
-                errors={errors}
-                touched={touched}
-                type="number"
-                titulo={`Precio por unidad`}
-                handleChange={handleChange}
-                value={values.precioSeleccionado}
-              />
+                <InputFormik
+                  nombre="precioSeleccionado"
+                  errors={errors}
+                  touched={touched}
+                  type="number"
+                  titulo={`Precio por unidad`}
+                  handleChange={handleChange}
+                  value={values.precioSeleccionado}
+                />
+                <RangeSelector
+                  onChange={(evento) => {
+                    handleChangePrecioSeleccionado(evento, setFormikState)
+                  }}
+                  valor={values.precioSeleccionado}
+                  min={0}
+                  max={100}
+                  step={1}
+                />
+              </div> */}
+
+              <div className=" flex items-center justify-center w-80">
+                <div>
+                <label className="text-color_green_6">Descripción del producto</label>
+                <textarea
+                  placeholder=""
+                  onChange={(e)=>{
+                    setNuevoProducto((prev)=>({
+                      ...prev,
+                      descripcion: e.target.value
+                    }))
+                  }}
+                  className=" text-color_green_7 bg-color_green_3  rounded-md p-4 text-base  outline-none sm:text-lg  appearance-none placeholder:text-green-400 w-full"
+                  // className="caret-pink-500 resize-y p-2 w-80 ring-1 ring-slate-900/10 shadow-sm rounded-md dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 h-[114px] focus:outline-none focus:ring-4 focus:ring-orange-600 focus:ring-opacity-75 text-base dark:text-white"
+
+                  
+                  rows={3}
+                ></textarea>
+                </div>
+              </div>
+
+              <TagInput setNuevoProducto={setNuevoProducto}/>
 
               <div className="flex justify-center">
-                <ButtonAction text="SIGUIENTE" type="submit" />
+                <ButtonAction text="SIGUIENTE" type="submit"  />
               </div>
             </div>
           </Form>

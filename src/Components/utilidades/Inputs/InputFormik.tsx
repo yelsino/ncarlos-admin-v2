@@ -22,7 +22,7 @@ export const InputFormik = (props:Props) => {
       <div className="flex gap-x-1">
         <label
           htmlFor="documento"
-          className={`first-letter:uppercase lowercase ${
+          className={`first-letter:uppercase lowercase truncate ${
             errors[nombre] && touched[nombre]
               ? 'text-red-500'
               : 'text-color_green_6'
