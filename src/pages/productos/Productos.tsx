@@ -1,16 +1,40 @@
 
 import { IconClean, IconSearch } from 'Components/Icons'
+import { SearchProduct } from 'Components/Organismos/SearchProduct'
 import { CategoriaContext } from 'context/categoria/CategoriaContext'
+import { ProductoContext } from 'context/productos/ProductoContext'
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { IProducto } from 'types-yola'
 
 const Productos = () => {
+  // const { categorias } = useContext(CategoriaContext)
+  const { productos, categorias, dispatchProducto } = useContext(ProductoContext)
+  
   const [textsearch, setTextSearch] = useState('')
-  const { categorias, obtenerCategorias } = useContext(CategoriaContext)
+  const [productosFiltrados, setFiltroProductos] = useState<IProducto[]>([]);
+
+  const filtrarProductos = () => {
+    const filteredProducts = productos.filter(producto => {
+      return (
+        producto.nombre.toLowerCase().includes(textsearch.toLowerCase()) ||
+        producto.categoria.nombre.toLowerCase().includes(textsearch.toLowerCase()) ||
+        producto.tags.some(tag => tag.toLowerCase().includes(textsearch.toLowerCase()))
+      );
+    });
+
+    const limitedProducts = filteredProducts.length >= 7 
+          ? filteredProducts.slice(0, 7) 
+          : filteredProducts;
+
+    setFiltroProductos(limitedProducts);
+  }
 
   useEffect(() => {
-    obtenerCategorias()
-  }, [])
+    if(textsearch){
+      filtrarProductos()
+    }
+  }, [textsearch])
 
   return (
     <div className="mx-auto max-w-sm overflow-y-auto pt-10 md:max-w-md">
@@ -49,8 +73,29 @@ const Productos = () => {
         )}
       </div>
 
-      {textsearch.length >= 1 ? (
-        <div>buscando productos</div>
+      {textsearch  
+      ? (
+        <div>
+          {
+            productosFiltrados.length >= 1 
+            ? (
+              <div>
+                {productosFiltrados.map((producto) => (
+                  <SearchProduct 
+                    key={producto._id} 
+                    producto={producto}
+                    dispatch={dispatchProducto}
+                  />
+                  ))}
+              </div>
+            )
+            : (
+              <p>Sin resultados</p>
+            )
+          }
+          
+        </div>
+        
       ) : (
         <div className="flex flex-col gap-y-10  ">
           {categorias.map((v,index) => (

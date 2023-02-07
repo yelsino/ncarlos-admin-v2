@@ -1,0 +1,27 @@
+.width-active1 {
+    animation-duration: 0.3s;
+    animation-fill-mode: backwards;
+    animation-name: wactive;
+  }
+  .width-inactive1 {
+    animation-duration: 0.3s;
+    animation-fill-mode: backwards;
+    animation-name: winactive;
+  }
+  
+  @keyframes wactive {
+    0% {
+      width: 70px;
+    }
+    100% {
+      width: 110px;
+    }
+  }
+  @keyframes winactive {
+    0% {
+      width: 110px;
+    }
+    100% {
+      width: 70px;
+    }
+  }

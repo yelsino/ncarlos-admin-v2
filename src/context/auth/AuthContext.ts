@@ -1,7 +1,7 @@
 import { Dispatch, createContext } from 'react'
 
-import { IAuth, IAuthRest, IRespuesta, IUsuario } from 'types-yola'
-import { AuthAction } from './AuthReducer'
+import { IAuth, IAuthOperario, IAuthRest, IRespuesta, IUsuario, Operario } from 'types-yola'
+import { AuthAction } from './authReducer'
 
 interface AuthContextProps {
   uid: string | null
@@ -10,9 +10,12 @@ interface AuthContextProps {
   user: IUsuario | null
   dispatchAuth: Dispatch<AuthAction>
   userLogin: (data: IAuth) => Promise<IRespuesta<IAuthRest>>
+  operarioLogin: (data: IAuthOperario) => Promise<IRespuesta<IAuthRest>>
   registrarConEmail: (data: IAuth) => Promise<IRespuesta<IAuthRest>>
   userLogout: () => void
   verificarToken: () => Promise<boolean>
+  restaurarOperario: (documento: string) => Promise<IRespuesta<IAuthRest>>
+  registrarOperario: (operario: Operario) => Promise<IRespuesta<IAuthRest>>
 }
 
 export const AuthContext = createContext<AuthContextProps>(

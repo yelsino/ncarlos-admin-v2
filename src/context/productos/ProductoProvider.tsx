@@ -1,16 +1,21 @@
+import { CategoriaContext } from 'context/categoria/CategoriaContext'
 import { fetchConToken } from 'helpers/fetch'
-import { useReducer } from 'react'
-import { IProducto, IRespuesta } from 'types-yola'
-import { ProductoContext } from './productoContext'
+import { useContext, useReducer } from 'react'
+import { ICategoria, IProducto, IRespuesta } from 'types-yola'
+import { ProductoContext } from './ProductoContext'
 import productoReducer from './productoReducer'
 
 export interface ProductoState {
-  productos: IProducto[]
+  productos: IProducto[],
+  producto: IProducto,
+  categorias: ICategoria[],
   keys_product: any
 }
 
 const INITIAL_STATE: ProductoState = {
   productos: [],
+  producto: null,
+  categorias: [],
   keys_product: {
     name: '',
     img: '',
@@ -34,10 +39,12 @@ interface Props {
 export const ProductoProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(productoReducer, INITIAL_STATE)
 
-  const obtenerProductoXcategoria = async (name: any) => {
+  const obtenerProductosPorCategoria = async (categoria: string):Promise<IRespuesta<IProducto[]>> => {
+    console.log(categoria);
+    
     const respuesta = await fetchConToken<IRespuesta<IProducto[]>>({
-      endpoint: 'productos'
-    })
+      endpoint: 'productos/categoria/' + categoria,
+    });
 
     if (respuesta.ok) {
       dispatch({
@@ -45,6 +52,8 @@ export const ProductoProvider = ({ children }: Props) => {
         payload: respuesta.data
       })
     }
+
+    return respuesta
   }
 
   const createNewProduct = async (data: any) => {
@@ -85,7 +94,7 @@ export const ProductoProvider = ({ children }: Props) => {
       value={{
         ...state,
         dispatchProducto: dispatch,
-        obtenerProductoXcategoria,
+        obtenerProductosPorCategoria,
         createNewProduct
       }}
     >

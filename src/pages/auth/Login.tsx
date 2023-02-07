@@ -9,15 +9,24 @@ import { AuthContext } from 'context/auth/AuthContext'
 import { IconCar, IconEmail, IconKey } from 'Components/Icons'
 import Titulo from 'Components/utilidades/Titulo'
 import ButtonAction from 'Components/utilidades/ButtonAction'
+import { FormikProps } from 'types-yola'
+import { TextoAccion } from 'Components/utilidades/TextoAccion'
+import { SubTitulo } from 'Components/utilidades/SubTitulo'
+import { InputFormik } from 'Components/utilidades/Inputs/InputFormik'
+
+interface FormValues {
+  documento: string;
+  password: string;
+}
 
 const Login = () => {
   const notificacionContex = useContext(NotificacionContext)
   const { setNotificacion }: any = notificacionContex
-  const { userLogin } = useContext(AuthContext)
+  const { operarioLogin } = useContext(AuthContext)
   // const navigate = useNavigate();
 
   const validar = Yup.object().shape({
-    email: Yup.string().email('formato invalido').required('es requerido'),
+    documento: Yup.string().required('es requerido'),
     password: Yup.string().required('es requerido')
   })
 
@@ -26,13 +35,14 @@ const Login = () => {
       <div className="flex  max-w-5xl items-center justify-center ">
         <Formik
           initialValues={{
-            email: 'yelsin@gmail.com',
-            password: 'yelsin312@231'
-          }}
+            documento: '77068139',
+            password: '77068139'
+          } as FormValues}
           validationSchema={validar}
           onSubmit={async (values: any) => {
-            const res = await userLogin({
-              correo: values.email,
+            
+            const res = await operarioLogin({
+              documento: values.documento,
               password: values.password
             })
             if (!res.ok) {
@@ -40,83 +50,46 @@ const Login = () => {
             }
           }}
         >
-          {({ errors, touched }: any) => (
+          {({errors, touched, isSubmitting}: FormikProps<FormValues>) => (
             <Form className="flex w-full flex-col items-center gap-5 p-10 md:w-1/2">
-              <div className=" w-24 select-none  object-contain sm:w-40 md:hidden">
+              <div className=" w-24   object-contain sm:w-40 md:hidden">
                 <img src={LOGO} alt="logo de negocios carlos" />
               </div>
-              <div className="font-poppins text-color_green_4 absolute top-5  right-5  hidden items-center justify-center gap-x-2 text-lg font-extrabold sm:top-10 sm:right-10 sm:flex">
-                <span>
-                  <IconCar />
-                </span>
-                <h2>Administrador</h2>
-              </div>
+             
+              <SubTitulo/>
               <Titulo texto="INICIAR SESIÓN" />
-              <div className=" relative w-72 sm:w-80">
-                <div className="flex gap-x-1">
-                  <label htmlFor="password" className="text-color_green_6">
-                    Email
-                  </label>
-                  {errors.email && touched.email ? (
-                    <div className="text-red-500">{errors.email}</div>
-                  ) : null}
-                </div>
-                <Field
-                  autoComplete={'off'}
-                  className=" text-color_green_7 bg-color_green_3 w-full   rounded-md p-4 text-base  outline-none sm:text-lg"
-                  name="email"
-                  id="email"
+
+              <InputFormik 
+                nombre="documento"
+                errors={errors}
+                touched={touched}
+                titulo='Documento'
+              >
+                <IconEmail />
+              </InputFormik>
+
+              <InputFormik 
+                nombre="password"
+                errors={errors}
+                touched={touched}
+                titulo='Contraseña'
+                type='password'
+              >
+                <IconKey />
+              </InputFormik>
+
+              <div className="w-72 sm:w-80 flex flex-col gap-y-2">
+                <ButtonAction type="submit" text="CONTINUAR" esperando={isSubmitting} />
+
+                <TextoAccion
+                  texto="Olvidé mis credenciales"
+                  direccion='/auth/restore'
                 />
-                <label
-                  htmlFor="email"
-                  className="text-color_green_7 absolute right-2 top-7 p-3 sm:p-4"
-                >
-                  <IconEmail />
-                </label>
-              </div>
-              <div className="relative w-72 sm:w-80">
-                <div className="flex gap-x-1">
-                  <label htmlFor="password" className="text-color_green_6">
-                    Contraseña
-                  </label>
-                  {errors.password && touched.password ? (
-                    <div className="text-red-500">{errors.password}</div>
-                  ) : null}
-                </div>
-                <div className="relative flex items-center">
-                  <Field
-                    autoComplete={'off'}
-                    name="password"
-                    id="password"
-                    type="password"
-                    className="text-color_green_7 bg-color_green_3 w-full   rounded-md p-4 text-base  outline-none sm:text-lg"
-                  />
-                  <label
-                    htmlFor="email"
-                    className="text-color_green_7 absolute right-5"
-                  >
-                    <IconKey />
-                  </label>
-                </div>
-              </div>
-
-              <div className="w-72 sm:w-80">
-                <ButtonAction type="submit" text="CONTINUAR" />
-
-                <Link
-                  to="/auth/restore"
-                  className="text-color_green_4 cursor-pointer text-center"
-                >
-                  <p className="text-color_green_6 mb-3 cursor-pointer text-center">
-                    Olvidé mis credenciales
-                  </p>
-                </Link>
-                <Link
-                  to="/auth/registro"
-                  className="text-color_green_4 cursor-pointer text-center"
-                >
-                  <p>Registrarme</p>
-                </Link>
+               
+                <TextoAccion 
+                  texto="¿No tengo una cuenta?"
+                  direccion='/auth/registro'
+                />
               </div>
             </Form>
           )}

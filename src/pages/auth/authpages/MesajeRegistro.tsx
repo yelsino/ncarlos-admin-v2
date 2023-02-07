@@ -20,9 +20,7 @@ const MensajeRegistro = () => {
       </div>
       <Titulo texto="REGISTRO ENVIADO" />
       <Parrafo
-        text="
-             Sus datos estan registrados, debe estar atento a su dispositivo movil o correo indicado para validar sus datos.
-              "
+        text="Sus datos estan registrados correctamente, su cuenta será activada por los administradores, estar atento a su dispositivo movil."
       />
 
       <div className="mt-5 w-72 sm:w-80">

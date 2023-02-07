@@ -51,6 +51,7 @@ import DetalleProducto from 'pages/productos/DetalleProducto/DetalleProducto'
 import DatosBasicosProducto from 'pages/productos/NuevoProducto/DatosBasicosProducto'
 import NombreProducto from 'pages/productos/NuevoProducto/NombreProducto'
 import PrecioProducto from 'pages/productos/NuevoProducto/PrecioProducto'
+import PrecioProductoMinoreo from 'pages/productos/NuevoProducto/PrecioProductoMinoreo'
 import ResumenProducto from 'pages/productos/NuevoProducto/ResumenProducto'
 import StockProducto from 'pages/productos/NuevoProducto/StockProducto'
 import ProductoCategoria from 'pages/productos/ProductoCategoria'
@@ -74,7 +75,7 @@ const RouterApp = () => {
   const rcliente = '/comprador/clientes/'
   const rusuario = '/comprador/usuarios/'
 
-  const { logged, verificarToken, checking }: any = useContext(AuthContext)
+  const { logged, verificarToken, checking } = useContext(AuthContext)
 
   const routes = [
     {
@@ -99,7 +100,6 @@ const RouterApp = () => {
             { path: `${rregistro}finalizado`, element: <MensajeRegistro /> }
           ]
         },
-
         {
           path: '/auth/restore',
           element: <Navigate to={`${rrestore}credenciales`} />
@@ -162,33 +162,37 @@ const RouterApp = () => {
           element: <Productos />
         },
         {
-          path: '/productos/:categoriaID',
+          path: '/productos/:categoria',
           element: <ProductoCategoria />,
           children: [
             {
-              path: '/productos/:categoriaID/nombre',
+              path: '/productos/:categoria/nombre',
               element: <NombreProducto />
             },
             {
-              path: '/productos/:categoriaID/datos-basicos',
+              path: '/productos/:categoria/datos-basicos',
               element: <DatosBasicosProducto />
             },
             {
-              path: '/productos/:categoriaID/precios',
+              path: '/productos/:categoria/precios',
               element: <PrecioProducto />
             },
             {
-              path: '/productos/:categoriaID/stock',
+              path: '/productos/:categoria/precios-minoreo',
+              element: <PrecioProductoMinoreo />
+            },
+            {
+              path: '/productos/:categoria/stock',
               element: <StockProducto />
             },
             {
-              path: '/productos/:categoriaID/resumen',
+              path: '/productos/:categoria/resumen',
               element: <ResumenProducto />
             }
           ]
         },
         {
-          path: '/productos/:categoriaID/:productoID',
+          path: '/productos/:categoria/:productoID',
           element: <DetalleProducto />
         },
 

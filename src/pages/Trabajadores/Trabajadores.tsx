@@ -1,14 +1,21 @@
 import { IconLink } from 'Components/Icons'
 import { AuthContext } from 'context/auth/AuthContext'
-import { UserContext } from 'context/user/userContext'
-import { useContext } from 'react'
+import { UserContext } from 'context/user/UserContext'
+import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // import { useOpenChat } from '../../hooks/useOpenChat'
 
 const Trabajadores = () => {
   const { uid } = useContext(AuthContext)
-  const { usuarios } = useContext(UserContext)
-  // const { usuarios } = useOpenChat()
+  const { usuarios, filtrarUsuarios } = useContext(UserContext)
+  const { roles } = useContext(UserContext)
+
+  useEffect(() => {
+    if(roles.length !== 0) {
+      const findRol = roles.find((r) => r.nombre === 'TRABAJADOR')
+      filtrarUsuarios({ roles: [findRol._id]});
+    }
+  }, [roles])
 
   return (
     <div className="mt-10 w-full px-7">

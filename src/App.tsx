@@ -9,7 +9,7 @@ import { ProductoProvider } from 'context/productos/ProductoProvider'
 import { SocketProvider } from 'context/Socket/SocketProvider'
 import RouterApp from 'router/RouterApp'
 import { NotificacionProvider } from 'context/Notificaciones/NotificacionProvider'
-import { UserProvider } from 'context/user/userProvider'
+import { UserProvider } from 'context/user/UserProvider'
 import { OrderProvider } from 'context/orders/orderProvider'
 
 function App() {
@@ -34,20 +34,20 @@ function App() {
       <NotificacionProvider>
         <ChatProvider>
           <AuthProvider>
-            <SocketProvider>
               <UserProvider>
                 <CategoriaProvider>
                   <ProductoProvider>
                     <OrderProvider>
-                      <Router>
-                        <RouterApp />
-                      </Router>
+                      <SocketProvider>
+                        <Router>
+                          <RouterApp />
+                        </Router>
+                      </SocketProvider>
                     </OrderProvider>
                   </ProductoProvider>
                 </CategoriaProvider>
               </UserProvider>
               <Notificaciones />
-            </SocketProvider>
           </AuthProvider>
         </ChatProvider>
       </NotificacionProvider>

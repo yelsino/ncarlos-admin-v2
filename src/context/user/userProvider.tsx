@@ -1,38 +1,33 @@
 import { fetchConToken } from 'helpers/fetch'
 import { useReducer } from 'react'
-import { IReclamo, IRespuesta, IUsuario } from 'types-yola'
-import { UserContext } from './userContext'
+import { IReclamo, IRespuesta, IRol, IUsuario, Operario } from 'types-yola'
+import { UserContext } from './UserContext'
 import userReducer from './userReducer'
 
 export interface UserState {
+  roles: IRol[]
   caceros: IUsuario[]
+  operarios: IUsuario[]
   casero: IUsuario | null
   getdata: boolean
   usuarios: IUsuario[]
   usuarioSeleccionado: IUsuario | null
   claims: IReclamo[]
   trabajadores: IUsuario[]
-  newWorker: any
+  nuevoOperario: Operario
 }
 
 const INITIAL_STATE: UserState = {
   caceros: [],
+  roles: [],
   casero: null,
+  operarios: [],
   getdata: false,
   usuarios: [],
   usuarioSeleccionado: null,
   claims: [],
   trabajadores: [],
-  newWorker: {
-    email: '',
-    password: '',
-    apodo: '',
-    nombres: '',
-    apellidos: '',
-    celular: '',
-    correo: '',
-    direccion: ''
-  }
+  nuevoOperario: null
 }
 
 interface Props {
@@ -62,11 +57,27 @@ export const UserProvider = ({ children }: Props) => {
 
   const obtenerUsuario = async (id: string) => {
     const resp = await fetchConToken<IRespuesta<IUsuario>>({
-      endpoint: `auth/${id}`
+      endpoint: `usuarios/${id}`
     })
     if (resp.ok) {
       dispatchUser({ type: 'SELECCIONAR_USUARIO', payload: resp.data })
     }
+  }
+
+  const filtrarUsuarios = async (options: Object):Promise<IRespuesta<IUsuario[]>> => {
+
+    const respuesta = await fetchConToken<IRespuesta<IUsuario[]>>({
+      endpoint: 'usuarios/filtrar',
+      method: 'POST',
+      body: options,
+    });
+
+    if (respuesta.ok) {
+      dispatchUser({ type: 'OBTENER_USUARIOS', payload: respuesta.data });
+    }
+
+    return respuesta;
+
   }
 
   const getClaimsAll = async () => {
@@ -90,7 +101,8 @@ export const UserProvider = ({ children }: Props) => {
         obtenerCaseros,
         obtenerUsuarios,
         obtenerUsuario,
-        getClaimsAll
+        getClaimsAll,
+        filtrarUsuarios
       }}
     >
       {children}

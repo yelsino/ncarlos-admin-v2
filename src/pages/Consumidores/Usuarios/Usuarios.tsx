@@ -1,16 +1,20 @@
 import { IconLink } from 'Components/Icons'
 import { AuthContext } from 'context/auth/AuthContext'
-import { UserContext } from 'context/user/userContext'
+import { UserContext } from 'context/user/UserContext'
 import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './usuarios.css'
 const Usuarios = () => {
-  const { usuarios, obtenerUsuarios } = useContext(UserContext)
+  const { usuarios, filtrarUsuarios } = useContext(UserContext)
   const { uid } = useContext(AuthContext)
+  const { roles } = useContext(UserContext)
 
   useEffect(() => {
-    obtenerUsuarios()
-  }, [])
+    if(roles.length !== 0) {
+      const findRol = roles.find((r) => r.nombre === 'USUARIO')
+      filtrarUsuarios({ roles: [findRol._id]});
+    }
+  }, [roles])
 
   return (
     <div className="">

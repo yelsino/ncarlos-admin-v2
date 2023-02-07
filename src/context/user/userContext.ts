@@ -1,6 +1,6 @@
 import { createContext, Dispatch } from 'react'
-import { UserState } from './userProvider'
-// import { UserState } from './UserProvider'
+import { IAuth, IRespuesta, IUsuario, Operario } from 'types-yola'
+import { UserState } from './UserProvider'
 import { UserAction } from './userReducer'
 
 interface UserContextProps extends UserState {
@@ -8,7 +8,9 @@ interface UserContextProps extends UserState {
   obtenerCaseros: () => Promise<void>
   obtenerUsuarios: () => Promise<void>
   obtenerUsuario: (id: string) => Promise<void>
+  filtrarUsuarios: (filtro: Object) => Promise<IRespuesta<IUsuario[]>>
   getClaimsAll: () => Promise<void>
+  
 }
 
 export const UserContext = createContext<UserContextProps>(

@@ -1,23 +1,59 @@
 import PuntosNext from 'Components/utilidades/PuntosNext'
-import { ProductoContext } from 'context/productos/productoContext'
+import { ProductoContext } from 'context/productos/ProductoContext'
 import { useState, useEffect, useContext } from 'react'
 import { Outlet } from 'react-router-dom'
+import { IProducto, Precio } from 'types-yola'
 import { v4 as uuidv4 } from 'uuid'
 
-const NuevoProducto = () => {
-  const { productos } = useContext(ProductoContext) as any
-  const LSproduct: any =
-    JSON.parse(localStorage.getItem('LSproduct') as any) ||
-    productos.keys_product
-  const [product, setProduct] = useState(LSproduct)
+export interface OutletProducto {
+  nuevoProducto: NuevoProducto
+  setNuevoProducto: React.Dispatch<React.SetStateAction<NuevoProducto>>
+  setPrecio: React.Dispatch<React.SetStateAction<Precio>>
+  precio: Precio
+}
 
-  useEffect(() => {
-    localStorage.setItem('LSproduct', JSON.stringify(product))
-  }, [product])
+type PartialProducto = Partial<IProducto>;
+export interface NuevoProducto extends PartialProducto {
+  imagenLocal: string;
+}
+
+const NuevoProducto = () => {
+
+  const [precio, setPrecio] = useState<Precio>(null);
+  const [nuevoProducto, setNuevoProducto] = useState<NuevoProducto>({
+    _id: uuidv4(),
+    nombre: "Mandarina Wando",
+    imagen: null,
+    descripcion: "",
+    marca: "",
+    tipoVenta: "KILOGRAMOS",
+    precioCompra: 0,
+    precioVenta: 120,
+    unidades: 0,
+    sobrante: 0,
+    cantidadPorUnidad: 60,
+    envoltorio: "COSTALES",
+    estados: "CON_STOCK",
+    visibilidad: true,
+    alertaCantidad: 0,
+    categoria: { nombre: "VEGETALES"},
+    tags: [],
+    precios: [],
+    imagenLocal: null,
+  })
+
 
   return (
     <div className="nuevo_producto  mx-auto max-w-sm overflow-y-auto pt-10">
-      <Outlet context={[product, setProduct]} />
+      {/* <pre>
+        {JSON.stringify(nuevoProducto, null, 2)}
+      </pre> */}
+      <Outlet context={{
+        nuevoProducto, 
+        setNuevoProducto,
+        setPrecio,
+        precio
+      }} />
 
       <div className="mt-3">
         <PuntosNext puntos={rutas} />
@@ -32,6 +68,7 @@ const rutas = [
   { id: uuidv4(), link: '/productos/nuevo-producto/nombre' },
   { id: uuidv4(), link: '/productos/nuevo-producto/datos-basicos' },
   { id: uuidv4(), link: '/productos/nuevo-producto/precios' },
+  { id: uuidv4(), link: '/productos/nuevo-producto/precios-minoreo' },
   { id: uuidv4(), link: '/productos/nuevo-producto/stock' },
   { id: uuidv4(), link: '/productos/nuevo-producto/resumen' }
 ]

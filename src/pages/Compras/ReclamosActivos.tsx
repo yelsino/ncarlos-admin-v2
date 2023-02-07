@@ -1,5 +1,5 @@
 import { IconLink } from 'Components/Icons'
-import { UserContext } from 'context/user/userContext'
+import { UserContext } from 'context/user/UserContext'
 import { useContext, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'

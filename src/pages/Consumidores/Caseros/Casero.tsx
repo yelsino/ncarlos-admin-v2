@@ -1,5 +1,5 @@
 import { IconBox, IconCard, IconUser } from 'Components/Icons'
-import { UserContext } from 'context/user/userContext'
+import { UserContext } from 'context/user/UserContext'
 import { useEffect, useContext } from 'react'
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
 import './casero.css'

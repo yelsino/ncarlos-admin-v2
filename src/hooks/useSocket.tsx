@@ -15,6 +15,9 @@ type SocketOn =
   | 'RETORN_LIST_SELECTED'
   | 'MENSJE_PERSONAL'
   | 'LISTA_USUARIOS'
+  | 'GET_ROLS'
+  | 'GET_ROLS'
+  | 'GET_CATEGORIES'
 
 export interface SocketProps {
   on: (action: SocketOn, callback: (data: any) => void) => void

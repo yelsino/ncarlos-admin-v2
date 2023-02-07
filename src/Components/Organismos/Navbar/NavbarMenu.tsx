@@ -9,7 +9,7 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 const NavbarMenu = () => {
-  const { logout }: any = useContext(AuthContext)
+  const { userLogout } = useContext(AuthContext)
 
   return (
     <>
@@ -40,7 +40,7 @@ const NavbarMenu = () => {
           <span>Configuración</span>
         </p>
         <button
-          onClick={() => logout()}
+          onClick={() => userLogout()}
           className="mt-1 flex cursor-pointer items-center gap-x-3 border-t py-3 px-5  font-bold hover:bg-gray-100"
         >
           <span>

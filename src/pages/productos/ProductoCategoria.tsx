@@ -1,16 +1,16 @@
 import { useParams } from 'react-router-dom'
 import NuevoProducto from './NuevoProducto'
-import ProductoVegetal from './ProductoVegetal'
+import CategoriaSeleccionada from './CategoriaSeleccionada'
 
 const ProductoCategoria = () => {
   const params = useParams()
-  const { categoriaID } = params
+  const { categoria } = params
   return (
     <>
-      {categoriaID === 'nuevo-producto' ? (
+      {categoria === 'nuevo-producto' ? (
         <NuevoProducto />
       ) : (
-        <ProductoVegetal />
+        <CategoriaSeleccionada />
       )}
     </>
   )

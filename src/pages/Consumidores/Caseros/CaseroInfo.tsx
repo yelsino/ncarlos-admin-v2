@@ -1,4 +1,4 @@
-import { UserContext } from 'context/user/userContext'
+import { UserContext } from 'context/user/UserContext'
 import { useContext } from 'react'
 
 const CaseroInfo = () => {

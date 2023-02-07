@@ -3,91 +3,112 @@ import ButtonNext from '../../../Components/utilidades/ButtonNext'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { NotificacionContext } from 'context/Notificaciones/notificacionContext'
 import { IconNext } from 'Components/Icons'
+import { OutletProducto } from '../NuevoProducto'
+import { Formik, Form } from 'formik'
+import { InputFormik } from 'Components/utilidades/Inputs/InputFormik'
+import * as Yup from 'yup'
+import ViewProduct from 'Components/Organismos/ViewProduct/ViewProduct'
+import ButtonAction from 'Components/utilidades/ButtonAction'
+interface FormValues {
+  precioVenta: number
+  cantidadPorUnidad: number
+  // precioCompra: number
+}
 
 const PrecioProducto = () => {
   const navigate = useNavigate()
-  const [product, setProduct] = useOutletContext<any>()
-  const alert = useContext(NotificacionContext) as any
+  const { nuevoProducto, setNuevoProducto } = useOutletContext<OutletProducto>()
+  const alert = useContext(NotificacionContext)
 
-  const handleSubmit = () => {
-    if (
-      product.wholesaling_price <= 0 ||
-      product.wholesaling_weight <= 0 ||
-      product.retail_price <= 0
-    ) {
-      alert.setNotificacion({
-        type: 1,
-        message: 'Los datos deben ser mayor a cero'
-      })
-      return
-    }
-    navigate('/productos/nuevo-producto/stock')
+  const handleSubmit = (values:FormValues) => {
+    setNuevoProducto((prev) => ({
+      ...prev, 
+      precioVenta: values?.precioVenta,
+      cantidadPorUnidad: values?.cantidadPorUnidad,
+    }))
+    navigate('/productos/nuevo-producto/precios-minoreo')
   }
+
+  const validar = Yup.object().shape({
+    precioVenta: Yup
+      .number()
+      .moreThan(0, 'mayor a 0')
+      .lessThan(5000, 'menor a 5000')
+      .required('es requerido'),
+      cantidadPorUnidad: Yup
+      .number()
+      .moreThan(0, 'mayor a 0')
+      .lessThan(5000, 'menor a 5000')
+      .required('es requerido'),
+      
+    // precioCompra: Yup.string().required('es requerido')
+  })
 
   return (
     <>
-      <p className="text-color_green_7 font-poppins text-center text-2xl font-semibold">
-        {product.name}
-      </p>
-      <div className="my-5  flex justify-between ">
-        <div className="flex items-center gap-x-5">
-          <div className="bg-color_green_3 h-20 w-20 rounded-lg">
-            <img alt="img abarrote" src={product.img_local} />
-          </div>
-          <p className="text-color_green_6 text-lg">
-            Venta por {product.wholesale_form} y {product.form_retail}
-          </p>
-        </div>
-        <div className="flex items-center"></div>
-      </div>
-      <p className="text-color_green_7 font-poppins mb-5 text-center text-lg font-light">
-        Configuración de precios
-      </p>
-      <div className="flex w-full flex-col items-center ">
-        <div className="w-full">
-          <p className="text-color_green_6 mb-1 text-lg">
-            Precio por {product.wholesale_form}
-          </p>
-          <input
-            value={product.wholesaling_price}
-            type="number"
-            onChange={(e) =>
-              setProduct({ ...product, wholesaling_price: e.target.value })
-            }
-            className="text-color_green_7 bg-color_green_3 mb-5   w-full rounded-xl p-4  text-base outline-none sm:text-lg"
-          />
-        </div>
-        <div className="w-full">
-          <p className="text-color_green_6 mb-1 text-lg">
-            {product.form_retail} por {product.wholesale_form}
-          </p>
-          <input
-            onChange={(e) =>
-              setProduct({ ...product, wholesaling_weight: e.target.value })
-            }
-            type="number"
-            value={product.wholesaling_weight}
-            className="text-color_green_7 bg-color_green_3 mb-5   w-full rounded-xl p-4  text-base outline-none sm:text-lg"
-          />
-        </div>
-        <div className="mb-5 w-full">
-          <p className="text-color_green_6 mb-1 text-lg">
-            Precio por {product.form_retail}
-          </p>
-          <input
-            value={product.retail_price}
-            type="number"
-            onChange={(e) =>
-              setProduct({ ...product, retail_price: e.target.value })
-            }
-            className="text-color_green_7 bg-color_green_3 mb-5   w-full rounded-xl p-4  text-base outline-none sm:text-lg"
-          />
-        </div>
+      <Formik<FormValues>
+        initialValues={{
+          precioVenta: nuevoProducto.precioVenta,
+          cantidadPorUnidad: nuevoProducto.cantidadPorUnidad
+          // precioCompra: nuevoProducto.precioCompra
+        }}
+        validationSchema={validar}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched, isSubmitting, handleChange, values }) => (
+          <Form>
+            <div className="flex justify-center flex-col items-center gap-y-3">
+              <p className="font-poppins text-xl font-semibold">
+                {nuevoProducto.nombre}
+              </p>
+              <div className="mb-3 flex h-[130px] w-[140px] items-center justify-center rounded-tl-[50px] rounded-tr-[10px] rounded-bl-[20px] rounded-br-[50px] bg-emerald-300 bg-opacity-50 ">
+                <img
+                  src={nuevoProducto.imagenLocal}
+                  className=" mb-3 scale-125"
+                />
+              </div>
 
-        <div className="flex justify-center">
-          <ButtonNext onClick={handleSubmit} text={<IconNext />} />
-        </div>
-      </div>
+              <p className="text-color_green_6 text-lg text-center">
+                Este producto se vende por{' '}
+                {nuevoProducto.envoltorio.toLocaleLowerCase()} y{' '}
+                {nuevoProducto.tipoVenta.toLocaleLowerCase()}
+              </p>
+            </div>
+
+            <p className="text-color_green_7 font-poppins mb-5 text-center text-lg font-light">
+              Configuración de precios <br /> al mayoreo
+            </p>
+            <div className="flex  flex-col items-center w-72 mb-5 mx-auto gap-y-3">
+              <InputFormik
+                nombre="precioVenta"
+                errors={errors}
+                type="number"
+                touched={touched}
+                titulo={`Precio por ${nuevoProducto.envoltorio.toLocaleLowerCase()}`}
+                value={values.precioVenta}
+                handleChange={handleChange}
+              />
+
+              <InputFormik
+                nombre="cantidadPorUnidad"
+                errors={errors}
+                touched={touched}
+                type="number"
+                titulo={`${nuevoProducto.tipoVenta} por ${nuevoProducto.envoltorio}`}
+                value={values.cantidadPorUnidad}
+                handleChange={handleChange}
+              />
+
+              <div className="flex justify-center">
+                <ButtonAction
+                  text='SIGUIENTE'
+                  type='submit'
+                />
+              </div>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </>
   )
 }
