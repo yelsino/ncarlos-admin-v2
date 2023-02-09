@@ -56,9 +56,9 @@ const StockProducto = () => {
     <>
       <Formik<FormValues>
         initialValues={{
-          unidades: 0,
-          sobrante: 0,
-          alertaCantidad: 0
+          unidades: nuevoProducto.unidades,
+          sobrante: nuevoProducto.sobrante,
+          alertaCantidad: nuevoProducto.alertaCantidad
         }}
         onSubmit={handleSubmit}
         validationSchema={validar}

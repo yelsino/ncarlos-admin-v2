@@ -1,15 +1,13 @@
 import { useContext } from 'react'
-import IMGDEVELOPER from '../../assets/img/developer.svg'
-import LOGO from '../../assets/img/logo.png'
-import { Field, Form, Formik } from 'formik'
+import IMGDEVELOPER from 'assets/img/developer.svg'
+import LOGO from 'assets/img/logo.png'
+import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import { Link } from 'react-router-dom'
 import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
 import { AuthContext } from 'context/auth/AuthContext'
-import { IconCar, IconEmail, IconKey } from 'Components/Icons'
+import { IconEmail, IconKey } from 'Components/Icons'
 import Titulo from 'Components/utilidades/Titulo'
 import ButtonAction from 'Components/utilidades/ButtonAction'
-import { FormikProps } from 'types-yola'
 import { TextoAccion } from 'Components/utilidades/TextoAccion'
 import { SubTitulo } from 'Components/utilidades/SubTitulo'
 import { InputFormik } from 'Components/utilidades/Inputs/InputFormik'
@@ -32,7 +30,7 @@ const Login = () => {
 
   return (
     <div className="bg-color_green_1 flex h-full items-center justify-center">
-      <div className="flex  max-w-5xl items-center justify-center ">
+      <div className="flex mx-auto items-center justify-center ">
         <Formik
           initialValues={{
             documento: '77068139',
@@ -51,14 +49,15 @@ const Login = () => {
           }}
         >
           {({errors, touched, isSubmitting, handleChange}) => (
-            <Form className="flex w-full flex-col items-center gap-5 p-10 md:w-1/2">
-              <div className=" w-24   object-contain sm:w-40 md:hidden">
+            <Form className="flex w-full flex-col items-center gap-5  md:w-1/2  mx-auto ">
+              <div className=" w-24  object-contain sm:w-40 md:hidden">
                 <img src={LOGO} alt="logo de negocios carlos" />
               </div>
              
               <SubTitulo/>
               <Titulo texto="INICIAR SESIÓN" />
 
+              <div className='md:w-8/12 w-full'>
               <InputFormik 
                 nombre="documento"
                 errors={errors}
@@ -79,6 +78,7 @@ const Login = () => {
               >
                 <IconKey />
               </InputFormik>
+              </div>
 
               <div className="w-72 sm:w-80 flex flex-col gap-y-2">
                 <ButtonAction type="submit" text="CONTINUAR" esperando={isSubmitting} />

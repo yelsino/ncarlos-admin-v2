@@ -1,11 +1,12 @@
 import { AuthContext } from 'context/auth/AuthContext'
 import { ChatContext } from 'context/chat/chatContext'
+import { OrderContext } from 'context/orders/OrderContext'
 import { ProductoContext } from 'context/productos/ProductoContext'
 import { UserContext } from 'context/user/UserContext'
 import { scrollBottomAnimated } from 'helpers/scrollToBottom'
 import { useSocket } from 'hooks/useSocket'
 import { useContext, useEffect } from 'react'
-import { ICategoria, IProducto, IRespuesta, IRol, IUsuario } from 'types-yola'
+import { ICategoria, IPedido, IProducto, IRespuesta, IRol, IUsuario } from 'types-yola'
 import { SocketContext } from './SocketContext'
 
 interface Props {
@@ -22,6 +23,7 @@ export const SocketProvider = ({ children }: Props) => {
   const { dispatch }: any = useContext(ChatContext)
   const { dispatchUser } = useContext(UserContext)
   const { dispatchProducto } = useContext(ProductoContext)
+  const { dispatchOrder } = useContext(OrderContext)
 
   useEffect(() => {
     if (logged) {
@@ -67,6 +69,15 @@ export const SocketProvider = ({ children }: Props) => {
       
       dispatchProducto({
         type: 'OBTENER_CATEGORIAS',
+        payload: res.data
+      })
+    })
+
+    socket?.on('GET_ALL_ORDERS', (res: IRespuesta<IPedido[]>) => {
+      console.log(res);
+      
+      dispatchOrder({
+        type: 'GET_ORDERS',
         payload: res.data
       })
     })

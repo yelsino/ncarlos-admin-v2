@@ -9,6 +9,7 @@ const ResumenProducto = () => {
   const {nuevoProducto, setNuevoProducto} = useOutletContext<OutletProducto>();
   const navigate = useNavigate()
   const {setNotificacion} = useContext(NotificacionContext)
+  const {createNewProduct} = useContext(ProductoContext)
 
   const sendNewProduct = async () => {
     navigate(`/productos/${nuevoProducto.categoria.nombre}`)

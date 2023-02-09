@@ -49,10 +49,14 @@ const Clientes = () => {
             >
               <div className="flex w-8/12 items-center gap-x-3 sm:w-6/12 ">
                 <img
-                  alt="img casero"
-                  className="  h-10 w-10 rounded-full object-cover"
-                  src={v.foto}
-                />
+                    alt="img trabajadores"
+                    className="w-10 h-10   rounded-full object-cover"
+                    onError={(error)=>{
+                      error.currentTarget.src =
+                        'https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/48/null/external-user-user-tanah-basah-basic-outline-tanah-basah-4.png'
+                    }}
+                    src={v.foto}
+                  />
                 <p className="truncate capitalize">{` ${v.nombres} ${v.apellidos}`}</p>
               </div>
 

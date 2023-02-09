@@ -5,16 +5,17 @@ import { NuevoProducto } from "pages/productos/NuevoProducto";
 
 interface Props {
   setNuevoProducto: (value: React.SetStateAction<NuevoProducto>) => void;
+  tags: string[];
 }
 
-const TagInput = ({setNuevoProducto}: Props) => {
-  const [tags, setTags] = useState([]);
+const TagInput = ({setNuevoProducto, tags}: Props) => {
+  // const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
 
   const handleKeyPress = (event) => {
     event.stopPropagation();
     if (event.key === "Enter" && newTag !== "") {
-      setTags([...tags, newTag]);
+      // setTags([...tags, newTag]);
       setNuevoProducto((prev) => ({
         ...prev,
         tags: [...tags, newTag],
@@ -26,7 +27,7 @@ const TagInput = ({setNuevoProducto}: Props) => {
   const handleAddition = (event) => {
     event.stopPropagation();
     if (newTag !== "") {
-      setTags([...tags, newTag]);
+      // setTags([...tags, newTag]);
       setNuevoProducto((prev) => ({
         ...prev,
         tags: [...tags, newTag],
@@ -42,7 +43,7 @@ const TagInput = ({setNuevoProducto}: Props) => {
   const handleDelete = (index) => {
     const newTags = [...tags];
     newTags.splice(index, 1);
-    setTags(newTags);
+    // setTags(newTags);
     setNuevoProducto((prev) => ({
       ...prev,
       palabrasClaves: newTags,

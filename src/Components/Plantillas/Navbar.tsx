@@ -1,4 +1,4 @@
-import { IconNotificacion, IconSearch } from 'Components/Icons'
+import { IconNotificacion, IconOutUser, IconSearch, IconUser } from 'Components/Icons'
 import NavbarMenu from 'Components/Organismos/Navbar/NavbarMenu'
 import { AuthContext } from 'context/auth/AuthContext'
 import { useContext } from 'react'
@@ -31,11 +31,28 @@ const Navbar = () => {
           <IconNotificacion />
         </span>
         <div className="navbar_perfil  relative  py-2 pl-3">
-          <img
+          {
+            user.foto 
+            ? (
+              <img
+                src={user?.foto}
+                alt="img user"
+                className="h-10 w-10 rounded-full object-cover"
+              />
+            )
+            : (
+              <IconOutUser stile='w-7 h-7' />
+            )
+          }
+          {/* <img
             src={user?.foto}
             alt="img user"
             className="h-10 w-10 rounded-full object-cover"
-          />
+            onError={(e:any)=>{
+              // genera una imagen aleatoria de internet 
+              e.target.src =  `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`
+            }}
+          /> */}
           <div className="navbar_menu  absolute -right-3  top-14  ">
             <NavbarMenu />
           </div>

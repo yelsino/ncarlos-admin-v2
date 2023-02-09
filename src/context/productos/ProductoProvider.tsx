@@ -1,5 +1,6 @@
 import { CategoriaContext } from 'context/categoria/CategoriaContext'
 import { fetchConToken } from 'helpers/fetch'
+import { NuevoProducto } from 'pages/productos/NuevoProducto'
 import { useContext, useReducer } from 'react'
 import { ICategoria, IProducto, IRespuesta } from 'types-yola'
 import { ProductoContext } from './ProductoContext'
@@ -9,27 +10,13 @@ export interface ProductoState {
   productos: IProducto[],
   producto: IProducto,
   categorias: ICategoria[],
-  keys_product: any
 }
 
 const INITIAL_STATE: ProductoState = {
   productos: [],
   producto: null,
   categorias: [],
-  keys_product: {
-    name: '',
-    img: '',
-    img_local: '',
-    category: 'frutas',
-    wholesale_form: 'costales', // forma de venta al por mayoreo
-    form_retail: 'kilos', // forma de venta al por minoreo
-    wholesaling_price: 0, // precio al por mayoreo
-    wholesaling_weight: 0, // peso del producto
-    retail_price: 0, // precio al minudeo
-    quantity: 0, // cantidad de paquetes
-    spare: 0, // cantidad sobrante
-    alert_quantity: 0 // cantidad minima para alertar
-  }
+  
 }
 
 interface Props {
@@ -37,6 +24,7 @@ interface Props {
 }
 
 export const ProductoProvider = ({ children }: Props) => {
+  
   const [state, dispatch] = useReducer(productoReducer, INITIAL_STATE)
 
   const obtenerProductosPorCategoria = async (categoria: string):Promise<IRespuesta<IProducto[]>> => {
@@ -56,31 +44,33 @@ export const ProductoProvider = ({ children }: Props) => {
     return respuesta
   }
 
-  const createNewProduct = async (data: any) => {
+  const crearNuevoProducto = async (data: NuevoProducto) => {
     console.log(data)
-    const formProduct = new FormData()
-    formProduct.append('name', data.name)
-    formProduct.append('img', data.img)
-    formProduct.append('category', data.category)
-    formProduct.append('wholesale_form', data.wholesale_form)
-    formProduct.append('form_retail', data.form_retail)
-    formProduct.append(
-      'wholesaling_price',
-      Number(data.wholesaling_price) as any
-    )
-    formProduct.append(
-      'wholesaling_weight',
-      Number(data.wholesaling_weight) as any
-    )
-    formProduct.append('retail_price', Number(data.retail_price) as any)
-    formProduct.append('quantity', Number(data.quantity) as any)
-    formProduct.append('spare', Number(data.spare) as any)
-    formProduct.append('alert_quantity', Number(data.alert_quantity) as any)
+    const formProducto = new FormData()
+    formProducto.append('nombre', data.nombre)
+    formProducto.append('tipoVenta', data.tipoVenta)
+    formProducto.append('envoltorio', data.envoltorio)
+    formProducto.append('unidades', data.unidades.toString())
+    formProducto.append('cantidadPorUnidad', data.cantidadPorUnidad.toString())
+    formProducto.append('precioCompra', data.precioCompra.toString())
+    formProducto.append('precioVenta', data.precioVenta.toString())
+    formProducto.append('alertaCantidad', data.alertaCantidad.toString())
+    formProducto.append('sobrante', data.sobrante.toString())
+    formProducto.append('categoria', data.categoria.nombre)
+    formProducto.append('descripcion', data.descripcion)
+    formProducto.append('estados', data.estados)
+    formProducto.append('marca', data.marca)
+    data.tags.forEach(tag => {
+      formProducto.append('tags', tag)
+    })
+    formProducto.append('visibilidad', data.visibilidad.toString())
+    formProducto.append('precios', JSON.stringify(data.precios))
+    formProducto.append('imagen', data.imagen)
 
     try {
       const resp = await fetchConToken({
         endpoint: 'products',
-        body: formProduct,
+        body: formProducto,
         method: 'POST'
       })
       if (resp) return { ok: true }
@@ -95,7 +85,7 @@ export const ProductoProvider = ({ children }: Props) => {
         ...state,
         dispatchProducto: dispatch,
         obtenerProductosPorCategoria,
-        createNewProduct
+        createNewProduct: crearNuevoProducto
       }}
     >
       {children}

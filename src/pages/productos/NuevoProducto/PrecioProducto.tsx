@@ -57,6 +57,7 @@ const PrecioProducto = () => {
       >
         {({ errors, touched, isSubmitting, handleChange, values }) => (
           <Form>
+            
             <div className="flex justify-center flex-col items-center gap-y-3">
               <p className="font-poppins text-xl font-semibold">
                 {nuevoProducto.nombre}

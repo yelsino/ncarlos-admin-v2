@@ -78,7 +78,7 @@ const PrecioProductoMinoreo = () => {
     navigate('/productos/nuevo-producto/stock')
   }
 
-  const [ cantidadPrecios, setCantidadPrecios ] = useState(3);
+  const [ cantidadPrecios, setCantidadPrecios ] = useState(nuevoProducto.precios.length ?? 3);
   const [ pesoSeleccionado, setPesoSeleccionado ] = useState(0);
   const [posicionActual, setPosicionActual] = useState(0)
 
@@ -295,8 +295,8 @@ useEffect(() => {
     <>
       <Formik<FormValues>
         initialValues={{
-          cantidadPrecios: 3,
-          precioUnidad: 0,
+          cantidadPrecios: cantidadPrecios ?? 3,
+          precioUnidad: nuevoProducto.precioUnidad ?? 0,
           pesoSeleccionado: precio?.peso ?? 0,
           precioSeleccionado: precio?.precio ?? 0,
         }}
@@ -315,6 +315,9 @@ useEffect(() => {
             // onSubmit={(e) => e.preventDefault()}
             className="w-full "
           >
+            <pre>
+              {JSON.stringify(nuevoProducto, null, 2)}
+            </pre>
             <p className="text-color_green_7 font-poppins mb-5 text-center text-lg font-light">
               Configuración de precios <br /> al minoreo
             </p>
@@ -398,6 +401,7 @@ useEffect(() => {
                 <div>
                 <label className="text-color_green_6">Descripción del producto</label>
                 <textarea
+                  value={nuevoProducto.descripcion}
                   placeholder=""
                   onChange={(e)=>{
                     setNuevoProducto((prev)=>({
@@ -414,7 +418,7 @@ useEffect(() => {
                 </div>
               </div>
 
-              <TagInput setNuevoProducto={setNuevoProducto}/>
+              <TagInput setNuevoProducto={setNuevoProducto} tags={nuevoProducto.tags}/>
 
               <div className="flex justify-center">
                 <ButtonAction text="SIGUIENTE" type="submit"  />

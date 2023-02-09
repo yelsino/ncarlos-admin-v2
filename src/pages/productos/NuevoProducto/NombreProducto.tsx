@@ -109,13 +109,21 @@ const NombreProducto = () => {
                     />
               </div>
 
-              <div className="my-10 w-64">
-                <img
+
+          <div className="flex justify-center flex-col items-center gap-y-3 pt-5">
+              
+              <div className="mb-3 flex h-[130px] w-[140px] items-center justify-center rounded-tl-[50px] rounded-tr-[10px] rounded-bl-[20px] rounded-br-[50px] bg-emerald-300 bg-opacity-50 ">
+
+              <img
+                className='mb-3 scale-125'
                   src={
                     nuevoProducto.imagenLocal ? nuevoProducto.imagenLocal : IMG
                   }
                 />
               </div>
+
+            
+            </div>
               
               <div className="w-72 mb-5">
                 <InputFormik

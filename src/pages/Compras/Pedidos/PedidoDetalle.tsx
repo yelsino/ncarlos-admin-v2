@@ -1,43 +1,36 @@
 import { useLocation } from 'react-router-dom'
-// import { formatDate } from '../../../Utils/formatDate'
 import moment from 'moment'
 import 'moment/locale/es'
+import { useContext } from 'react'
+import { OrderContext } from 'context/orders/OrderContext'
 moment.locale('es')
 
 const PedidoDetalle = () => {
-  const {
-    state: { order }
-  } = useLocation()
 
-  const {
-    state,
-    code,
-    numberOrder,
-    client: { names, surnames },
-    list: { products }
-  } = order
+  const { orden } = useContext(OrderContext)
+
 
   // number of items of a arreglo
 
   return (
     <div className="detelle_pedido overflow-y-auto">
       <h2 className=" bg-color_green_3 text-color_green_7  rounded-lg py-4 text-center text-lg font-semibold tracking-widest">
-        Orden #{numberOrder} - {state}
+        Orden #{orden.numero} - {orden.estado}
       </h2>
 
       <p className="text-color_green_7 mt-4 text-center text-lg capitalize">
-        {names} {surnames}
+        {orden.usuario.nombres} {orden.usuario.apellidos}
       </p>
       <div className=" text-color_green_6 mt-7 overflow-y-auto">
         <p className="flex  justify-between px-5">
           <span className="  ">Cantidad productos</span>
-          <span className="text-color_green_7    ">{products.length}</span>
+          <span className="text-color_green_7    ">{orden.lista.itemsLista.length}</span>
         </p>
         <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border" />
 
         <p className="text-color_green_6  flex justify-between px-5">
           <span className=" ">Codigo compra</span>
-          <span className="text-color_green_7 uppercase ">{code}</span>
+          <span className="text-color_green_7 uppercase ">{orden.codigo}</span>
         </p>
         <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border" />
 
@@ -55,7 +48,7 @@ const PedidoDetalle = () => {
 
         <p className="flex justify-between  px-5">
           <span className="  ">Estado de la compra</span>
-          <span className="text-color_green_7  ">{state}</span>
+          <span className="text-color_green_7  ">{orden.estado}</span>
         </p>
         <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border" />
       </div>

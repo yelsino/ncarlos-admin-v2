@@ -1,6 +1,9 @@
+import { OrderContext } from 'context/orders/OrderContext'
+import { useContext } from 'react'
+
 const PedidoTracking = () => {
-  // const { state: { order } } = useLocation();
-  // console.log(order);
+
+  const { orden } = useContext(OrderContext)
 
   return (
     <div className="tracking_pedido  flex  gap-x-5 overflow-y-auto">

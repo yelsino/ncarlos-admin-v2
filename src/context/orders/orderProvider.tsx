@@ -6,10 +6,12 @@ import orderReducer from './orderReducer'
 
 export interface OrderState {
   orders: IPedido[]
+  orden: IPedido
 }
 
 const INITIAL_STATE: OrderState = {
-  orders: []
+  orders: [],
+  orden: null
 }
 
 interface Props {
