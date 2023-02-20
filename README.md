@@ -1,22 +1,5 @@
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-<!-- desplegar a firese -->
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -28,12 +11,12 @@
     <img src="https://res.cloudinary.com/dwkfj5sxb/image/upload/v1656606163/CLASICO/favicon_j4mpbw.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">YOLA APP</h3>
+  <h3 align="center">ADDMIN CARLOS</h3>
 
   <p align="center">
-    Una aplicación web pensada en móvil para gestionar tus tareas cotidianas.
+    Una aplicación web pensada en móvil para gestionar pedidos de la tienda yola.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Visitalo aqui!</strong></a>
+    <a href="https://admin-ncarlos.web.app"><strong>Visitalo aqui!</strong></a>
     <br />
     <br />
    
@@ -47,7 +30,7 @@
 [![Product Name Screen Shot][product-screenshot]](https://comsatel-tasks.web.app/)
 
 
-Esta aplicación web está hecha para gestionar tareas diarias.
+Esta aplicacion se encarga de atender todos los pedidos que se realizan por la aplicacion externa yola app, el cual permite realizar pedidos por listas de productos.
 
 Requerimientos funcionales del proyecto:
 * La aplicacion  permite registrar tareas
@@ -60,10 +43,6 @@ Requerimientos no funcionales del proyecto:
 * Todas las tareas creadas se archivan a las 12:00 pm
 * Todas las tareas incompeltas se archivan al final del dia
 * Los colores de la aplicacion solo son 4
-
-
-
-<!-- Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template! -->
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
