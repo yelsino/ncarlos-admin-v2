@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
+<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
 
@@ -132,10 +132,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTACT -->
 ## Contact
 
-Yelsiño - [gmail](yelsino321@gmail.com) - email@example.com
+Yelsiño - [gmail](yelsinocaso@gmail.com) - yelsinocaso@gmail.com
 
-Repositorio Link: [https://github.com/yelsino/comsatel-todo.git](https://github.com/yelsino/comsatel-todo.git)
-Proyecto Link: [https://comsatel-tasks.web.app](https://comsatel-tasks.web.app/)
+Repositorio Link: [https://github.com/yelsino/ncarlos-admin-v2](https://github.com/yelsino/ncarlos-admin-v2)
+Proyecto Link: [https://admin-ncarlos.web.app/](https://admin-ncarlos.web.app/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
