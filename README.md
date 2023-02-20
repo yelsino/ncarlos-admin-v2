@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://comsatel-tasks.web.app/" target="_blank">
+  <a href="https://admin-ncarlos.web.app/" target="_blank">
     <img src="https://res.cloudinary.com/dwkfj5sxb/image/upload/v1656606163/CLASICO/favicon_j4mpbw.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -16,7 +16,7 @@
   <p align="center">
     Una aplicación web pensada en móvil para gestionar pedidos de la tienda yola.
     <br />
-    <a href="https://admin-ncarlos.web.app"><strong>Visitalo aqui!</strong></a>
+    <a href="https://admin-ncarlos.web.app/"><strong>Visitalo aqui!</strong></a>
     <br />
     <br />
    
@@ -157,4 +157,4 @@ Gracias a estas librerias pude construir este proyecto!
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [linkedin-url]: https://www.linkedin.com/in/yelsin-caso-alanya-511824210/
-[product-screenshot]: https://res.cloudinary.com/dwkfj5sxb/image/upload/v1657160765/SCREEN-MY-APPS/yola-app-tienda_ev4fgd.png
+[product-screenshot]: https://res.cloudinary.com/dwkfj5sxb/image/upload/v1676909763/SCREEN-MY-APPS/admin-ns-carlos_sdu3nx.png
