@@ -6,6 +6,6 @@ export function actualizaCacheDinamico(dynamicCache, req, res) {
       return res.clone()
     })
   } else {
-    return res
+      return res
   }
 }
