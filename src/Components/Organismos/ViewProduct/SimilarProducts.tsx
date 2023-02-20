@@ -17,17 +17,17 @@ const SimilarProducts = ({ similarProducts }) => {
             layoutId={p}
             key={p._id}
             onClick={() => {
-              
+
               const findProduct = productos.find((v) => v.nombre === p.name)
-              
-              if (!findProduct) 
+
+              if (!findProduct)
               return console.log('Producto no encontrado');
-              
+
               dispatchProducto({
                 type: 'SELECCIONAR_PRODUCTO',
                 payload: findProduct
               })
-             
+
             }}
             className=" flex h-[75px] w-[192px] cursor-pointer  items-center  justify-center  "
           >
@@ -45,4 +45,3 @@ const SimilarProducts = ({ similarProducts }) => {
 }
 
 export default SimilarProducts
-

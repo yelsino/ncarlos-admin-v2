@@ -22,7 +22,7 @@ const PrecioProducto = () => {
 
   const handleSubmit = (values:FormValues) => {
     setNuevoProducto((prev) => ({
-      ...prev, 
+      ...prev,
       precioVenta: values?.precioVenta,
       cantidadPorUnidad: values?.cantidadPorUnidad,
     }))
@@ -40,7 +40,7 @@ const PrecioProducto = () => {
       .moreThan(0, 'mayor a 0')
       .lessThan(5000, 'menor a 5000')
       .required('es requerido'),
-      
+
     // precioCompra: Yup.string().required('es requerido')
   })
 
@@ -57,7 +57,7 @@ const PrecioProducto = () => {
       >
         {({ errors, touched, isSubmitting, handleChange, values }) => (
           <Form>
-            
+
             <div className="flex justify-center flex-col items-center gap-y-3">
               <p className="font-poppins text-xl font-semibold">
                 {nuevoProducto.nombre}

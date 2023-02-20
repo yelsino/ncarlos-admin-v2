@@ -38,7 +38,7 @@ const Login = () => {
           } as FormValues}
           validationSchema={validar}
           onSubmit={async (values: any) => {
-            
+
             const res = await operarioLogin({
               documento: values.documento,
               password: values.password
@@ -53,12 +53,12 @@ const Login = () => {
               <div className=" w-24  object-contain sm:w-40 md:hidden">
                 <img src={LOGO} alt="logo de negocios carlos" />
               </div>
-             
+
               <SubTitulo/>
               <Titulo texto="INICIAR SESIÓN" />
 
               <div className='md:w-8/12 w-full'>
-              <InputFormik 
+              <InputFormik
                 nombre="documento"
                 errors={errors}
                 touched={touched}
@@ -69,7 +69,7 @@ const Login = () => {
                 <IconEmail />
               </InputFormik>
 
-              <InputFormik 
+              <InputFormik
                 nombre="password"
                 errors={errors}
                 touched={touched}
@@ -89,8 +89,8 @@ const Login = () => {
                   texto="Olvidé mis credenciales"
                   direccion='/auth/restore'
                 />
-               
-                <TextoAccion 
+
+                <TextoAccion
                   texto="¿No tengo una cuenta?"
                   direccion='/auth/registro'
                 />

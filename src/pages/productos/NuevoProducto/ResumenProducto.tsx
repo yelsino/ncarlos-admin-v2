@@ -28,7 +28,7 @@ const ResumenProducto = () => {
       </div>
 
       <div className="w-full">
-        
+
 
         <p className="text-color_green_7 font-poppins mb-7 text-center text-lg font-light">
           Datos del producto
@@ -96,7 +96,7 @@ const ResumenProducto = () => {
             </span>
           </p>
 
-         
+
         </div>
       </div>
 
@@ -110,7 +110,7 @@ const ResumenProducto = () => {
            <p className="flex  justify-between px-5">
             <span className="  ">{precio.textoPesoA}</span>
             <span className="text-color_green_7    ">
-              S/. {precio.precio} 
+              S/. {precio.precio}
             </span>
           </p>
           <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />

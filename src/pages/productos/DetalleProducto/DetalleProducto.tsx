@@ -15,8 +15,8 @@ const DetalleProducto = () => {
       navigate('/productos/' + categoria)
     }
   }, [producto])
-  
-  
+
+
   return (
     <>
       {producto && (
@@ -29,49 +29,49 @@ const DetalleProducto = () => {
             <div className="mx-auto w-28">
               <img src={producto.imagen} />
             </div>
-  
+
             <div className="  text-color_green_6 mt-3 w-full ">
               <p className="flex  justify-between px-5">
                 <span className="  ">Categoria</span>
                 <span className="text-color_green_7">{producto.categoria.nombre}</span>
               </p>
               <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
-  
+
               <p className="flex justify-between  px-5">
                 <span className="  ">Cantidad por {producto.envoltorio.toLowerCase()}</span>
                 <span className="text-color_green_7  ">{producto.cantidadPorUnidad} {producto.tipoVenta.toLocaleLowerCase()}</span>
               </p>
-  
+
               <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
-  
+
               <p className="flex justify-between  px-5">
                 <span className="  ">Precio por {producto.envoltorio.toLocaleLowerCase()}</span>
                 <span className="text-color_green_7  ">S/. {producto.precioVenta}</span>
               </p>
-  
+
               <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
-  
+
               <p className="flex justify-between  px-5">
                 <span className="  ">Precio por {producto.tipoVenta.toLocaleLowerCase()}</span>
                 <span className="text-color_green_7  ">S/. {producto.precios[0].precio}</span>
               </p>
-  
+
               <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
-  
+
               <p className="flex justify-between  px-5">
                 <span className="  ">Total en {producto.envoltorio.toLowerCase()}</span>
                 <span className="text-color_green_7  ">{producto.unidades} {producto.envoltorio.toLocaleLowerCase()} {producto.sobrante} {producto.tipoVenta.toLowerCase()}</span>
               </p>
-  
+
               <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
-  
+
               <p className="flex justify-between  px-5">
                 <span className="  ">Total en {producto.tipoVenta.toLocaleLowerCase()}</span>
                 <span className="text-color_green_7  ">{producto.cantidadPorUnidad * producto.unidades} {producto.tipoVenta.toLocaleLowerCase()}</span>
               </p>
-  
+
               <span className="bg-color_green_4 border-color_green_4 my-3 block w-full border-b" />
-  
+
               <p className="flex justify-between  px-5">
                 <span className="  ">Alertarme en</span>
                 <span className="text-color_green_7">{producto.alertaCantidad} {producto.tipoVenta.toLowerCase()}</span>
@@ -90,7 +90,7 @@ const DetalleProducto = () => {
 
       )}
     </>
-    
+
   )
 }
 

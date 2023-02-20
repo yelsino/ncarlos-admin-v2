@@ -10,7 +10,7 @@ interface UserContextProps extends UserState {
   obtenerUsuario: (id: string) => Promise<void>
   filtrarUsuarios: (filtro: Object) => Promise<IRespuesta<IUsuario[]>>
   getClaimsAll: () => Promise<void>
-  
+
 }
 
 export const UserContext = createContext<UserContextProps>(

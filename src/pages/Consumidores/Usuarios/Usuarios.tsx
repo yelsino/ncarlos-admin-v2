@@ -61,7 +61,7 @@ const Usuarios = () => {
                   />
               </div>
 
-               
+
                 <p className="truncate capitalize">{` ${v.nombres} ${v.apellidos}`}</p>
               </div>
 

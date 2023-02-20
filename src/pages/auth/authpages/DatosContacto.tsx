@@ -52,9 +52,9 @@ const DatosContacto = () => {
 
   const handleSubmit = async (values: FormValues) => {
     setOperario((prev)=>({
-      ...prev, 
-      celular: values.celular, 
-      correo: values.correo, 
+      ...prev,
+      celular: values.celular,
+      correo: values.correo,
       direccion: values.direccion
     }))
     if (
@@ -64,7 +64,7 @@ const DatosContacto = () => {
       !operario.documento ||
       !values.correo ||
       !values.celular ||
-      !values.direccion 
+      !values.direccion
     ) {
       return setNotificacion({
         type: 1,
@@ -85,7 +85,7 @@ const DatosContacto = () => {
 
     if(!respuesta.ok)
     return setNotificacion({type: 1,message: respuesta.mensaje})
-    
+
     navigate('/auth/registro/finalizado')
 
   }
@@ -108,7 +108,7 @@ const DatosContacto = () => {
          <SubTitulo/>
           <Titulo texto="DATOS DE CONTACTO" />
 
-          <InputFormik 
+          <InputFormik
             nombre="celular"
             errors={errors}
             touched={touched}
@@ -119,7 +119,7 @@ const DatosContacto = () => {
             <IconPhone />
           </InputFormik>
 
-          <InputFormik 
+          <InputFormik
             nombre="correo"
             errors={errors}
             touched={touched}
@@ -130,7 +130,7 @@ const DatosContacto = () => {
             <IconEmail />
           </InputFormik>
 
-          <InputFormik 
+          <InputFormik
             nombre="direccion"
             errors={errors}
             touched={touched}
@@ -146,7 +146,7 @@ const DatosContacto = () => {
               texto="cancelar registro"
               direccion='/auth/login'
             />
-          
+
           </div>
           <PuntosNext puntos={rutas} />
         </Form>

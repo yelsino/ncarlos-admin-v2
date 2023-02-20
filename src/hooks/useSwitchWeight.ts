@@ -17,7 +17,7 @@ export const useSwitchWeight = ({ producto }: Props) => {
   const [precioSeleccionado, seleccionarPrecio] = useState(0)
   // cuanto de la meda seleccionada hay en lista?
   // const [cantidadEnLista, setCantidadEnLista] = useState(0);
-  // cuanto es el total a pagar por este producto?            
+  // cuanto es el total a pagar por este producto?
   const [montoTotalDelProducto, setMontoTotalDelProducto] = useState(0)
   // cuanto tienes en lista de este producto?
   const [cantidadTotalDelProducto, setCantidadTotalDelProducto] = useState(0)
@@ -27,7 +27,7 @@ export const useSwitchWeight = ({ producto }: Props) => {
   useEffect(() => {
     if(pesoSeleccionado){
       const precio = producto.precios.find((precio) => precio._id === pesoSeleccionado);
-      if(!precio) return 
+      if(!precio) return
       setPrecio(precio)
 
     }
@@ -61,4 +61,3 @@ export const useSwitchWeight = ({ producto }: Props) => {
     cantidadTotalDelProducto,
   } as const
 }
-

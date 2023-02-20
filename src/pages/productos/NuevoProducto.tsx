@@ -49,7 +49,7 @@ const NuevoProducto = () => {
         {JSON.stringify(nuevoProducto, null, 2)}
       </pre> */}
       <Outlet context={{
-        nuevoProducto, 
+        nuevoProducto,
         setNuevoProducto,
         setPrecio,
         precio

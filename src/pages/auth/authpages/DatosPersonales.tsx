@@ -54,7 +54,7 @@ const DatosPersonales = () => {
         }));
 
         navigate('/auth/registro/datos-contacto')
-       
+
       }}
     >
       {({ errors, touched, handleChange }) => (
@@ -70,8 +70,8 @@ const DatosPersonales = () => {
           </div>
           <Titulo texto="DATOS DE PERSONALES" />
 
-        
-          <InputFormik 
+
+          <InputFormik
             nombre="nombres"
             errors={errors}
             touched={touched}
@@ -81,7 +81,7 @@ const DatosPersonales = () => {
             <IconUsersInactive stile={`h-6 w-6`} />
           </InputFormik>
 
-          <InputFormik 
+          <InputFormik
             nombre="apellidos"
             errors={errors}
             touched={touched}
@@ -91,7 +91,7 @@ const DatosPersonales = () => {
             <IconUsersInactive stile={`h-6 w-6`} />
           </InputFormik>
 
-          <InputFormik 
+          <InputFormik
             nombre="sobreNombre"
             errors={errors}
             touched={touched}
@@ -109,7 +109,7 @@ const DatosPersonales = () => {
               direccion='/auth/login'
               texto="cancelar"
             />
-           
+
           </div>
           <PuntosNext puntos={rutas} />
         </Form>

@@ -39,7 +39,7 @@ const userReducer = (state: UserState, action: UserAction): UserState => {
         ...state,
         nuevoOperario: action.payload
       }
-    
+
     case 'OBTENER_ROLES':
       return {
         ...state,

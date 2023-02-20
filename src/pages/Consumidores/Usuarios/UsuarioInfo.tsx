@@ -3,7 +3,7 @@ import { useContext } from 'react'
 
 const UsuarioInfo = () => {
   const { usuarioSeleccionado: seleccionado } = useContext(UserContext)
- 
+
 
   return (
     <div className="mx-auto flex flex-col items-center justify-center  gap-5">

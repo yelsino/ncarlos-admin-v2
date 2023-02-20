@@ -12,10 +12,10 @@ import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
 import { TextoAccion } from 'Components/utilidades/TextoAccion'
 
 const RestoreInit = () => {
-  
+
   const { restaurarOperario } = useContext(AuthContext);
   const { setNotificacion } = useContext(NotificacionContext)
-  
+
   const validar = Yup.object().shape({
     document: Yup.string().required('es requerido'),
   })
@@ -32,7 +32,7 @@ const RestoreInit = () => {
       }}
     >
       {({ errors, touched }: any) => (
-        <Form 
+        <Form
           className="flex w-full flex-col items-center gap-5 p-10 md:w-1/2"
         >
           <div className="w-24 object-contain  sm:w-32 md:hidden md:w-32 ">

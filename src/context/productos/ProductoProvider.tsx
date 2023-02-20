@@ -16,7 +16,7 @@ const INITIAL_STATE: ProductoState = {
   productos: [],
   producto: null,
   categorias: [],
-  
+
 }
 
 interface Props {
@@ -24,12 +24,12 @@ interface Props {
 }
 
 export const ProductoProvider = ({ children }: Props) => {
-  
+
   const [state, dispatch] = useReducer(productoReducer, INITIAL_STATE)
 
   const obtenerProductosPorCategoria = async (categoria: string):Promise<IRespuesta<IProducto[]>> => {
     console.log(categoria);
-    
+
     const respuesta = await fetchConToken<IRespuesta<IProducto[]>>({
       endpoint: 'productos/categoria/' + categoria,
     });

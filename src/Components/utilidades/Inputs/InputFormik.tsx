@@ -46,9 +46,9 @@ export const InputFormik = (props:Props) => {
 
             handleChange(evento)
 
-            if(handleChangePesonalizado) 
+            if(handleChangePesonalizado)
               handleChangePesonalizado(evento)
-          }}          
+          }}
         />
 
         {children && (

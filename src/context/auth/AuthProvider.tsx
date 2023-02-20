@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }: Props) => {
   // const { chatDispatch } = useContext(ChatContext)
 
   const userLogin = async (data: IAuth): Promise<IRespuesta<IAuthRest>> => {
-    
+
     await waitSeconds(500);
 
     dispatchAuth({ type: 'LOADING', payload: true })
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }: Props) => {
   }
 
   const operarioLogin = async (data: IAuthOperario): Promise<IRespuesta<IAuthRest>> => {
-    
+
     await waitSeconds(500);
 
     const resp = await fetchSinToken<IRespuesta<IAuthRest>>({
@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }: Props) => {
     const resp = await fetchConToken<IRespuesta<IAuthRest>>({ endpoint: 'auth/re-login' })
     // const { usuario } = resp;
     console.log(resp);
-    
+
     if (!resp.ok) {
       localStorage.removeItem('token')
       window.location.reload()

@@ -41,8 +41,8 @@ const PrecioProductoMinoreo = () => {
       e.cantidadPrecios === 0 ||
       // e.pesoSeleccionado === 0 ||
       // e.precioSeleccionado === 0 ||
-      e.precioUnidad === 0 
-      
+      e.precioUnidad === 0
+
       ){
         return alert.setNotificacion({message:'todos los campos son requeridos', type: 1})
     }
@@ -71,10 +71,10 @@ const PrecioProductoMinoreo = () => {
       ...prev,
       precioUnidad: e.precioUnidad,
       precios: precios,
-     
+
 
     }))
-    
+
     navigate('/productos/nuevo-producto/stock')
   }
 
@@ -122,7 +122,7 @@ useEffect(() => {
     return new Promise((resolve, reject)=> {
       const precios:Precio[] = Array.from({length: cantidadPrecios}, (_, i) => {
         console.log(i);
-        
+
          const nuevoPrecio = {
            _id: uuidv4(),
            peso: 0,
@@ -131,7 +131,7 @@ useEffect(() => {
            textoPesoA: '',
            textoPesoB: '',
          }
-        
+
          switch (producto.tipoVenta) {
          case "KILOGRAMOS":
            return {
@@ -139,16 +139,16 @@ useEffect(() => {
              precio: (i+1) !==3 ? (producto.precioUnidad ?? 0) / (i+1) : producto.precioUnidad / 4,
              peso: (i+1) !==3 ? 1000 / (i+1) : 1000 / 4,
            }
-        
+
          default:
            break;
         }
-   
+
        });
 
        resolve(precios)
     })
-   
+
 
 
   }
@@ -156,14 +156,14 @@ useEffect(() => {
   const generarTextos = (precios:Precio[]) => {
     const modificarPrecios = precios.map((precio) => {
       switch (nuevoProducto.tipoVenta) {
-   
+
         case "KILOGRAMOS":
             return {
                 ...precio,
-                textoPesoA: 
-                  precio.peso === 250 ? "1/4 kg" 
-                  : precio.peso === 500 ? "1/2 kg" 
-                  : precio.peso === 1000 ? "1 kg" 
+                textoPesoA:
+                  precio.peso === 250 ? "1/4 kg"
+                  : precio.peso === 500 ? "1/2 kg"
+                  : precio.peso === 1000 ? "1 kg"
                   : `${precio.peso} gr`,
                 textoPesoB:
                   precio.peso === 250 ? "250 gramos"
@@ -171,23 +171,23 @@ useEffect(() => {
                   : precio.peso === 1000 ? "1 kilogramo"
                   : `${precio.peso} gramos`,
             };
-       
+
         default:
             return precio;
       }
     });
 
     return modificarPrecios;
-   
+
   }
   // :React.ChangeEvent<HTMLInputElement>
   const handleChangePesonalizado = (e:ChangeEvent) => {
-    
+
     setNuevoProducto((prev)=>({
-      ...prev, 
+      ...prev,
       precioUnidad: Number(e.target.value)
     }))
-    
+
   }
 
   const handleChangeCantidadPrecios = (e:ChangeEvent) => {
@@ -225,14 +225,14 @@ useEffect(() => {
         ...prev,
         precios: nuevoArrayPrecios
       }
-      
+
     })
 
     setPrecio((prev)=>({
       ...prev,
       peso: Number(value),
     }))
-    
+
   }
 
   const handleChangePrecioSeleccionado = (e:ChangeEvent, setFormikState) => {
@@ -266,14 +266,14 @@ useEffect(() => {
         ...prev,
         precios: nuevoArrayPrecios
       }
-      
+
     })
 
     setPrecio((prev)=>({
       ...prev,
       precio: Number(value),
     }))
-    
+
   }
 
   useEffect(()=> {
@@ -412,7 +412,7 @@ useEffect(() => {
                   className=" text-color_green_7 bg-color_green_3  rounded-md p-4 text-base  outline-none sm:text-lg  appearance-none placeholder:text-green-400 w-full"
                   // className="caret-pink-500 resize-y p-2 w-80 ring-1 ring-slate-900/10 shadow-sm rounded-md dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 h-[114px] focus:outline-none focus:ring-4 focus:ring-orange-600 focus:ring-opacity-75 text-base dark:text-white"
 
-                  
+
                   rows={3}
                 ></textarea>
                 </div>

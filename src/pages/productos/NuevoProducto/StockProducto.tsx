@@ -31,7 +31,7 @@ const StockProducto = () => {
       sobrante: values.sobrante,
       alertaCantidad: values.alertaCantidad
     }))
-   
+
     navigate('/productos/nuevo-producto/resumen')
   }
 

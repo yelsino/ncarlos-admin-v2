@@ -48,7 +48,7 @@ export const SocketProvider = ({ children }: Props) => {
 
     socket?.on('GET_ROLS', (res: IRespuesta<IRol[]>) => {
       console.log(res);
-      
+
       dispatchUser({
         type: 'OBTENER_ROLES',
         payload: res.data
@@ -57,7 +57,7 @@ export const SocketProvider = ({ children }: Props) => {
 
     socket?.on('GET_ALL_PRODUCTS', (res: IRespuesta<IProducto[]>) => {
       console.log(res);
-      
+
       dispatchProducto({
         type: 'OBTENER_PRODUCTOS',
         payload: res.data
@@ -66,7 +66,7 @@ export const SocketProvider = ({ children }: Props) => {
 
     socket?.on('GET_CATEGORIES', (res: IRespuesta<ICategoria[]>) => {
       console.log(res);
-      
+
       dispatchProducto({
         type: 'OBTENER_CATEGORIAS',
         payload: res.data
@@ -75,7 +75,7 @@ export const SocketProvider = ({ children }: Props) => {
 
     socket?.on('GET_ALL_ORDERS', (res: IRespuesta<IPedido[]>) => {
       console.log(res);
-      
+
       dispatchOrder({
         type: 'GET_ORDERS',
         payload: res.data

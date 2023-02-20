@@ -16,8 +16,8 @@ const PedidoActivo = () => {
 
     useEffect(() => {
       if(pedidoactivoID) {
-        dispatchOrder({ 
-          type: 'SELECCIONAR_ORDEN', 
+        dispatchOrder({
+          type: 'SELECCIONAR_ORDEN',
           payload: orders.find((v) => v._id === pedidoactivoID)
         })
       } else {
@@ -56,7 +56,7 @@ const PedidoActivo = () => {
             Tracking
           </NavLink>
         </div>
-  
+
         <Outlet />
       </div>
       )}

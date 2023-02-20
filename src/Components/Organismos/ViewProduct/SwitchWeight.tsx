@@ -24,7 +24,7 @@ interface Precio {
   cantidad?: number;
   textoPesoA?: string;
   textoPesoB?: string;
-  
+
 }
 
 
@@ -32,14 +32,14 @@ const SwitchWeight = ({ producto, precios }:Props) => {
 
   const { precio } = useOutletContext<OutletProducto>()
 
-  const { 
+  const {
     pesoSeleccionado,
     seleccionarPeso,
     // montoTotalDelProducto,
     // cantidadTotalDelProducto,
-  
-  } = useSwitchWeight({ 
-    producto, 
+
+  } = useSwitchWeight({
+    producto,
   });
 
   return (
@@ -93,7 +93,7 @@ const SwitchWeight = ({ producto, precios }:Props) => {
               </span>
             </p>
 
-           
+
             {/* <p className="flex w-full justify-between">
               <span>Cantidad Total</span>
               <span className="text-color_green_7">
@@ -105,7 +105,7 @@ const SwitchWeight = ({ producto, precios }:Props) => {
                   // key={precioTotalSeleccionado}
                   className="inline-block font-bold"
                 >
-                  {cantidadTotalDelProducto ?? 0}  
+                  {cantidadTotalDelProducto ?? 0}
                 </motion.span>
                  {` ${convertirTipoVenta(producto.tipoVenta) }`}
               </span>
@@ -121,7 +121,7 @@ const SwitchWeight = ({ producto, precios }:Props) => {
                   exit={{ scaleY: 0 }}
                   className="inline-block font-bold"
                 >
-                  {montoTotalDelProducto ?? 0}  
+                  {montoTotalDelProducto ?? 0}
                 </motion.span>
               </span>
             </p> */}
@@ -133,7 +133,7 @@ const SwitchWeight = ({ producto, precios }:Props) => {
             <motion.button
               type='button'
               transition={{ duration: 0.2 }}
-             
+
               className={`w-48 bg-orange-600 py-3 font-poppins font-semibold text-white ${
                 false ? 'cursor-wait' : 'cursor-pointer'
               }`}
@@ -149,7 +149,7 @@ const SwitchWeight = ({ producto, precios }:Props) => {
             </motion.button>
           </div>
         </>
-      )} 
+      )}
     </>
   )
 }

@@ -56,8 +56,8 @@ const DatosBasicos = () => {
       validationSchema={validar}
       onSubmit={(values) => {
         setOperario((prev) => ({
-          ...prev, 
-          documento: values?.documento, 
+          ...prev,
+          documento: values?.documento,
           password: values?.password
         }))
         navigate('/auth/registro/datos-personales')
@@ -76,7 +76,7 @@ const DatosBasicos = () => {
               "
           />
 
-          <InputFormik 
+          <InputFormik
             nombre="documento"
             errors={errors}
             touched={touched}
@@ -86,7 +86,7 @@ const DatosBasicos = () => {
             <IconEmail />
           </InputFormik>
 
-          <InputFormik 
+          <InputFormik
             nombre="password"
             errors={errors}
             touched={touched}

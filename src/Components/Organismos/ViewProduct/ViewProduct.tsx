@@ -28,9 +28,9 @@ interface Props {
 }
 
 const ViewProduct = ({ producto,  precios }: Props) => {
-  
+
     const { nombre,imagenLocal } = producto
-  
+
   return (
     <motion.div
       className={`w-full bg-white  `}

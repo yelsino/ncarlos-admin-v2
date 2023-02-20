@@ -31,9 +31,9 @@ const PedidosActivos = () => {
         {orders.map((o) => (
           <Link
             key={o._id} to={`/ventas/pedidos/${o._id}/detalles`}
-            onClick={() => 
+            onClick={() =>
               dispatchOrder({
-                type: 'SELECCIONAR_ORDEN', 
+                type: 'SELECCIONAR_ORDEN',
                 payload: o
             })}
             className="text-gray-500 hover:text-color_green_7 text-base sm:text-lg w-full relative flex items-center py-1 "

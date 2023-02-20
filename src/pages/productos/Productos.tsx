@@ -10,7 +10,7 @@ import { IProducto } from 'types-yola'
 const Productos = () => {
   // const { categorias } = useContext(CategoriaContext)
   const { productos, categorias, dispatchProducto } = useContext(ProductoContext)
-  
+
   const [textsearch, setTextSearch] = useState('')
   const [productosFiltrados, setFiltroProductos] = useState<IProducto[]>([]);
 
@@ -23,8 +23,8 @@ const Productos = () => {
       );
     });
 
-    const limitedProducts = filteredProducts.length >= 7 
-          ? filteredProducts.slice(0, 7) 
+    const limitedProducts = filteredProducts.length >= 7
+          ? filteredProducts.slice(0, 7)
           : filteredProducts;
 
     setFiltroProductos(limitedProducts);
@@ -73,16 +73,16 @@ const Productos = () => {
         )}
       </div>
 
-      {textsearch  
+      {textsearch
       ? (
         <div>
           {
-            productosFiltrados.length >= 1 
+            productosFiltrados.length >= 1
             ? (
               <div>
                 {productosFiltrados.map((producto) => (
-                  <SearchProduct 
-                    key={producto._id} 
+                  <SearchProduct
+                    key={producto._id}
                     producto={producto}
                     dispatch={dispatchProducto}
                   />
@@ -93,9 +93,9 @@ const Productos = () => {
               <p>Sin resultados</p>
             )
           }
-          
+
         </div>
-        
+
       ) : (
         <div className="flex flex-col gap-y-10  ">
           {categorias.map((v,index) => (

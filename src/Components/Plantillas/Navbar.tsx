@@ -32,7 +32,7 @@ const Navbar = () => {
         </span>
         <div className="navbar_perfil  relative  py-2 pl-3">
           {
-            user.foto 
+            user.foto
             ? (
               <img
                 src={user?.foto}
@@ -49,7 +49,7 @@ const Navbar = () => {
             alt="img user"
             className="h-10 w-10 rounded-full object-cover"
             onError={(e:any)=>{
-              // genera una imagen aleatoria de internet 
+              // genera una imagen aleatoria de internet
               e.target.src =  `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`
             }}
           /> */}

@@ -34,7 +34,7 @@ const NombreProducto = () => {
     }
 
     setNuevoProducto((prev) => ({
-      ...prev, 
+      ...prev,
       nombre: values?.nombre
     }))
     navigate('/productos/nuevo-producto/datos-basicos')
@@ -86,7 +86,7 @@ const NombreProducto = () => {
 
             <div className="flex w-full flex-col items-center ">
               <div className="mt-10 ">
-                
+
                 <label
                   className={`${
                     nuevoProducto.imagenLocal
@@ -97,7 +97,7 @@ const NombreProducto = () => {
                 >
                   Imagen <IconCameraOutline />
                 </label>
-               
+
                     <input
                       id="imagen"
                       type="file"
@@ -105,13 +105,13 @@ const NombreProducto = () => {
                       className='hidden'
                       onChange={evento => {
                         encodeImageFileAsURL(evento)
-                      }}                      
+                      }}
                     />
               </div>
 
 
           <div className="flex justify-center flex-col items-center gap-y-3 pt-5">
-              
+
               <div className="mb-3 flex h-[130px] w-[140px] items-center justify-center rounded-tl-[50px] rounded-tr-[10px] rounded-bl-[20px] rounded-br-[50px] bg-emerald-300 bg-opacity-50 ">
 
               <img
@@ -122,9 +122,9 @@ const NombreProducto = () => {
                 />
               </div>
 
-            
+
             </div>
-              
+
               <div className="w-72 mb-5">
                 <InputFormik
                   nombre="nombre"

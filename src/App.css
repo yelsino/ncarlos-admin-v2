@@ -22,7 +22,7 @@ input[type="number"] {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-     
+
   input[type="range"]::-webkit-slider-thumb {
       width: 13px;
       -webkit-appearance: none;
@@ -32,6 +32,6 @@ input[type="number"] {
       background: #ff761b;
       box-shadow: -405px 0 0 400px #000000;
       border-radius: 50%;
-      
+
   }
 }

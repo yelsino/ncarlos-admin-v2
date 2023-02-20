@@ -22,7 +22,7 @@ const Registro = () => {
     sobreNombre: ''
   })
 
- 
+
   return (
     <div className="bg-color_green_1 flex h-full flex-col items-center justify-center">
       <div className="flex  max-w-5xl items-center justify-center ">

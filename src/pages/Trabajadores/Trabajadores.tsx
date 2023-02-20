@@ -52,7 +52,7 @@ const Trabajadores = () => {
             >
               <div className="flex w-8/12 items-center gap-x-3 sm:w-6/12 ">
                 {
-                  v.foto 
+                  v.foto
                   ? (<img
                     alt="img trabajadores"
                     className="  h-10 w-10 rounded-full object-cover"

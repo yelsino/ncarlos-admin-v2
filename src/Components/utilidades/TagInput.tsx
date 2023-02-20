@@ -59,7 +59,7 @@ const TagInput = ({setNuevoProducto, tags}: Props) => {
       e.stopPropagation()
     }}>
       <div className="flex justify-between"><label className="text-color_green_6">Palabras claves de producto</label>
-      <button 
+      <button
         type="button"
         onClick={handleAddition}
         className="bg-green-400 px-3 py-1">Agregar</button></div>
@@ -71,7 +71,7 @@ const TagInput = ({setNuevoProducto, tags}: Props) => {
         onChange={handleChange}
         onKeyDown={handleKeyPress}
       />
-      
+
       </div>
 
      <div className="flex flex-wrap w-full gap-1">
