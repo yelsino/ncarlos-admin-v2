@@ -1,7 +1,7 @@
 import { Dispatch, createContext } from 'react'
 
 import { IAuth, IAuthOperario, IAuthRest, IRespuesta, IUsuario, Operario } from 'types-yola'
-import { AuthAction } from './authReducer'
+import { AuthAction } from './AuthReducer'
 
 interface AuthContextProps {
   uid: string | null

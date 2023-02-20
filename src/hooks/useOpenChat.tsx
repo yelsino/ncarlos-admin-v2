@@ -1,4 +1,4 @@
-import { ChatContext } from 'context/chat/chatContext'
+import { ChatContext } from 'context/chat/ChatContext'
 import { fetchConToken } from 'helpers/fetch'
 import { useContext } from 'react'
 import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll'

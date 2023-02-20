@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { PERFIL12 } from '../../../Components/Images'
 import { AuthContext } from '../../../context/auth/AuthContext'
-import { ChatContext } from '../../../context/chat/chatContext'
+import { ChatContext } from '../../../context/chat/ChatContext'
 
 const Mensajes = () => {
   const { chatState } = useContext(ChatContext) as any

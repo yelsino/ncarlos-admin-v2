@@ -2,7 +2,7 @@ import { fetchConToken } from 'helpers/fetch'
 import { useReducer } from 'react'
 import { ICategoria, IRespuesta } from 'types-yola'
 import { CategoriaContext } from './CategoriaContext'
-import { categoriaReducer } from './categoriaReducer'
+import { categoriaReducer } from './CategoriaReducer'
 
 export interface CategoriaState {
   categorias: ICategoria[]

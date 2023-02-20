@@ -33,8 +33,8 @@ const Login = () => {
       <div className="flex mx-auto items-center justify-center ">
         <Formik
           initialValues={{
-            documento: '77068139',
-            password: '77068139'
+            documento: '77068150',
+            password: '77068150'
           } as FormValues}
           validationSchema={validar}
           onSubmit={async (values: any) => {
@@ -48,7 +48,7 @@ const Login = () => {
             }
           }}
         >
-          {({errors, touched, isSubmitting, handleChange}) => (
+          {({errors, touched, isSubmitting, handleChange, values}) => (
             <Form className="flex w-full flex-col items-center gap-5  md:w-1/2  mx-auto ">
               <div className=" w-24  object-contain sm:w-40 md:hidden">
                 <img src={LOGO} alt="logo de negocios carlos" />
@@ -64,6 +64,7 @@ const Login = () => {
                 touched={touched}
                 titulo='Documento'
                 handleChange={handleChange}
+                value={values.documento}
               >
                 <IconEmail />
               </InputFormik>
@@ -75,6 +76,7 @@ const Login = () => {
                 titulo='Contraseña'
                 type='password'
                 handleChange={handleChange}
+                value={values.password}
               >
                 <IconKey />
               </InputFormik>

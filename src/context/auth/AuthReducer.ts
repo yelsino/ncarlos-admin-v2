@@ -8,7 +8,7 @@ export type AuthAction =
   | { type: 'SET_USER'; payload: IUsuario }
   | { type: 'LOADING'; payload: boolean }
 
-export const authReducer = (
+export const AuthReducer = (
   state: AuthState,
   action: AuthAction
 ): AuthState => {

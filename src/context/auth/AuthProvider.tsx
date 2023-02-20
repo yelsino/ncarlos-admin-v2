@@ -3,7 +3,7 @@ import { useCallback, useReducer } from 'react'
 import { IAuth, IAuthRest, IRespuesta, IUsuario, Operario, IAuthOperario } from 'types-yola'
 import { waitSeconds } from 'Utils/UI'
 import { AuthContext } from './AuthContext'
-import { authReducer } from './authReducer'
+import { AuthReducer } from './AuthReducer'
 
 export interface AuthState {
   uid: string | null
@@ -24,7 +24,7 @@ interface Props {
 }
 
 export const AuthProvider = ({ children }: Props) => {
-  const [auth, dispatchAuth] = useReducer(authReducer, INITIAL_STATE)
+  const [auth, dispatchAuth] = useReducer(AuthReducer, INITIAL_STATE)
   // const { chatDispatch } = useContext(ChatContext)
 
   const userLogin = async (data: IAuth): Promise<IRespuesta<IAuthRest>> => {

@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 import { IUsuario } from 'types-yola'
-import { ChatContext } from './chatContext'
+import { ChatContext } from './ChatContext'
 import { chatReducer } from './chatReducer'
 
 export interface ChatState {

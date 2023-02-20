@@ -1,5 +1,4 @@
 import PuntosNext from 'Components/utilidades/PuntosNext'
-import { ProductoContext } from 'context/productos/ProductoContext'
 import { useState, useEffect, useContext } from 'react'
 import { Outlet } from 'react-router-dom'
 import { IProducto, Precio } from 'types-yola'
