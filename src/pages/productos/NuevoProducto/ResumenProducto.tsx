@@ -1,6 +1,6 @@
 import ButtonAction from 'Components/utilidades/ButtonAction'
-import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
-import { ProductoContext } from 'context/productos/ProductoContext'
+import { NotificacionContext } from 'context/notificaciones/notificacionContext'
+import { ProductoContext } from 'context/productos/productoContext'
 import { useContext } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { OutletProducto } from '../NuevoProducto'

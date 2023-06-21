@@ -1,5 +1,5 @@
 import ButtonAction from 'Components/utilidades/ButtonAction'
-import { ProductoContext } from 'context/productos/ProductoContext'
+import { ProductoContext } from 'context/productos/productoContext'
 import { useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import mandarina from '../../../assets/img/mandarina.png'

@@ -1,4 +1,4 @@
-import { ProductoContext } from 'context/productos/ProductoContext'
+import { ProductoContext } from 'context/productos/productoContext'
 import { motion } from 'framer-motion'
 import { useContext } from 'react'
 

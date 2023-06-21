@@ -1,13 +1,13 @@
 import { AuthContext } from 'context/auth/AuthContext'
 import { ChatContext } from 'context/chat/ChatContext'
-import { OrderContext } from 'context/orders/OrderContext'
-import { ProductoContext } from 'context/productos/ProductoContext'
-import { UserContext } from 'context/user/UserContext'
+import { ProductoContext } from 'context/productos/productoContext'
 import { scrollBottomAnimated } from 'helpers/scrollToBottom'
 import { useSocket } from 'hooks/useSocket'
 import { useContext, useEffect } from 'react'
 import { ICategoria, IPedido, IProducto, IRespuesta, IRol, IUsuario } from 'types-yola'
 import { SocketContext } from './SocketContext'
+import { UserContext } from 'context/user/userContext'
+import { OrderContext } from 'context/orders/orderContext'
 
 interface Props {
   children: JSX.Element | JSX.Element[]

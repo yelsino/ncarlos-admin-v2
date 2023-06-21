@@ -1,4 +1,4 @@
-import { UserContext } from 'context/user/UserContext'
+import { UserContext } from 'context/user/userContext'
 import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { IconLink } from '../../../Components/Icons'

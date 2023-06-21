@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { useContext } from 'react'
-import { OrderContext } from 'context/orders/OrderContext'
+import { OrderContext } from 'context/orders/orderContext'
 
 const PedidoProductos = () => {
 

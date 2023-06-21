@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, useOutletContext } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import IMG from '../../../assets/img/iconito.png'
-import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
+import { NotificacionContext } from 'context/notificaciones/notificacionContext'
 import ButtonNext from 'Components/utilidades/ButtonNext'
 import { IconCameraOutline, IconNext } from 'Components/Icons'
 import { OutletProducto } from '../NuevoProducto'

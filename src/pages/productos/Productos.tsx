@@ -1,8 +1,7 @@
 
 import { IconClean, IconSearch } from 'Components/Icons'
 import { SearchProduct } from 'Components/Organismos/SearchProduct'
-import { CategoriaContext } from 'context/categoria/CategoriaContext'
-import { ProductoContext } from 'context/productos/ProductoContext'
+import { ProductoContext } from 'context/productos/productoContext'
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IProducto } from 'types-yola'

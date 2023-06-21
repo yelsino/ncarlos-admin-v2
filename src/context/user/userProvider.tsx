@@ -1,7 +1,7 @@
 import { fetchConToken } from 'helpers/fetch'
 import { useReducer } from 'react'
 import { IReclamo, IRespuesta, IRol, IUsuario, Operario } from 'types-yola'
-import { UserContext } from './UserContext'
+import { UserContext } from './userContext'
 import userReducer from './userReducer'
 
 export interface UserState {

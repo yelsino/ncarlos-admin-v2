@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom'
 import moment from 'moment'
 import 'moment/locale/es'
 import { useContext } from 'react'
-import { OrderContext } from 'context/orders/OrderContext'
+import { OrderContext } from 'context/orders/orderContext'
 moment.locale('es')
 
 const PedidoDetalle = () => {

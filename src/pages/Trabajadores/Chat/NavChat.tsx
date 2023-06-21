@@ -9,7 +9,7 @@ import {
 } from '../../../Components/Icons'
 import { AuthContext } from '../../../context/auth/AuthContext'
 import { ChatContext } from '../../../context/chat/ChatContext'
-import { SocketContext } from '../../../context/Socket/SocketContext'
+import { SocketContext } from '../../../context/socket/SocketContext'
 
 const NavChat = () => {
   const [mensaje, setMensaje] = useState('')

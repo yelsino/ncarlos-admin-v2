@@ -1,7 +1,7 @@
 import { useReducer } from 'react'
 import { IPedido } from 'types-yola'
 // import { fetchConToken } from '../../helpers/fetch'
-import { OrderContext } from './OrderContext'
+import { OrderContext } from './orderContext'
 import orderReducer from './orderReducer'
 
 export interface OrderState {

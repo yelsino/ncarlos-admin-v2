@@ -6,11 +6,11 @@ import { AuthProvider } from 'context/auth/AuthProvider'
 import { CategoriaProvider } from 'context/categoria/CategoriaProvider'
 import { ChatProvider } from 'context/chat/ChatProvider'
 import { ProductoProvider } from 'context/productos/ProductoProvider'
-import { SocketProvider } from 'context/Socket/SocketProvider'
+import { SocketProvider } from 'context/socket/SocketProvider'
 import RouterApp from 'router/RouterApp'
-import { NotificacionProvider } from 'context/Notificaciones/NotificacionProvider'
-import { UserProvider } from 'context/user/UserProvider'
-import { OrderProvider } from 'context/orders/OrderProvider'
+import { UserProvider } from 'context/user/userProvider'
+import { OrderProvider } from 'context/orders/orderProvider'
+import { NotificacionProvider } from 'context/notificaciones/notificacionProvider'
 
 function App() {
   const firebaseConfig = {

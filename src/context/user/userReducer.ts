@@ -1,5 +1,5 @@
 import { IUsuario, IReclamo, Operario, IRol } from 'types-yola'
-import { UserState } from './UserProvider'
+import { UserState } from './userProvider'
 
 export type UserAction =
   | { type: 'OBTENER_USUARIOS'; payload: Array<IUsuario> }

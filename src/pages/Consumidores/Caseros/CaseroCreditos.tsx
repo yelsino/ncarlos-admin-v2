@@ -1,4 +1,4 @@
-import { UserContext } from 'context/user/UserContext'
+import { UserContext } from 'context/user/userContext'
 import { useContext } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { IconCard, IconLink } from '../../../Components/Icons'

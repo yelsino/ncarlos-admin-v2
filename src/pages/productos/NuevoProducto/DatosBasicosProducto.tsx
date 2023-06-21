@@ -2,11 +2,11 @@ import { useContext } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import { RadioGroup } from '@headlessui/react'
-import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
+import { NotificacionContext } from 'context/notificaciones/notificacionContext'
 import ButtonNext from 'Components/utilidades/ButtonNext'
 import { IconNext } from 'Components/Icons'
 import { OutletProducto } from '../NuevoProducto'
-import { ProductoContext } from 'context/productos/ProductoContext'
+import { ProductoContext } from 'context/productos/productoContext'
 import { TipoVenta } from 'types-yola'
 
 const DatosBasicosProducto = () => {

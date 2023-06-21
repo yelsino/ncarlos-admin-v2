@@ -1,4 +1,4 @@
-import { OrderContext } from 'context/orders/OrderContext'
+import { OrderContext } from 'context/orders/orderContext'
 import { useContext } from 'react'
 
 const PedidoTracking = () => {

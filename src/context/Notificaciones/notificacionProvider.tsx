@@ -4,8 +4,8 @@ import {
   NotificacionState
 } from 'interfaces/notificacion.interface'
 import { useReducer } from 'react'
-import { NotificacionContext } from './NotificacionContext'
 import { notificacionReducer } from './notificacionReducer'
+import { NotificacionContext } from './notificacionContext'
 
 interface Props {
   children: JSX.Element | JSX.Element[]

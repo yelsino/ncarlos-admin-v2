@@ -3,7 +3,7 @@ import IMGDEVELOPER from 'assets/img/developer.svg'
 import LOGO from 'assets/img/logo.png'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import { NotificacionContext } from 'context/Notificaciones/NotificacionContext'
+import { NotificacionContext } from 'context/notificaciones/notificacionContext'
 import { AuthContext } from 'context/auth/AuthContext'
 import { IconEmail, IconKey } from 'Components/Icons'
 import Titulo from 'Components/utilidades/Titulo'
@@ -33,8 +33,8 @@ const Login = () => {
       <div className="flex mx-auto items-center justify-center ">
         <Formik
           initialValues={{
-            documento: '77068150',
-            password: '77068150'
+            documento: '77068139',
+            password: '77068139'
           } as FormValues}
           validationSchema={validar}
           onSubmit={async (values: any) => {

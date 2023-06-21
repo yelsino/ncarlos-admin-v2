@@ -1,5 +1,5 @@
 import { IconBox, IconCard, IconUser } from 'Components/Icons'
-import { OrderContext } from 'context/orders/OrderContext'
+import { OrderContext } from 'context/orders/orderContext'
 import { NavLink, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 

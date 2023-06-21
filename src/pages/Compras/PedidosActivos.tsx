@@ -1,5 +1,5 @@
 import { IconLink } from 'Components/Icons'
-import { OrderContext } from 'context/orders/OrderContext'
+import { OrderContext } from 'context/orders/orderContext'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 

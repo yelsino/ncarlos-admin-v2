@@ -1,6 +1,6 @@
 import { createContext, Dispatch } from 'react'
 import { IAuth, IRespuesta, IUsuario, Operario } from 'types-yola'
-import { UserState } from './UserProvider'
+import { UserState } from './userProvider'
 import { UserAction } from './userReducer'
 
 interface UserContextProps extends UserState {

@@ -1,10 +1,9 @@
-import { CategoriaContext } from 'context/categoria/CategoriaContext'
 import { fetchConToken } from 'helpers/fetch'
 import { NuevoProducto } from 'pages/productos/NuevoProducto'
-import { useContext, useReducer } from 'react'
+import { useReducer } from 'react'
 import { ICategoria, IProducto, IRespuesta } from 'types-yola'
-import { ProductoContext } from './ProductoContext'
 import productoReducer from './productoReducer'
+import { ProductoContext } from './productoContext'
 
 export interface ProductoState {
   productos: IProducto[],

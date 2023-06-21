@@ -1,4 +1,4 @@
-import { ProductoContext } from 'context/productos/ProductoContext'
+import { ProductoContext } from 'context/productos/productoContext'
 import { useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './productos.css'

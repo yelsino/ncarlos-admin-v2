@@ -1,6 +1,6 @@
 import { IconLink, IconOutUser } from 'Components/Icons'
 import { AuthContext } from 'context/auth/AuthContext'
-import { UserContext } from 'context/user/UserContext'
+import { UserContext } from 'context/user/userContext'
 import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // import { useOpenChat } from '../../hooks/useOpenChat'
